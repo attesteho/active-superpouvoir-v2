@@ -1,0 +1,212 @@
+[
+ {
+  "id": 1,
+  "category": "Identité",
+  "doute": "Je ne sais pas qui je suis vraiment.",
+  "affirmation": "Je suis en train de me découvrir. Et cette découverte est déjà un superpouvoir.",
+  "action": "Écris 3 mots qui te décrivent quand tu es à ton meilleur."
+ },
+ {
+  "id": 2,
+  "category": "Identité",
+  "doute": "Je suis trop ordinaire pour faire quelque chose de grand.",
+  "affirmation": "Les choses extraordinaires commencent toujours par quelqu’un d’ordinaire qui ose.",
+  "action": "Rappelle-toi une chose que tu as faite qui a aidé quelqu’un, même petite."
+ },
+ {
+  "id": 3,
+  "category": "Identité",
+  "doute": "Je ne suis pas aussi bien que les autres.",
+  "affirmation": "Tu n’es pas en compétition avec les autres. Tu es en train de devenir toi.",
+  "action": "Note une qualité que tu as et que tu n’as jamais dite à voix haute."
+ },
+ {
+  "id": 4,
+  "category": "Talent",
+  "doute": "Je n’ai aucun talent particulier.",
+  "affirmation": "Ton talent est peut-être si naturel pour toi que tu ne le vois pas encore. Demande autour de toi.",
+  "action": "Pose cette question à quelqu’un de confiance : «Qu’est-ce que tu trouves de spécial en moi ?»"
+ },
+ {
+  "id": 5,
+  "category": "Talent",
+  "doute": "Ce que je fais bien ne compte pas vraiment.",
+  "affirmation": "Ce qui te vient facilement a de la valeur précisément parce que ce n’est pas facile pour tout le monde.",
+  "action": "Liste 3 choses que tu fais naturellement et que les autres admirent."
+ },
+ {
+  "id": 6,
+  "category": "Talent",
+  "doute": "Mon talent n’est pas assez sérieux.",
+  "affirmation": "Un talent non reconnu reste un diamant brut. Il brille dès qu’on lui donne de l’attention.",
+  "action": "Imagine une façon concrète d’utiliser ce talent cette semaine."
+ },
+ {
+  "id": 7,
+  "category": "Courage",
+  "doute": "J’ai peur de me lancer.",
+  "affirmation": "Le courage n’est pas l’absence de peur. C’est faire un pas malgré elle.",
+  "action": "Fais UNE petite action vers ton objectif aujourd’hui. Juste une."
+ },
+ {
+  "id": 8,
+  "category": "Courage",
+  "doute": "Et si j’échoue devant tout le monde ?",
+  "affirmation": "L’échec visible prouve que tu oses. Ceux qui ne ratent jamais ne tentent rien.",
+  "action": "Pense à une erreur passée. Qu’est-ce qu’elle t’a appris ?"
+ },
+ {
+  "id": 9,
+  "category": "Courage",
+  "doute": "Ce n’est pas le bon moment pour essayer.",
+  "affirmation": "Le bon moment n’arrive pas. Il se crée. Commence imparfaitement plutôt que d’attendre parfaitement.",
+  "action": "Choisis une chose que tu remets à plus tard et fais-en 10 minutes maintenant."
+ },
+ {
+  "id": 10,
+  "category": "Regard des autres",
+  "doute": "Les gens vont se moquer de moi.",
+  "affirmation": "Ceux qui critiquent sans agir ne méritent pas le pouvoir de te stopper.",
+  "action": "Répète : «Ce que je fais compte. Ce que pensent les autres ne me définit pas.»"
+ },
+ {
+  "id": 11,
+  "category": "Regard des autres",
+  "doute": "Je déçois ma famille si je choisis ma voie.",
+  "affirmation": "Un enfant aligné honore mieux sa famille qu’un enfant malheureux et éteint.",
+  "action": "Écris une phrase pour expliquer ton rêve à tes parents avec respect et clarté."
+ },
+ {
+  "id": 12,
+  "category": "Regard des autres",
+  "doute": "Je dois être comme les autres pour être accepté·e.",
+  "affirmation": "Ta différence n’est pas un défaut. C’est souvent ce qui te rend précieux·se.",
+  "action": "Nomme une chose en toi que tu caches par peur du regard des autres."
+ },
+ {
+  "id": 13,
+  "category": "Progression",
+  "doute": "Je ne progresse pas assez vite.",
+  "affirmation": "1% de progrès chaque jour, c’est 37 fois mieux en un an. La constance bat la vitesse.",
+  "action": "Note UNE petite avancée de cette semaine, même minuscule."
+ },
+ {
+  "id": 14,
+  "category": "Progression",
+  "doute": "C’est trop difficile, je n’y arriverai pas.",
+  "affirmation": "Ce qui te demande de l’effort ne t’est pas opposé. C’est ce qui te construit.",
+  "action": "Découpe ton objectif en 3 mini-étapes. Commence par la première."
+ },
+ {
+  "id": 15,
+  "category": "Progression",
+  "doute": "Les autres avancent plus vite que moi.",
+  "affirmation": "Tu marches sur ton propre chemin, à ton propre rythme. La comparaison est un détour inutile.",
+  "action": "Ferme les réseaux sociaux pendant 24h et observe comment tu te sens."
+ },
+ {
+  "id": 16,
+  "category": "Vision",
+  "doute": "Je ne sais pas ce que je veux faire de ma vie.",
+  "affirmation": "Ne pas savoir encore n’est pas un échec. C’est le début de l’exploration.",
+  "action": "Décris ta journée idéale dans 10 ans, sans te censurer."
+ },
+ {
+  "id": 17,
+  "category": "Vision",
+  "doute": "Et si je fais le mauvais choix ?",
+  "affirmation": "Chaque choix t’apprend quelque chose. Il n’y a pas de mauvais chemin, seulement des détours formateurs.",
+  "action": "Pose-toi cette question : «Qu’est-ce que j’apprendrais si j’essayais ?»"
+ },
+ {
+  "id": 18,
+  "category": "Vision",
+  "doute": "Mon rêve est trop grand pour moi.",
+  "affirmation": "Ton rêve a été mis en toi exactement parce que tu es capable de le porter.",
+  "action": "Écris ton rêve sur papier. Le fait de l’écrire le rend plus réel."
+ },
+ {
+  "id": 19,
+  "category": "Famille & Pression",
+  "doute": "Ma famille ne croit pas en mon projet.",
+  "affirmation": "Tes parents parlent le langage de la protection. Ton rôle est de traduire ton feu dans leurs mots.",
+  "action": "Prépare 3 phrases calmes pour expliquer ton projet à ta famille."
+ },
+ {
+  "id": 20,
+  "category": "Famille & Pression",
+  "doute": "Je dois réussir pour tout le monde.",
+  "affirmation": "Tu n’es pas né·e pour rembourser. Tu es né·e pour vivre ta vie pleinement.",
+  "action": "Répète : «Je réussis pour moi. C’est la meilleure façon d’honorer ceux que j’aime.»"
+ },
+ {
+  "id": 21,
+  "category": "Famille & Pression",
+  "doute": "Je me sens coupable de penser à moi.",
+  "affirmation": "Prendre soin de toi n’est pas de l’égoïsme. C’est la condition pour pouvoir donner aux autres.",
+  "action": "Fais une chose aujourd’hui qui nourrit TON énergie, rien que pour toi."
+ },
+ {
+  "id": 22,
+  "category": "Confiance",
+  "doute": "Je ne suis pas assez intelligent·e.",
+  "affirmation": "Il existe plusieurs formes d’intelligence. Celle de l’école n’en est qu’une. Trouve la tienne.",
+  "action": "Identifie dans quel domaine tu comprends les choses rapidement et naturellement."
+ },
+ {
+  "id": 23,
+  "category": "Confiance",
+  "doute": "Je ne mérite pas le succès.",
+  "affirmation": "Ton existence ne se mérite pas. Tu as le droit d’être là avant d’avoir prouvé quoi que ce soit.",
+  "action": "Écris 5 choses pour lesquelles tu es reconnaissant·e envers toi-même."
+ },
+ {
+  "id": 24,
+  "category": "Confiance",
+  "doute": "Et si je me suis trompé·e sur moi-même ?",
+  "affirmation": "Se tromper sur soi, c’est se chercher. Et se chercher, c’est déjà se trouver en chemin.",
+  "action": "Relis des compliments ou retours positifs que tu as reçus récemment."
+ },
+ {
+  "id": 25,
+  "category": "Action",
+  "doute": "Je veux tout faire mais je ne commence rien.",
+  "affirmation": "Mieux vaut fait qu’imaginé. Une petite action réelle vaut mieux qu’un grand projet dans la tête.",
+  "action": "Utilise la méthode CAP : Clair – Action – Preuve. Commence maintenant."
+ },
+ {
+  "id": 26,
+  "category": "Action",
+  "doute": "Je procrastine tout le temps.",
+  "affirmation": "Ton cerveau aime la zone de confort. Lance-toi pour 15 minutes. L’élan vient après le démarrage.",
+  "action": "Mets un timer de 15 minutes et commence cette chose que tu repousses."
+ },
+ {
+  "id": 27,
+  "category": "Action",
+  "doute": "Mon travail n’est jamais assez parfait pour être montré.",
+  "affirmation": "Le perfectionnisme est parfois une peur déguisée. Montre ton travail imparfait. C’est ça qui grandit.",
+  "action": "Partage quelque chose que tu as créé avec une personne de confiance aujourd’hui."
+ },
+ {
+  "id": 28,
+  "category": "Résilience",
+  "doute": "J’ai déjà échoué, alors pourquoi réessayer ?",
+  "affirmation": "Chaque héros a une histoire d’échec avant sa victoire. L’échec n’est pas une fin, c’est un chapitre.",
+  "action": "Pense à un échec passé et écris ce qu’il t’a appris sur toi."
+ },
+ {
+  "id": 29,
+  "category": "Résilience",
+  "doute": "Tout le monde réussit sauf moi.",
+  "affirmation": "Tu vois les victoires des autres, pas leurs doutes. Tout le monde lutte. Tout le monde apprend.",
+  "action": "Parle à quelqu’un en qui tu as confiance de ce que tu traverses en ce moment."
+ },
+ {
+  "id": 30,
+  "category": "Résilience",
+  "doute": "Je suis fatigué·e de me battre.",
+  "affirmation": "La fatigue est un signal, pas une sentence. Repose-toi, puis reviens. Ton chemin t’attend toujours.",
+  "action": "Accorde-toi une vraie pause aujourd’hui. Sans culpabilité. Demain, tu repars plus fort·e."
+ }
+]

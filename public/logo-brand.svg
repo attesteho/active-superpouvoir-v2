@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 72" role="img" aria-labelledby="logo-title logo-desc">
+  <title id="logo-title">Active ton Superpouvoir — La Fabrique des Héros</title>
+  <desc id="logo-desc">Monogramme en étoile et éclair suivi du nom Active ton Superpouvoir.</desc>
+  <rect x="3" y="3" width="66" height="66" rx="15" fill="#321044" stroke="#FFB000" stroke-width="2"/>
+  <polygon points="36,8.5 42.4,27.2 62.2,27.5 46.4,39.4 52.2,58.3 36,46.9 19.8,58.3 25.6,39.4 9.8,27.5 29.6,27.2" fill="#FFB000"/>
+  <path d="M40.5 16.8 27 38.6h7.1l-2.6 17.9 12.8-22.4h-7l3.2-17.3Z" fill="#321044"/>
+  <ellipse cx="28" cy="20" rx="5" ry="3.5" fill="#FFF0D9" opacity=".3"/>
+  <line x1="81" y1="11" x2="81" y2="61" stroke="#FFB000" stroke-width="2" opacity=".7"/>
+  <text x="92" y="29" font-family="Arial, sans-serif" font-size="9" font-weight="800" fill="#FFF0D9" opacity=".9" letter-spacing="3">ACTIVE TON</text>
+  <text x="90" y="50" font-family="Georgia, serif" font-size="19.5" font-weight="900" fill="#FFB000" letter-spacing="-.4">SUPERPOUVOIR</text>
+  <text x="92" y="63" font-family="Arial, sans-serif" font-size="7" font-weight="700" fill="#FFF0D9" opacity=".72" letter-spacing="2">LA FABRIQUE DES HÉROS</text>
+</svg>

@@ -1,0 +1,642 @@
+[
+ {
+  "num": "01",
+  "theme": "Énergie",
+  "text": "Quand tu te sens vraiment vivant·e, qu'est-ce qui se passe autour de toi ?",
+  "context": "Pense à un moment récent où tu étais dans ton élément naturel.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Je suis en train de créer quelque chose — une idée, un objet, une histoire.",
+    "scores": [
+     2,
+     2,
+     0,
+     0,
+     1,
+     0,
+     0,
+     0
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Je suis en train d'aider, d'enseigner ou d'accompagner quelqu'un.",
+    "scores": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Je dirige, j'organise, je mets les gens en mouvement.",
+    "scores": [
+     0,
+     1,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "J'explore, je lis, j'analyse ou je résous un problème complexe.",
+    "scores": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     1,
+     0,
+     2
+    ]
+   }
+  ]
+ },
+ {
+  "num": "02",
+  "theme": "Relation aux autres",
+  "text": "Un ami traverse une période difficile. Quelle est ta réaction naturelle ?",
+  "context": "Sois honnête — c'est ta première réaction, pas ce que tu penses devoir faire.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Je l'écoute longuement sans parler, juste pour qu'il se sente compris.",
+    "scores": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0,
+     0
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Je cherche immédiatement une solution concrète à son problème.",
+    "scores": [
+     0,
+     0,
+     0,
+     1,
+     2,
+     0,
+     1,
+     1
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Je lui raconte une histoire ou une métaphore pour lui donner une autre perspective.",
+    "scores": [
+     2,
+     1,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "D",
+    "text": "Je l'encourage et lui rappelle ses forces jusqu'à ce qu'il reprenne confiance.",
+    "scores": [
+     0,
+     1,
+     1,
+     2,
+     0,
+     1,
+     0,
+     0
+    ]
+   }
+  ]
+ },
+ {
+  "num": "03",
+  "theme": "Travail & Création",
+  "text": "Si tu avais une journée entière sans obligation, que ferais-tu naturellement ?",
+  "context": "Sans te forcer. Sans penser à ce qui est 'utile'. Juste toi, librement.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Je crée : j'écris, je dessine, je compose, je fabrique quelque chose.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Je lis, j'apprends, j'explore un nouveau domaine fascinant.",
+    "scores": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     1,
+     0,
+     2
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Je retrouve des gens que j'aime et je crée des moments mémorables.",
+    "scores": [
+     0,
+     2,
+     1,
+     0,
+     0,
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "J'organise un projet ou je planifie quelque chose que je veux réaliser.",
+    "scores": [
+     0,
+     0,
+     0,
+     2,
+     1,
+     0,
+     2,
+     0
+    ]
+   }
+  ]
+ },
+ {
+  "num": "04",
+  "theme": "Impact",
+  "text": "Si tu pouvais laisser une trace dans le monde, ce serait…",
+  "context": "Ferme les yeux et imagine ce dont les gens parleraient après toi.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Une œuvre — un livre, une musique, un film — qui a touché des millions de gens.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Un mouvement qui a rassemblé des communautés et créé du lien.",
+    "scores": [
+     0,
+     2,
+     1,
+     1,
+     0,
+     0,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Une école, un programme ou une méthode qui a changé des vies.",
+    "scores": [
+     0,
+     0,
+     2,
+     0,
+     1,
+     2,
+     0,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "Une entreprise, une innovation ou une solution qui a résolu un vrai problème.",
+    "scores": [
+     0,
+     0,
+     0,
+     2,
+     2,
+     0,
+     1,
+     1
+    ]
+   }
+  ]
+ },
+ {
+  "num": "05",
+  "theme": "Face aux obstacles",
+  "text": "Face à un problème difficile, comment réagis-tu le plus souvent ?",
+  "context": "Ta réaction instinctive, pas la réaction idéale.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Je cherche une approche créative ou originale que personne n'a essayée.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "B",
+    "text": "J'analyse la situation en profondeur avant d'agir.",
+    "scores": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Je rassemble les bonnes personnes autour de moi pour trouver une solution ensemble.",
+    "scores": [
+     0,
+     2,
+     1,
+     1,
+     0,
+     0,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "Je passe à l'action rapidement, quitte à ajuster en chemin.",
+    "scores": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     1,
+     2,
+     0
+    ]
+   }
+  ]
+ },
+ {
+  "num": "06",
+  "theme": "Dans un groupe",
+  "text": "Dans un groupe ou une équipe, quel rôle joues-tu naturellement ?",
+  "context": "Pas le rôle que tu voudrais jouer — celui que tu joues vraiment.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Le créatif·ve — j'apporte des idées nouvelles et originales.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Le lien — je connecte les gens, je fluidifie les relations.",
+    "scores": [
+     0,
+     2,
+     1,
+     0,
+     0,
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Le moteur — j'initie, je décide, je pousse le groupe à avancer.",
+    "scores": [
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "L'expert·e — je fournis les connaissances, les faits, les analyses.",
+    "scores": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2
+    ]
+   }
+  ]
+ },
+ {
+  "num": "07",
+  "theme": "Enfance & Passions",
+  "text": "Quand tu étais enfant, qu'est-ce que tu faisais pendant des heures sans t'ennuyer ?",
+  "context": "Tes premières passions portent souvent ton superpouvoir caché.",
+  "options": [
+   {
+    "label": "A",
+    "text": "J'inventais des histoires, je dessinais ou je jouais à faire semblant.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Je prenais soin des autres, je jouais au maître ou j'aidais les plus petits.",
+    "scores": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Je construisais des choses, je montais des projets ou je dirigeais les jeux.",
+    "scores": [
+     0,
+     1,
+     0,
+     2,
+     1,
+     0,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "Je lisais, je posais des questions, je démontais des objets pour comprendre.",
+    "scores": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2
+    ]
+   }
+  ]
+ },
+ {
+  "num": "08",
+  "theme": "Reconnaissance",
+  "text": "Les gens te disent souvent que tu es…",
+  "context": "Choisis ce qui revient le plus, même si tu ne t'y reconnais pas toujours.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Créatif·ve et plein·e d'idées originales.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "B",
+    "text": "À l'écoute, empathique, là pour les autres.",
+    "scores": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "Inspirant·e, charismatique, qui donne envie d'agir.",
+    "scores": [
+     0,
+     1,
+     0,
+     2,
+     0,
+     0,
+     2,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "Intelligent·e, curieux·se, qui sait de quoi il/elle parle.",
+    "scores": [
+     0,
+     0,
+     0,
+     0,
+     2,
+     0,
+     0,
+     2
+    ]
+   }
+  ]
+ },
+ {
+  "num": "09",
+  "theme": "Valeurs profondes",
+  "text": "Quelle valeur guide le plus tes décisions importantes dans la vie ?",
+  "context": "Pas ce que tu penses être bien — ce qui te fait vraiment agir.",
+  "options": [
+   {
+    "label": "A",
+    "text": "La liberté — pouvoir m'exprimer et créer sans contraintes.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     1,
+     0,
+     0,
+     1
+    ]
+   },
+   {
+    "label": "B",
+    "text": "La famille et l'appartenance — être connecté·e aux miens.",
+    "scores": [
+     0,
+     2,
+     1,
+     0,
+     0,
+     1,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "La justice — me battre pour que les choses soient équitables.",
+    "scores": [
+     0,
+     0,
+     1,
+     1,
+     0,
+     2,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "L'excellence — toujours chercher à faire mieux et à m'améliorer.",
+    "scores": [
+     0,
+     0,
+     0,
+     1,
+     2,
+     0,
+     1,
+     2
+    ]
+   }
+  ]
+ },
+ {
+  "num": "10",
+  "theme": "Mission de vie",
+  "text": "Si tu n'avais aucune contrainte financière ni sociale, que ferais-tu de ta vie ?",
+  "context": "La réponse à cette question est souvent ta mission cachée.",
+  "options": [
+   {
+    "label": "A",
+    "text": "Je créerais des œuvres, des contenus ou des expériences qui émeuvent les gens.",
+    "scores": [
+     2,
+     0,
+     0,
+     0,
+     0,
+     0,
+     0,
+     2
+    ]
+   },
+   {
+    "label": "B",
+    "text": "Je voyagerais, je rencontrerais des gens et je créerais des ponts entre cultures.",
+    "scores": [
+     0,
+     2,
+     1,
+     0,
+     0,
+     0,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "C",
+    "text": "J'enseignerais, je coacherai ou j'aiderais les autres à grandir.",
+    "scores": [
+     0,
+     0,
+     2,
+     0,
+     0,
+     2,
+     1,
+     0
+    ]
+   },
+   {
+    "label": "D",
+    "text": "Je lancerais un projet ambitieux pour changer quelque chose dans le monde.",
+    "scores": [
+     0,
+     0,
+     0,
+     2,
+     1,
+     0,
+     2,
+     1
+    ]
+   }
+  ]
+ }
+]

@@ -1,0 +1,55 @@
+{
+ "explorateur": {
+  "steps": [
+   { "titre": "Active ton superpouvoir!", "note": "Découvre les 8 étapes de transformation." },
+   { "titre": "Mon Journal de Superpouvoir", "note": "Fais les exercices du Radar Personnel et de l’Ikigai." },
+   { "titre": "30 Cartes Anti-Doutes", "note": "Fais face au doute avec une carte à la fois." },
+   { "titre": "Poster Ikigai A3", "note": "Affiche ton Ikigai pour garder tes repères sous les yeux." }
+  ],
+  "arche": [
+   { "type": "L’Explorateur", "archetype": "Le Chasseur de Vérités", "tagline": "Tu poses les questions que personne n’ose poser. Et tu cherches les réponses jusqu’au bout." },
+   { "type": "Le Guérisseur", "archetype": "Le Porteur de Lumière", "tagline": "Là où il y a de la douleur, tu arrives naturellement. Pas pour réparer — pour accompagner." },
+   { "type": "Le Gardien", "archetype": "Le Cultivateur de Vies", "tagline": "Tu n’as pas besoin de projecteurs. Tu es le sol fertile dans lequel les autres grandissent." }
+  ]
+ },
+ "batisseur": {
+  "steps": [
+   { "titre": "Active ton superpouvoir!", "note": "La base : découvre la méthode complète." },
+   { "titre": "Mon Journal de Superpouvoir", "note": "Applique chaque exercice à ton projet personnel." },
+   { "titre": "Livre de Rituels 60 Jours", "note": "Ancre tes habitudes de héros pendant 60 jours." },
+   { "titre": "30 Cartes Anti-Doutes", "note": "Fais de la place au doute sans le laisser décider pour toi." },
+   { "titre": "Poster Ikigai A3", "note": "Visualise ta zone d’impact." }
+  ],
+  "arche": [
+   { "type": "L’Architecte", "archetype": "Le Bâtisseur de Systèmes", "tagline": "Tu construis des structures qui permettent aux autres de voler. Tu es l’invisible qui rend tout possible." },
+   { "type": "Le Créateur", "archetype": "L’Artiste Visionnaire", "tagline": "Tu ne vois pas le monde comme il est. Tu le vois comme il pourrait être — et tu le crées." },
+   { "type": "Le Leader", "archetype": "L’Architecte du Mouvement", "tagline": "Tu n’attends pas que les choses changent. Tu es la personne qui les fait changer." }
+  ]
+ },
+ "createur": {
+  "steps": [
+   { "titre": "Active ton superpouvoir!", "note": "Maîtrise la méthode pour pouvoir la transmettre." },
+   { "titre": "Livre de Rituels 60 Jours", "note": "Vis la transformation toi-même avant de guider les autres." },
+   { "titre": "Mon Journal de Superpouvoir", "note": "Utilise le journal comme support d’atelier." },
+   { "titre": "30 Cartes Anti-Doutes", "note": "Un outil pour ouvrir tes séances de coaching." }
+  ],
+  "arche": [
+   { "type": "Le Créateur", "archetype": "L’Artiste Visionnaire", "tagline": "Tu ne vois pas le monde comme il est. Tu le vois comme il pourrait être — et tu le crées." },
+   { "type": "Le Leader", "archetype": "L’Architecte du Mouvement", "tagline": "Tu n’attends pas que les choses changent. Tu es la personne qui les fait changer." },
+   { "type": "Le Connecteur", "archetype": "Le Tisserand de Liens", "tagline": "Là où les autres voient des individus, tu vois des réseaux. Tu transformes des inconnus en communautés." }
+  ]
+ },
+ "reconnecteur": {
+  "steps": [
+   { "titre": "Active ton superpouvoir!", "note": "Maîtrise la méthode pour pouvoir la transmettre." },
+   { "titre": "Livre de Rituels 60 Jours", "note": "Vis la transformation toi-même avant de guider les autres." },
+   { "titre": "Mon Journal de Superpouvoir", "note": "Utilise le journal comme support d’atelier." },
+   { "titre": "30 Cartes Anti-Doutes", "note": "Un outil pour ouvrir tes séances de coaching." }
+  ],
+  "arche": [
+   { "type": "Le Sage", "archetype": "La Voix de la Sagesse", "tagline": "Tu penses profond. Tu parles vrai. Quand tu ouvres la bouche, les gens s’arrêtent pour écouter." },
+   { "type": "Le Gardien", "archetype": "Le Cultivateur de Vies", "tagline": "Tu n’as pas besoin de projecteurs. Tu es le sol fertile dans lequel les autres grandissent." },
+   { "type": "Le Guérisseur", "archetype": "Le Porteur de Lumière", "tagline": "Là où il y a de la douleur, tu arrives naturellement. Pas pour réparer — pour accompagner." }
+  ]
+ }
+}

@@ -1,0 +1,658 @@
+{
+ "createur": {
+  "id": "createur",
+  "type": "Le Créateur",
+  "archetype": "L’Artiste Visionnaire",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Tu ne vois pas le monde comme il est. Tu le vois comme il pourrait être — et tu le crées.",
+  "description": "Tu es né·e avec une capacité rare : transformer l’invisible en visible. Là où les autres voient une page blanche, tu vois un univers entier. Tu penses en images, en histoires, en sons ou en idées. Ton imagination est ton outil le plus puissant — et souvent, tu ne réalises pas à quel point elle est exceptionnelle.\n\nTu es peut-être artiste, écrivain·e, musicien·ne, créateur·trice de contenu, designer ou entrepreneur·e créatif·ve. Mais au fond, peu importe le médium : ce qui te définit, c’est ton besoin profond de donner une forme à ce que tu ressens.\n\nTa plus grande force ? Tu peux toucher les cœurs là où les discours ratent leur cible. Une image, une phrase, une mélodie de toi peut changer la façon dont quelqu’un se voit pour toujours.",
+  "superpowers": [
+   {
+    "label": "Vision artistique hors du commun"
+   },
+   {
+    "label": "Pensée originale et non conventionnelle"
+   },
+   {
+    "label": "Capacité à toucher les émotions profondes"
+   },
+   {
+    "label": "Transformation de la douleur en beauté"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu peux te perdre dans tes projets et ne jamais les finir."
+   },
+   {
+    "text": "La peur du jugement peut te paralyser avant même de commencer."
+   },
+   {
+    "text": "Tu as parfois du mal à ‘vendre’ ou monétiser ce que tu fais."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Aya Nakamura",
+    "role": "Artiste / Créatrice"
+   },
+   {
+    "name": "Alain Mabanckou",
+    "role": "Écrivain congolais"
+   },
+   {
+    "name": "Maïmouna Doucouré",
+    "role": "Cinéaste sénégalaise"
+   }
+  ],
+  "mission": "Je crée pour révéler ce que les mots seuls ne peuvent pas dire. Mon art est mon message au monde.",
+  "affirmations": [
+   {
+    "domain": "Créativité",
+    "text": "Ce que je crée, même imparfait, a de la valeur dans ce monde."
+   },
+   {
+    "domain": "Visibilité",
+    "text": "Mon expression artistique est un service, pas de l’égoïsme."
+   },
+   {
+    "domain": "Courage",
+    "text": "Je montre mon travail avant d’être prêt·e. C’est là que tout commence."
+   }
+  ],
+  "idealPath": "Ton chemin passe par l’expression régulière et courageuse. Commence par créer chaque jour, même 10 minutes. Partage avant d’être parfait·e. Cherche un public, même petit. La communauté autour de ton travail sera ton carburant. Et souviens-toi : les plus grandes œuvres de l’histoire africaine sont nées de quelqu’un qui a osé.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre II & III — Talent & Passion"
+   },
+   {
+    "label": "Mon Journal de Superpouvoir",
+    "subtitle": "Activités créatives & vision"
+   },
+   {
+    "label": "Défi 30 Jours Créateur",
+    "subtitle": "Crée quelque chose chaque jour"
+   },
+   {
+    "label": "Livre de Rituels 60 Jours",
+    "subtitle": "Mandala & affirmations créatives"
+   }
+  ]
+ },
+ "connecteur": {
+  "id": "connecteur",
+  "type": "Le Connecteur",
+  "archetype": "Le Tisserand de Liens",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Là où les autres voient des individus, tu vois des réseaux. Tu transformes des inconnus en communautés.",
+  "description": "Tu as un don rare que beaucoup sous-estiment : tu sais mettre les bonnes personnes en contact. Tu sens instinctivement qui doit rencontrer qui, quelle collaboration est possible, quel pont manque entre deux mondes.\n\nLes gens gravitent vers toi. Pas parce que tu cherches à les attirer, mais parce que ta présence crée naturellement un espace de confiance et de chaleur humaine. Tu seras souvent la personne qui “connaît quelqu’un” pour résoudre n’importe quel problème.\n\nEn Afrique, ce don est historiquement précieux. Les griots, les ambassadeurs, les chefs de village — ce sont des Connecteurs. Tu portes cette tradition dans tes veines. Ton réseau est ton superpouvoir.",
+  "superpowers": [
+   {
+    "label": "Intelligence sociale exceptionnelle"
+   },
+   {
+    "label": "Capacité à bâtir des ponts entre cultures"
+   },
+   {
+    "label": "Communication fluide et adaptable"
+   },
+   {
+    "label": "Pouvoir d’attraction et de fédération"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu peux t’oublier dans les besoins des autres et négliger les tiens."
+   },
+   {
+    "text": "Dire non est un vrai défi pour toi."
+   },
+   {
+    "text": "Tu dépends parfois trop de la validation sociale."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Claudy Siar",
+    "role": "Animateur & Connecteur"
+   },
+   {
+    "name": "Graça Machel",
+    "role": "Militante & Bâtisseuse de ponts"
+   },
+   {
+    "name": "Paul Kagame",
+    "role": "Leader & Diplomate africain"
+   }
+  ],
+  "mission": "Je tisse des liens là où il n’y en a pas. Ma force est de faire grandir les autres en les rapprochant.",
+  "affirmations": [
+   {
+    "domain": "Réseau",
+    "text": "Mes relations sont mon actif le plus précieux. Je les cultive avec soin."
+   },
+   {
+    "domain": "Limites",
+    "text": "Prendre soin de moi me rend encore plus disponible pour les autres."
+   },
+   {
+    "domain": "Impact",
+    "text": "Chaque connexion que je crée peut changer une vie."
+   }
+  ],
+  "idealPath": "Ton chemin passe par la construction intentionnelle de communautés. Lance un groupe WhatsApp, organise des rencontres, crée des espaces d’échange. Tu es fait·e pour les mouvements sociaux, le networking, les ONG, l’événementiel, la communication ou la diplomatie. Commence par cartographier ton réseau actuel — tu seras surpris·e de ta richesse.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre I & IV — Identité & Talent"
+   },
+   {
+    "label": "Programme Communauté",
+    "subtitle": "Rejoins La Fabrique des Héros"
+   },
+   {
+    "label": "Défi 7 Jours Connecteur",
+    "subtitle": "Crée une connexion utile chaque jour"
+   },
+   {
+    "label": "Trouver un Mentor",
+    "subtitle": "Trouve ton guide dans la communauté"
+   }
+  ]
+ },
+ "gardien": {
+  "id": "gardien",
+  "type": "Le Gardien",
+  "archetype": "Le Cultivateur de Vies",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Tu n’as pas besoin de projecteurs. Tu es le sol fertile dans lequel les autres grandissent.",
+  "description": "Tu es l’une des personnalités les plus précieuses et les plus rares : quelqu’un qui donne sans attendre de retour, qui enseigne sans chercher la gloire, qui prend soin sans conditions.\n\nTes élèves, tes proches, les gens que tu accompagnes deviennent meilleurs grâce à toi. Tu as une capacité naturelle à voir le potentiel dans les autres, souvent avant qu’ils le voient eux-mêmes. Un mot de toi peut planter une graine qui grandira pendant des décennies.\n\nL’Afrique a un besoin immense de Gardiens : des enseignants, des mentors, des soignants, des éducateurs, des parents conscients. Si tu es un Gardien, tu portes en toi une mission de transmission dont le monde a désespérément besoin.",
+  "superpowers": [
+   {
+    "label": "Capacité à voir et nourrir le potentiel caché"
+   },
+   {
+    "label": "Empathie profonde et présence bienveillante"
+   },
+   {
+    "label": "Don naturel pour enseigner et transmettre"
+   },
+   {
+    "label": "Création d’espaces de sécurité et de confiance"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu t’épuises à donner sans jamais te ressourcer."
+   },
+   {
+    "text": "Tu t’effaces trop — les autres prennent le crédit de ton travail."
+   },
+   {
+    "text": "Tu peux te sentir coupable quand tu poses des limites."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Aminata Touré",
+    "role": "Éducatrice & Leader"
+   },
+   {
+    "name": "Albert Schweitzer",
+    "role": "Médecin humaniste en Afrique"
+   },
+   {
+    "name": "Wangari Maathai",
+    "role": "Écologiste & Gardienne de la Terre"
+   }
+  ],
+  "mission": "Je plante des graines dans les êtres humains. Ma mission est de faire grandir ceux qui m’entourent.",
+  "affirmations": [
+   {
+    "domain": "Don",
+    "text": "Mon don de soin est une force, pas une faiblesse."
+   },
+   {
+    "domain": "Protection",
+    "text": "Je me protège pour mieux protéger les autres."
+   },
+   {
+    "domain": "Visibilité",
+    "text": "Je mérite d’être reconnu·e pour ce que j’apporte."
+   }
+  ],
+  "idealPath": "Ton chemin naturel passe par l’enseignement, le coaching, la psychologie, la médecine, le travail social ou le mentorat. Mais attention : avant de donner aux autres, remplis ta propre coupe. Rejoins la communauté, trouve ton propre mentor, et apprends à recevoir autant que tu donnes.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre V & VI — Obstacles & Mission"
+   },
+   {
+    "label": "Mon Journal de Superpouvoir",
+    "subtitle": "Activités de reconnexion à soi"
+   },
+   {
+    "label": "Programme Écoles",
+    "subtitle": "Deviens Facilitateur Superpouvoir"
+   },
+   {
+    "label": "Livre de Rituels 60 Jours",
+    "subtitle": "Prendre soin de soi chaque jour"
+   }
+  ]
+ },
+ "leader": {
+  "id": "leader",
+  "type": "Le Leader",
+  "archetype": "L’Architecte du Mouvement",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Tu n’attends pas que les choses changent. Tu es la personne qui les fait changer.",
+  "description": "Tu as cette énergie rare qui fait qu’on te suit. Pas parce que tu le demandes — mais parce que ta conviction, ta clarté et ton courage inspirent naturellement les autres à se dépasser.\n\nTu vois les problèmes comme des défis à résoudre. Là où les autres hésitent, tu décides. Là où les autres attendent, tu inities. Tu as un sens aigu de la direction et une capacité à embarquer des gens dans ta vision.\n\nL’Afrique a besoin de Leaders comme toi — pas de dirigeants autoritaires, mais de leaders serviteurs qui construisent avec, pas pour. Si tu canalises ce pouvoir avec humilité et conscience, tu peux bâtir des choses qui durent des générations.",
+  "superpowers": [
+   {
+    "label": "Vision claire et capacité à décider"
+   },
+   {
+    "label": "Orientation vers l’action et les résultats"
+   },
+   {
+    "label": "Charisme naturel qui met les gens en mouvement"
+   },
+   {
+    "label": "Résilience face aux obstacles et à l’opposition"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu peux devenir autoritaire ou impatient·e avec ceux qui avancent plus lentement."
+   },
+   {
+    "text": "Tu as du mal à déléguer — tu penses faire mieux tout seul·e."
+   },
+   {
+    "text": "La pression du leadership peut t’isoler si tu n’en parles pas."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Thomas Sankara",
+    "role": "Leader visionnaire du Burkina"
+   },
+   {
+    "name": "Ellen Johnson Sirleaf",
+    "role": "Présidente du Liberia"
+   },
+   {
+    "name": "Strive Masiyiwa",
+    "role": "Entrepreneur & Leader africain"
+   }
+  ],
+  "mission": "Je suis là pour initier, pour décider, pour tracer le chemin quand personne d’autre ne le fait.",
+  "affirmations": [
+   {
+    "domain": "Leadership",
+    "text": "Mon leadership est un service, pas un pouvoir."
+   },
+   {
+    "domain": "Humilité",
+    "text": "Les meilleurs leaders sont ceux qui grandissent les autres."
+   },
+   {
+    "domain": "Direction",
+    "text": "Ma vision est claire. Mon équipe est ma force."
+   }
+  ],
+  "idealPath": "Ton chemin passe par l’entrepreneuriat, la politique, le management, l’activisme ou le sport de haut niveau. Commence par mener de petits projets concrets — chaque victoire te prépare pour les grandes. Apprends à écouter autant qu’à parler. Ton leadership sera transformateur si tu mets l’humain au centre.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre VII & VIII — Vision & CAP"
+   },
+   {
+    "label": "Défi 60 Jours Leader",
+    "subtitle": "Structure ta vision sur 2 mois"
+   },
+   {
+    "label": "Masterclass Leadership",
+    "subtitle": "Deviens le leader que tu cherches"
+   },
+   {
+    "label": "Mon Journal de Superpouvoir",
+    "subtitle": "Plan CAP & Mission de vie"
+   }
+  ]
+ },
+ "explorateur": {
+  "id": "explorateur",
+  "type": "L’Explorateur",
+  "archetype": "Le Chasseur de Vérités",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Tu poses les questions que personne n’ose poser. Et tu cherches les réponses jusqu’au bout.",
+  "description": "Ton cerveau est une machine à explorer. Tu ne peux pas t’empêcher de te demander pourquoi, comment, et si c’est vraiment la seule façon de voir les choses. Tu lis tout, tu observes tout, tu accumules des connaissances dans des domaines variés — parfois sans savoir pourquoi.\n\nCe que tu ne réalises pas encore, c’est que cette curiosité insatiable est ton plus grand atout. Tu es capable de faire des connexions que les autres ne font pas entre des domaines différents. C’est là que naissent les innovations, les inventions, les théories qui changent le monde.\n\nLes Explorateurs sont rares en Afrique car le système scolaire récompense les réponses plutôt que les questions. Mais le continent a besoin de toi — de ta curiosité, de ta recherche, de ton refus de te satisfaire des réponses faciles.",
+  "superpowers": [
+   {
+    "label": "Curiosité intellectuelle insatiable"
+   },
+   {
+    "label": "Connexions inattendues entre idées disparates"
+   },
+   {
+    "label": "Analyse rigoureuse et pensée critique"
+   },
+   {
+    "label": "Vision systémique et globale des problèmes"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu peux rester dans la théorie et ne jamais passer à l’action."
+   },
+   {
+    "text": "La paralysie par l’analyse est ton piège le plus fréquent."
+   },
+   {
+    "text": "Tu peux paraître distant·e ou trop intellectuel·le dans tes relations."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Philip Emeagwali",
+    "role": "Mathématicien & Inventeur nigérian"
+   },
+   {
+    "name": "Cheikh Anta Diop",
+    "role": "Historien & Chercheur sénégalais"
+   },
+   {
+    "name": "Ameenah Gurib-Fakim",
+    "role": "Scientifique & Présidente"
+   }
+  ],
+  "mission": "Je cherche la vérité là où les autres s’arrêtent. Ma curiosité est un cadeau que je mets au service du monde.",
+  "affirmations": [
+   {
+    "domain": "Curiosité",
+    "text": "Ma soif d’apprendre est une force rare dont le monde a besoin."
+   },
+   {
+    "domain": "Action",
+    "text": "Une connaissance partagée vaut mieux qu’une bibliothèque silencieuse."
+   },
+   {
+    "domain": "Impact",
+    "text": "Mes questions d’aujourd’hui sont les solutions de demain."
+   }
+  ],
+  "idealPath": "Ton chemin passe par la recherche, la science, la technologie, le journalisme d’investigation, la philosophie ou l’entrepreneuriat fondé sur l’innovation. Commence par choisir UN domaine où concentrer ta curiosité — et crée autour de lui. Un blog, un podcast, une vidéo : partage ce que tu apprends. C’est ta façon d’avoir de l’impact.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre III & IV — Talents & Développement"
+   },
+   {
+    "label": "L’Académie — Cours en ligne",
+    "subtitle": "Approfondis tes domaines de prédilection"
+   },
+   {
+    "label": "Défi 30 Jours Explorateur",
+    "subtitle": "Apprends et partage chaque jour"
+   },
+   {
+    "label": "Mon Journal de Superpouvoir",
+    "subtitle": "Outil Ikigai & Carte des talents"
+   }
+  ]
+ },
+ "guerisseur": {
+  "id": "guerisseur",
+  "type": "Le Guérisseur",
+  "archetype": "Le Porteur de Lumière",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Là où il y a de la douleur, tu arrives naturellement. Pas pour réparer — pour accompagner.",
+  "description": "Tu as une sensibilité extraordinaire aux émotions des autres. Tu sens ce que les gens ressentent avant même qu’ils le disent. Tu es la personne vers qui on va dans les moments difficiles — non pas parce que tu as toutes les réponses, mais parce que ta présence seule apaise.\n\nTu es peut-être attiré·e par la psychologie, la médecine, la spiritualité, la médiation ou tout simplement par les conversations profondes. Tu crois que la guérison intérieure est le fondement de tout changement extérieur.\n\nDans un continent où la santé mentale est encore taboue, où les blessures générationnelles sont profondes, le Guérisseur est une figure révolutionnaire. Tu es un pont entre la souffrance et la transformation. Ne minimise jamais ce don.",
+  "superpowers": [
+   {
+    "label": "Intelligence émotionnelle hors norme"
+   },
+   {
+    "label": "Écoute active et présence apaisante"
+   },
+   {
+    "label": "Capacité à créer la paix dans les conflits"
+   },
+   {
+    "label": "Intuition profonde sur les besoins humains"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu absorbes les émotions des autres et finis par t’oublier toi-même."
+   },
+   {
+    "text": "Tu as tendance à rester dans des relations ou situations toxiques ‘pour aider’."
+   },
+   {
+    "text": "Tu doutes de ta valeur quand tu n’es pas en train d’aider quelqu’un."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Henrietta Lacks",
+    "role": "Figure de la médecine africaine-américaine"
+   },
+   {
+    "name": "Sobonfu Somé",
+    "role": "Guérisseuse & Auteure burkinabè"
+   },
+   {
+    "name": "Lilian Dube",
+    "role": "Actrice & Militante santé mentale"
+   }
+  ],
+  "mission": "Ma présence est un médicament. Je guéris non pas en réparant, mais en accompagnant vers la lumière.",
+  "affirmations": [
+   {
+    "domain": "Don",
+    "text": "Ma sensibilité est ma force la plus précieuse, pas ma faiblesse."
+   },
+   {
+    "domain": "Protection",
+    "text": "Je dois me guérir moi-même avant de guérir les autres."
+   },
+   {
+    "domain": "Valeur",
+    "text": "Mon bien-être est la condition de mon impact."
+   }
+  ],
+  "idealPath": "Ton chemin passe par la psychologie, le coaching, la médecine, la méditation, le travail communautaire ou la création d’espaces de parole. Commence par ton propre travail intérieur — le Guérisseur non guéri peut faire plus de mal que de bien. Le livre de rituels est fait pour toi.",
+  "resources": [
+   {
+    "label": "Livre de Rituels 60 Jours",
+    "subtitle": "Prendre soin de soi, chaque jour"
+   },
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre V — Surmonter les obstacles"
+   },
+   {
+    "label": "Défi 60 Jours Guérisseur",
+    "subtitle": "60 jours de rituel intérieur"
+   },
+   {
+    "label": "Communauté — Forum",
+    "subtitle": "Trouve des pairs bienveillants"
+   }
+  ]
+ },
+ "architecte": {
+  "id": "architecte",
+  "type": "L’Architecte",
+  "archetype": "Le Bâtisseur de Systèmes",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Tu construis des structures qui permettent aux autres de voler. Tu es l’invisible qui rend tout possible.",
+  "description": "Tu as un talent rare : tu sais transformer le chaos en ordre. Là où les autres voient de la confusion, tu vois une structure possible. Tu penses en systèmes, en processus, en plans. Quand tu rejoins un projet, les choses fonctionnent mieux — parfois sans que personne ne remarque pourquoi.\n\nTu n’es peut-être pas le plus visible dans une pièce, mais tu es souvent le plus essentiel. L’Architecte est celui qui bâtit les fondations sur lesquelles les autres construisent leur gloire. Sans toi, les grandes idées restent des idées.\n\nLe monde a besoin d’Architectes partout : dans les entreprises, les ONG, les gouvernements, les écoles. Tu es le moteur invisible du progrès africain.",
+  "superpowers": [
+   {
+    "label": "Pensée systémique et organisationnelle"
+   },
+   {
+    "label": "Capacité à structurer et planifier complexe"
+   },
+   {
+    "label": "Résolution de problèmes pratiques et concrets"
+   },
+   {
+    "label": "Fiabilité et constance dans l’exécution"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu peux te perdre dans les détails et perdre la vision d’ensemble."
+   },
+   {
+    "text": "Tu résistes parfois au changement quand il déstabilise ta structure."
+   },
+   {
+    "text": "Tu as du mal à te valoriser — tu penses que ton travail parle pour lui."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Kigali Urban Planning",
+    "role": "Rwanda — Modèle d’organisation"
+   },
+   {
+    "name": "Aliko Dangote",
+    "role": "Architecte d’empire industriel"
+   },
+   {
+    "name": "Tunde Folawiyo",
+    "role": "Entrepreneur & Bâtisseur nigérian"
+   }
+  ],
+  "mission": "Je construis les ponts que les autres traversent. Mon talent pour l’ordre est le fondement du progrès.",
+  "affirmations": [
+   {
+    "domain": "Valeur",
+    "text": "Mon travail en coulisses est aussi précieux que les projecteurs."
+   },
+   {
+    "domain": "Visibilité",
+    "text": "Je mérite d’être reconnu·e pour ce que je bâtis."
+   },
+   {
+    "domain": "Vision",
+    "text": "Je construis pour durer, pas pour impressionner."
+   }
+  ],
+  "idealPath": "Ton chemin passe par la gestion de projet, l’ingénierie, l’entrepreneuriat opérationnel, la finance, la logistique ou le management. Commence par prendre la tête d’un petit projet de A à Z — et documente comment tu l’organises. Ce savoir-faire est ton or.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre IV & VIII — Développement & CAP"
+   },
+   {
+    "label": "Mon Journal de Superpouvoir",
+    "subtitle": "Plan de développement 1%"
+   },
+   {
+    "label": "Défi 30 Jours Architecte",
+    "subtitle": "Construis un projet concret"
+   },
+   {
+    "label": "L’Académie",
+    "subtitle": "Cours gestion de projet & leadership"
+   }
+  ]
+ },
+ "sage": {
+  "id": "sage",
+  "type": "Le Sage",
+  "archetype": "La Voix de la Sagesse",
+  "primaryColor": "#321044",
+  "lightBg": "#FFF0D9",
+  "tagline": "Tu penses profond. Tu parles vrai. Quand tu ouvres la bouche, les gens s’arrêtent pour écouter.",
+  "description": "Tu es porteur·se d’une sagesse qui dépasse souvent ton âge. Tu as une façon unique de voir le monde — avec du recul, de la nuance et de la profondeur que peu de gens possèdent. Quand tu donnes ton avis, il est pesé, réfléchi, juste.\n\nTu es souvent le·la conseiller·ère dans ton groupe. Les gens viennent te voir pour te demander ton opinion, ton regard sur une situation. Tu as la capacité rare de dire des vérités difficiles avec douceur.\n\nLe Sage est une figure fondamentale dans les cultures africaines. Les anciens, les griots, les philosophes — ils portent la mémoire et la vision. Tu es l’héritier·e de cette tradition. Ton rôle est de transmettre ce que l’expérience t’a appris, avec générosité.",
+  "superpowers": [
+   {
+    "label": "Discernement profond et jugement nuancé"
+   },
+   {
+    "label": "Capacité à transmettre avec clarté et profondeur"
+   },
+   {
+    "label": "Sens de la justice et de l’équilibre"
+   },
+   {
+    "label": "Calme et recul dans les situations de crise"
+   }
+  ],
+  "shadows": [
+   {
+    "text": "Tu peux être perçu·e comme trop sérieux·se ou inaccessible."
+   },
+   {
+    "text": "Tu attends parfois trop longtemps pour partager ta sagesse."
+   },
+   {
+    "text": "Tu te méfies trop de l’action rapide — parfois au détriment des opportunités."
+   }
+  ],
+  "famousHeroes": [
+   {
+    "name": "Nelson Mandela",
+    "role": "Sage & Père de la Nation"
+   },
+   {
+    "name": "Chinua Achebe",
+    "role": "Écrivain & Voix de l’Afrique"
+   },
+   {
+    "name": "Léopold Sédar Senghor",
+    "role": "Poète & Philosophe"
+   }
+  ],
+  "mission": "Je parle pour ceux qui cherchent des mots. Ma sagesse est un service que j’offre au monde sans condition.",
+  "affirmations": [
+   {
+    "domain": "Sagesse",
+    "text": "Ce que j’ai vécu et compris mérite d’être partagé."
+   },
+   {
+    "domain": "Courage",
+    "text": "Je dis ma vérité avec douceur, sans craindre le regard des autres."
+   },
+   {
+    "domain": "Transmission",
+    "text": "Ma voix est un pont entre le passé et le futur."
+   }
+  ],
+  "idealPath": "Ton chemin passe par l’écriture, la philosophie, le droit, la médiation, le conseil ou le mentorat. Commence par écrire — un blog, un journal, des réflexions. Ta voix a un pouvoir que tu ne mesures pas encore. Le monde a besoin de ta pensée claire dans un océan de bruit.",
+  "resources": [
+   {
+    "label": "Active ton Superpouvoir !",
+    "subtitle": "Chapitre VI & VII — Mission & Ikigai"
+   },
+   {
+    "label": "Mon Journal de Superpouvoir",
+    "subtitle": "Réflexions profondes & vision"
+   },
+   {
+    "label": "Défi 60 Jours Sage",
+    "subtitle": "Écris et partage chaque semaine"
+   },
+   {
+    "label": "Certification Facilitateur",
+    "subtitle": "Transmets ta sagesse aux autres"
+   }
+  ]
+ }
+}
