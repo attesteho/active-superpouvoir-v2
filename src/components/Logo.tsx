@@ -5,9 +5,9 @@ import { useId } from "react";
  * d'après le logo fourni (cadre arrondi, étoile à éclair, filet vertical, trois lignes de texte).
  * `clair` : version vanille pour fond aubergine ; sinon version aubergine pour fond vanille.
  */
-export function Logo({ clair = false, className = "" }: { clair?: boolean; className?: string }) {
-  const encre = clair ? "#FFF0D9" : "#321044";
-  const fond = clair ? "#321044" : "#FFF0D9";
+export function Logo({ className = "" }: { clair?: boolean; className?: string }) {
+  const encre = "currentColor";
+  const fond = "var(--color-or)";
   const id = useId().replace(/:/g, "");
   const etoile = "50,7 60,36.3 90.9,36.7 66.2,55.3 75.3,84.8 50,67 24.7,84.8 33.8,55.3 9.1,36.7 40,36.3";
   const police = { fontFamily: "var(--font-display)" } as const;

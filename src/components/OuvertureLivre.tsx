@@ -92,21 +92,21 @@ export function OuvertureLivre({ onTerminer }: { onTerminer: () => void }) {
   }, [terminer]);
 
   return (
-    <div ref={scene} className="book-intro opening-intro opening-scroll-container fixed inset-0 z-[100] overflow-y-auto" role="dialog" aria-modal="true" aria-label="Ouverture du livre Active ton Superpouvoir">
+    <div ref={scene} className="book-intro opening-intro opening-scroll-container fond-tisse fixed inset-0 z-[100] overflow-y-auto" role="dialog" aria-modal="true" aria-label="Ouverture du livre Active ton Superpouvoir">
       <div className="opening-scroll-track">
         <div className="opening-sticky">
-          <div className="opening-grid pointer-events-none absolute inset-0" aria-hidden="true" />
-          <div className="opening-grain pointer-events-none absolute inset-0" aria-hidden="true" />
+          <div className="opening-grid pointer-events-none absolute" aria-hidden="true" />
+          <div className="opening-grain pointer-events-none absolute" aria-hidden="true" />
 
-          <header className="opening-top relative z-10 mx-auto flex w-full max-w-[1440px] items-center justify-between gap-4 px-5 pt-5 sm:px-8 sm:pt-7 xl:px-14">
-            <p className="flex items-center gap-3 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-paper"><Etoile taille={22} fil="#FFF0D9" /><span>Active ton superpouvoir</span></p>
-            <button ref={skip} type="button" onClick={terminer} className="opening-skip inline-flex min-h-11 items-center gap-2 rounded-full border border-paper/40 px-4 font-mono text-[10px] font-bold uppercase tracking-[0.12em] text-paper transition-colors hover:bg-paper hover:text-ink focus-visible:bg-paper focus-visible:text-ink sm:px-5 sm:text-[11px]">Passer au site <SkipForward size={15} /></button>
+          <header className="opening-top relative z-10 flex w-full items-center justify-between gap-4">
+            <p className="flex items-center gap-2 font-mono text-xs font-bold uppercase text-ink"><Etoile taille={22} fil="#FFF0D9" /><span>Active ton superpouvoir</span></p>
+            <button ref={skip} type="button" onClick={terminer} className="opening-skip inline-flex items-center gap-2 rounded-full border border-ink/40 px-4 py-2 font-mono text-xs font-bold uppercase text-ink transition-colors hover:bg-ink hover:text-paper focus-visible:bg-ink focus-visible:text-paper">Passer au site <SkipForward size={15} /></button>
           </header>
 
-          <main className="opening-main relative z-10 mx-auto flex w-full max-w-[1440px] flex-col items-center px-5 pb-4 pt-8 sm:px-8 sm:pt-10 xl:px-14">
-            <h1 className="opening-title text-center font-display text-[clamp(2.4rem,6vw,6.4rem)] font-extrabold uppercase leading-[0.82] tracking-[-0.07em] text-paper">Le pouvoir commence<br /><span className="text-jaune">par un geste.</span></h1>
+          <main className="opening-main relative z-10 flex w-full flex-col items-center gap-10 sm:gap-14">
+            <h1 className="opening-title text-center font-display text-[clamp(2.4rem,6vw,6.4rem)] font-extrabold uppercase text-ink">Le pouvoir commence<br /><span className="text-jaune">par un geste.</span></h1>
 
-            <div className="opening-canvas relative mx-auto mt-7 w-full" data-opening-world>
+            <div className="opening-canvas relative" data-opening-world>
               <div className="opening-backdrop" aria-hidden="true" />
               <div data-opening-book className="opening-book" aria-label="Livre fermé qui s’ouvre au défilement">
                 <div className="opening-book-shadow" aria-hidden="true" />
@@ -115,12 +115,12 @@ export function OuvertureLivre({ onTerminer }: { onTerminer: () => void }) {
                 <div className="opening-book-spine" aria-hidden="true" />
                 <div className="opening-book-spread">
                   <div data-opening-copy className="opening-book-page opening-book-page--left"><small>PREMIER GESTE / 01</small><strong>Observe ce qui<br /><em>te met en mouvement.</em></strong><span>Le livre commence par une question.</span></div>
-                  <div data-opening-copy className="opening-book-page opening-book-page--right"><small>LA RÉPONSE / 02</small><strong>Le pouvoir<br /><em>commence ici.</em></strong><button ref={enter} type="button" onClick={terminer} className="opening-enter group inline-flex min-h-11 items-center justify-center gap-3 bg-paper px-5 font-display text-[12px] font-extrabold uppercase tracking-[0.06em] text-ink shadow-[5px_5px_0_#FFB000] transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0_#FFB000]">Entrer dans le livre <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></button></div>
+                  <div data-opening-copy className="opening-book-page opening-book-page--right"><small>LA RÉPONSE / 02</small><strong>Le pouvoir<br /><em>commence ici.</em></strong><button ref={enter} type="button" onClick={terminer} className="opening-enter group mt-3 inline-flex items-center justify-center gap-2 rounded-full bg-paper px-5 py-3 font-display text-sm font-extrabold uppercase text-ink shadow-[5px_5px_0_#FFB000] transition-transform hover:translate-x-1 hover:translate-y-1 hover:shadow-[1px_1px_0_#FFB000]">Entrer dans le livre <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" /></button></div>
                 </div>
               </div>
             </div>
 
-            <p className="opening-instruction mt-4 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-paper/60">Fais défiler pour ouvrir le livre</p>
+            <p className="opening-instruction font-mono text-xs font-bold uppercase text-ink/60">Fais défiler pour ouvrir le livre</p>
           </main>
         </div>
       </div>

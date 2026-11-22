@@ -72,25 +72,25 @@ export function Livre({
 
   return (
     <div ref={scene} className={`relative ${className}`} style={style}>
-      <div className={flottera ? "anim-flotte h-full w-full" : "h-full w-full"}>
+      <div className={`relative h-full w-full ${flottera ? "anim-flotte" : ""}`}>
         <div
-          className="preserve-3d relative h-full w-full transition-transform duration-500 ease-out"
+          className="preserve-3d absolute inset-0 transition-transform duration-500 ease-out"
           style={{
             transform: `rotateY(calc(${inclinaison}deg + var(--px) * 12deg)) rotateX(calc(var(--py) * -7deg))`,
             filter: "drop-shadow(0 20px 32px rgba(50, 16, 68,.35))",
           }}
         >
-          <div className="absolute inset-0 border-2 border-[#321044] bg-[#FFB000]" style={{ transform: `translateZ(-${dos / 2}px)` }} aria-hidden="true" />
+          <div className="absolute inset-0 rounded-r-md border border-[#321044] bg-[#FFB000]" style={{ transform: `translateZ(-${dos / 2}px)` }} aria-hidden="true" />
 
           {/* tranche */}
           <div
-            className="absolute left-0 top-0 overflow-hidden border-y-2 border-[#321044] bg-[#FFB000]"
+            className="absolute top-0 left-0 overflow-hidden border border-[#321044] bg-[#FFB000]"
             style={{ width: dos, height: hauteur, transformOrigin: "left center", transform: `translateZ(-${dos / 2}px) rotateY(-90deg)` }}
             aria-hidden="true"
           >
-            <div className="flex h-full w-full items-center justify-center">
+            <div className="flex h-full items-center justify-center">
               <span
-                className="whitespace-nowrap font-display font-bold uppercase tracking-[0.16em] text-[#FFF0D9]"
+                className="whitespace-nowrap font-display font-bold uppercase text-[#FFF0D9]"
                 style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", fontSize: Math.max(7, dos * 0.4) }}
               >
                 Nadine Zoro
@@ -100,7 +100,7 @@ export function Livre({
 
           {/* bloc de pages */}
           <div
-            className="absolute right-0 top-[1%] border-y-2 border-r-2 border-[#321044]"
+            className="absolute top-0 right-0 border border-[#321044]"
             style={{
               width: dos - 3,
               height: hauteur * 0.98,
@@ -113,19 +113,19 @@ export function Livre({
 
           {/* page de garde */}
           <div
-            className="absolute inset-0 flex flex-col justify-between border-2 border-[#321044] bg-[#FFF0D9] p-[8%]"
+            className="absolute inset-0 flex flex-col justify-between gap-4 rounded-r-md border border-[#321044] bg-[#FFF0D9] p-[8%]"
             style={{ transform: `translateZ(${dos / 2 - 1}px)`, color: "#321044" }}
           >
-            <span className="text-[10px] font-semibold uppercase tracking-[0.16em] opacity-60">La Fabrique des Héros</span>
-            <p className="font-display font-bold leading-[1.02]" style={{ fontSize: largeur * 0.095 }}>
+            <span className="text-xs font-semibold uppercase opacity-60">La Fabrique des Héros</span>
+            <p className="font-display font-bold" style={{ fontSize: largeur * 0.095 }}>
               {priere || "Tu n’es pas un hasard. Tu es une réponse."}
             </p>
-            <span className="h-[3px] w-1/3 bg-[#FFB000]" />
+            <span className="block h-1 w-10 rounded-full bg-[#FFB000]" />
           </div>
 
           {/* premier plat */}
           <div
-            className="backface-hidden absolute inset-0 overflow-hidden border-2 border-[#321044] bg-[#FFB000]"
+            className="backface-hidden absolute inset-0 overflow-hidden rounded-r-md border border-[#321044] bg-[#FFB000]"
             style={{
               transformOrigin: "left center",
               transform: `translateZ(${dos / 2}px) rotateY(calc(var(--open) * -150deg))`,
@@ -152,21 +152,21 @@ export function Livre({
                   }}
                   aria-hidden="true"
                 />
-                <div className="absolute inset-[7%] border border-[#FFF0D9]/25" aria-hidden="true" />
-                <div className="absolute inset-0 flex items-center justify-center opacity-70">
+                <div className="absolute inset-[6%] rounded-sm border border-[#FFF0D9]/25" aria-hidden="true" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-70" style={{ paddingBottom: "18%" }}>
                   <Etoile taille={largeur * 0.2} fil="#FFB000" />
                 </div>
 
                 {/* bandeau d'éditeur : élément réel et amovible, distinct de la couverture */}
                 <div
-                  className="absolute inset-x-[-3%] border-y-2 border-[#321044] bg-[#FFF0D9] px-[8%] py-[5%] text-[#321044]"
+                  className="absolute inset-x-0 bottom-0 flex flex-col gap-2 border-t-2 border-[#321044] bg-[#FFF0D9] px-[7%] py-[6%] text-[#321044]"
                   style={{ top: "58%" }}
                 >
-                  <p className="font-display font-extrabold uppercase leading-[0.95]" style={{ fontSize: largeur * 0.082, letterSpacing: "-0.03em" }}>
+                  <p className="font-display font-extrabold uppercase" style={{ fontSize: largeur * 0.082, letterSpacing: "-0.03em" }}>
                     Active ton<br />Superpouvoir&nbsp;!
                   </p>
-                  <p className="mt-[4%] flex items-center justify-between gap-2 border-t border-[#321044]/30 pt-[3%] text-[#321044]" style={{ fontSize: Math.max(7, largeur * 0.032) }}>
-                    <span className="font-semibold uppercase tracking-[0.12em]">Nadine Zoro</span>
+                  <p className="flex items-center justify-between border-t border-[#321044]/30 pt-2 text-[#321044]" style={{ fontSize: Math.max(7, largeur * 0.032) }}>
+                    <span className="font-semibold uppercase">Nadine Zoro</span>
                     <span className="font-semibold">8 chapitres</span>
                   </p>
                 </div>
@@ -183,7 +183,7 @@ export function Livre({
 export function MentionMaquette({ className = "" }: { className?: string }) {
   if (couverture.src) return null;
   return (
-    <p className={`text-[12px] leading-snug text-dim-2 ${className}`}>
+    <p className={`text-dim-2${className}`}>
       Maquette de présentation. La couverture officielle n’est pas fournie par l’éditeur&nbsp;: nous ne la
       reproduisons pas. Le bandeau porte les seules informations authentiques (titre, autrice, 8 chapitres).
     </p>

@@ -39,11 +39,11 @@ export default function Bibliotheque() {
 
   const Selecteur = ({ label, valeur, options, onChange }: { label: string; valeur: string; options: string[]; onChange: (v: string) => void }) => (
     <label className="block">
-      <span className="label mb-2 block">{label}</span>
+      <span className="label block mb-2">{label}</span>
       <select
         value={valeur}
         onChange={(e) => onChange(e.target.value)}
-        className="min-h-[46px] w-full border border-paper/22 bg-ink-2 px-3 text-[14.5px] outline-none transition-colors focus:border-or"
+        className="w-full rounded-full border border-paper/22 bg-ink-2 px-4 py-2.5 font-body text-sm outline-none transition-colors focus:border-or"
       >
         {options.map((o) => (
           <option key={o} value={o} className="bg-ink-2">
@@ -64,36 +64,36 @@ export default function Bibliotheque() {
         fil="#FFB000"
       />
 
-      <Bloc numero="01" titre="Nos produits" fil="#FFB000">
-        <div className="grid gap-4 sm:grid-cols-3">
+      <Bloc numero="01" titre="Nos produits" fil="#FFB000" className="champ">
+        <div className="grid gap-4 mt-6 sm:grid-cols-3">
           <Selecteur label="Tranche d’âge" valeur={age} options={AGES} onChange={setPage} />
           <Selecteur label="Format" valeur={format} options={FORMATS} onChange={setFormat} />
           <Selecteur label="Type" valeur={type} options={TYPES} onChange={setType} />
         </div>
 
-        <p className="mt-6 text-[13.5px] text-dim-2" aria-live="polite">
+        <p className="text-dim-2 mt-6" aria-live="polite">
           {visibles.length} pièce{visibles.length > 1 ? "s" : ""} sur {produits.length}
         </p>
 
-        <p className="mt-2 max-w-2xl text-[14px] leading-relaxed text-dim">
+        <p className="text-dim mt-2">
           Choisis une pièce pour lire son descriptif, son format et son prix. Sa fiche détaille le contenu, les âges conseillés et les avis, puis te permet de l’ajouter au panier.
         </p>
 
         <BibliothequeCarousel produits={visibles} />
 
         {visibles.length === 0 && (
-          <p className="mt-6 border border-paper/14 bg-ink-2 p-6 text-[15px] text-dim">
+          <p className="carte border border-paper/14 bg-ink-2 text-dim p-6">
             Aucune pièce ne combine ces trois critères. Élargis un filtre pour retrouver le catalogue.
           </p>
         )}
       </Bloc>
 
-      <Bloc numero="02" titre="Ton parcours de lecture" fil="#FFB000">
-        <h2 className="display-l max-w-3xl">
+      <Bloc numero="02" titre="Ton parcours de lecture" fil="#FFB000" className="champ">
+        <h2 className="display-l mt-6">
           Ton parcours <span className="livre font-normal text-or">personnalisé</span>
         </h2>
 
-        <div className="mt-8 flex flex-wrap gap-2" role="tablist" aria-label="Choisir une étape de vie">
+        <div className="flex flex-wrap gap-2.5" role="tablist" aria-label="Choisir une étape de vie">
           {etapes.map((e) => {
             const actif = e.id === etape;
             return (
@@ -102,7 +102,7 @@ export default function Bibliotheque() {
                 role="tab"
                 aria-selected={actif}
                 onClick={() => setEtape(e.id)}
-                className="min-h-[44px] border px-4 text-[13.5px] font-semibold transition-colors"
+                className="etape-filtre"
                 style={{ borderColor: actif ? e.fil : "rgba(50,16,68,.24)", background: actif ? e.fil : "transparent", color: actif ? "#FFF0D9" : "rgba(50,16,68,.78)" }}
               >
                 {e.nom} · {e.age}
@@ -111,16 +111,16 @@ export default function Bibliotheque() {
           })}
         </div>
 
-        <div className="mt-8 grid gap-8 lg:grid-cols-12">
+        <div className="grid gap-10 mt-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="livre text-[24px] leading-snug" style={{ color: courante.fil }}>
+            <p className="livre" style={{ color: courante.fil }}>
               {courante.accroche}
             </p>
-            <p className="mt-4 text-[15px] text-dim">{courante.texte}</p>
-            <Link to={`/parcours/${courante.id}`} className="btn btn-craie mt-6">
+            <p className="text-dim mt-2">{courante.texte}</p>
+            <Link to={`/parcours/${courante.id}`} className="btn btn-craie mt-5">
               Voir le parcours complet <MoveRight size={16} />
             </Link>
-<PhotoLegendee photo={etapePhotos[courante.id]} ratio="4 / 3" className="mt-8" />
+<PhotoLegendee photo={etapePhotos[courante.id]} ratio="4 / 3" className="mt-6" />
           </div>
 
           <ol className="reading-path self-start overflow-hidden border border-paper/12 bg-paper/12 lg:col-span-8" aria-label={`Étapes conseillées pour ${courante.nom}`}>
@@ -143,21 +143,21 @@ export default function Bibliotheque() {
         </div>
       </Bloc>
 
-      <Bloc numero="03" titre="Ressources gratuites" fil="#FFB000">
+      <Bloc numero="03" titre="Ressources gratuites" fil="#FFB000" className="champ">
         <Vu>
-          <h2 className="display-l">Commencer gratuitement</h2>
-          <p className="mt-4 max-w-2xl text-[16px] text-dim">Télécharge nos ressources gratuites pour découvrir la méthode avant d’aller plus loin.</p>
-          <Link to="/quiz" className="btn btn-or mt-6">
+          <h2 className="display-l mt-6">Commencer gratuitement</h2>
+          <p className="text-dim">Télécharge nos ressources gratuites pour découvrir la méthode avant d’aller plus loin.</p>
+          <Link to="/quiz" className="btn btn-or mt-5">
             Passer le quiz <ArrowUpRight size={16} />
           </Link>
         </Vu>
 
-        <ul className="mt-10 grid gap-8 sm:grid-cols-2">
+        <ul className="grid gap-5 mt-8 sm:grid-cols-2">
           {ressourcesGratuites.map((r, i) => (
             <li key={r.titre}>
               <Tilt className="h-full">
                 <article className="ressource-carte">
-                  <PhotoCadre photo={r.titre.includes("Quiz") ? photos.ressourceQuiz : photos.ressourceChapitre} ratio="16 / 10" creditVisible={false}>
+                  <PhotoCadre photo={r.titre.includes("Quiz") ? photos.ressourceQuiz : photos.ressourceChapitre} ratio="16 / 10" creditVisible={false} className="relative">
                     <span className="ressource-num">{String(i + 1).padStart(2, "0")}</span>
                   </PhotoCadre>
                   <div className="ressource-corps">
@@ -170,7 +170,7 @@ export default function Bibliotheque() {
             </li>
           ))}
         </ul>
-        <p className="mt-6 max-w-2xl text-[13px] text-dim-2">
+        <p className="text-dim-2 mt-6">
           De nouveaux supports à télécharger viendront bientôt compléter cette sélection.
         </p>
       </Bloc>

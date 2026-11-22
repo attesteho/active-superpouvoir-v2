@@ -17,10 +17,10 @@ export default function Parcours({ id }: { id: string }) {
 
   if (!e) {
     return (
-      <div className="mx-auto w-full max-w-[900px] px-5 pb-24 pt-40 sm:px-8">
+      <div className="champ flex flex-col items-start gap-4">
         <h1 className="display-l">Ce chemin n’existe pas</h1>
-        <p className="mt-5 text-dim">Le mouvement compte quatre étapes de vie. Choisis la tienne.</p>
-        <div className="mt-8 flex flex-wrap gap-3">
+        <p className="text-dim">Le mouvement compte quatre étapes de vie. Choisis la tienne.</p>
+        <div className="flex flex-wrap gap-3">
           {etapes.map((x) => (
             <Link key={x.id} to={`/parcours/${x.id}`} className="btn btn-craie">
               {x.nom}
@@ -41,7 +41,7 @@ export default function Parcours({ id }: { id: string }) {
         surtitre={`Ton étape de vie · ${e.age}`}
         lignes={[
           <span key="n">{e.nom}</span>,
-          <span key="a" className="livre block max-w-3xl text-[0.52em] font-normal leading-[1.15] text-or">
+          <span key="a" className="livre block font-normal text-or">
             {e.accroche}
           </span>,
         ]}
@@ -49,9 +49,9 @@ export default function Parcours({ id }: { id: string }) {
         photo={etapePhotos[e.id]}
         fil={e.fil}
         enfants={
-          <ul className="mt-8 flex flex-wrap gap-2">
+          <ul className="flex flex-wrap gap-2">
             {e.tags.map((t) => (
-              <li key={t} className="border-2 border-ink/50 px-3 py-1.5 font-mono text-[11.5px] font-bold uppercase tracking-[0.1em] text-ink">
+              <li key={t} className="rounded-full border border-paper/25 bg-ink-2 px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-wide text-paper/70">
                 {t}
               </li>
             ))}
@@ -59,24 +59,27 @@ export default function Parcours({ id }: { id: string }) {
         }
       />
 
-      <Bloc numero="01" titre="Ton parcours de lecture" fil={e.fil}>
-        <Vu>
-          <h2 className="display-l max-w-3xl">Les outils faits pour toi</h2>
+      <Bloc numero="01" titre="Ton parcours de lecture" fil={e.fil} className="champ">
+        <Vu className="mb-8 block">
+          <h2 className="display-l">Les outils faits pour toi</h2>
         </Vu>
-        <ol className="mt-10 space-y-px overflow-hidden border border-paper/12 bg-paper/12">
+        <ol className="space-y-px overflow-hidden rounded-[18px] border border-paper/12 bg-paper/12">
           {chemin.map((s, i) => {
             const p = produits.find((x) => x.nom.toLowerCase() === s.titre.toLowerCase())!;
             return (
               <li key={s.titre}>
-                <Link to={`/boutique/${p.slug}`} className="group grid items-center gap-4 bg-ink-2 p-6 transition-colors hover:bg-ink-3 sm:grid-cols-12">
-                  <span className="font-display text-[38px] font-extrabold leading-none sm:col-span-1" style={{ color: e.fil }}>
+                <Link
+                  to={`/boutique/${p.slug}`}
+                  className="group grid items-center gap-2 bg-ink-2 p-5 transition-colors hover:bg-ink-3 sm:grid-cols-12 sm:gap-4 sm:p-6"
+                >
+                  <span className="font-display text-2xl font-extrabold sm:col-span-1" style={{ color: e.fil }}>
                     {i + 1}
                   </span>
                   <span className="sm:col-span-5">
-                    <span className="block font-display text-[21px] font-extrabold leading-tight">{p.nom}</span>
-                    <span className="label mt-1 block">{p.format}</span>
+                    <span className="block font-display font-extrabold">{p.nom}</span>
+                    <span className="label block">{p.format}</span>
                   </span>
-                  <span className="text-[14.5px] text-dim sm:col-span-5">{s.note}</span>
+                  <span className="text-dim sm:col-span-5">{s.note}</span>
                   <MoveRight size={18} className="hidden text-paper/40 transition-transform group-hover:translate-x-1.5 group-hover:text-or sm:col-span-1 sm:block" />
                 </Link>
               </li>
@@ -85,17 +88,17 @@ export default function Parcours({ id }: { id: string }) {
         </ol>
       </Bloc>
 
-      <Bloc numero="02" titre="Le défi de ton étape" fil={e.fil}>
-        <div className="grid items-center gap-8 border border-paper/14 bg-ink-2 p-7 sm:p-10 lg:grid-cols-12">
-          <div className="lg:col-span-3">
-            <span className="font-display text-[92px] font-extrabold leading-none" style={{ color: e.fil }}>
+      <Bloc numero="02" titre="Le défi de ton étape" fil={e.fil} className="champ">
+        <div className="ombre grid items-center gap-6 rounded-[22px] border border-paper/14 bg-ink-2 p-6 sm:p-8 lg:grid-cols-12 lg:gap-8 lg:p-10">
+          <div className="flex items-center gap-3 lg:col-span-3 lg:flex-col lg:items-start lg:gap-1">
+            <span className="font-display text-4xl font-extrabold" style={{ color: e.fil }}>
               {defi.jours}
             </span>
             <span className="label block">jours · gratuit</span>
           </div>
           <div className="lg:col-span-6">
-            <h2 className="font-display text-[28px] font-extrabold">{defi.titre}</h2>
-            <p className="mt-3 text-[15.5px] text-dim">{defi.texte}</p>
+            <h2 className="font-display text-xl font-extrabold">{defi.titre}</h2>
+            <p className="text-dim">{defi.texte}</p>
           </div>
           <div className="lg:col-span-3">
             <Link to="/defis#defi-7" className="btn btn-or w-full justify-center">
@@ -105,27 +108,30 @@ export default function Parcours({ id }: { id: string }) {
         </div>
       </Bloc>
 
-      <Bloc numero="03" titre="Profils héros" fil={e.fil}>
-        <Vu>
-          <h2 className="display-l max-w-3xl">
-            Les archétypes qui <span className="livre font-normal" style={{ color: e.fil }}>te correspondent</span>
+      <Bloc numero="03" titre="Profils héros" fil={e.fil} className="champ">
+        <Vu className="mb-8 block">
+          <h2 className="display-l">
+            Les archétypes qui{" "}
+            <span className="livre font-normal" style={{ color: e.fil }}>
+              te correspondent
+            </span>
           </h2>
         </Vu>
-        <ul className="mt-10 grid gap-6 lg:grid-cols-3">
+        <ul className="grid gap-6 lg:grid-cols-3">
           {donnees.arche.map((a, i) => (
             <Vu as="li" key={a.type} delay={i * 100}>
               <CarteArchetype a={a} index={i} />
             </Vu>
           ))}
         </ul>
-        <Link to="/quiz" className="btn btn-craie mt-12">
+        <Link to="/quiz" className="btn btn-craie mt-8">
           Découvrir lequel je suis <MoveRight size={16} />
         </Link>
       </Bloc>
 
-      <Bloc numero="04" titre="Questions fréquentes" fil={e.fil}>
-        <h2 className="display-l max-w-2xl">Tu te poses ces questions&nbsp;?</h2>
-        <ul className="mt-10 border-t border-paper/12">
+      <Bloc numero="04" titre="Questions fréquentes" fil={e.fil} className="champ">
+        <h2 className="display-l mb-6">Tu te poses ces questions&nbsp;?</h2>
+        <ul className="border-t border-paper/12">
           {e.faq.map((f, i) => {
             const actif = ouvert === i;
             return (
@@ -134,10 +140,10 @@ export default function Parcours({ id }: { id: string }) {
                   type="button"
                   onClick={() => setOuvert(actif ? null : i)}
                   aria-expanded={actif}
-                  className="flex w-full items-start justify-between gap-6 py-6 text-left transition-colors hover:text-or"
+                  className="flex w-full items-start justify-between gap-4 py-5 text-left transition-colors hover:text-or"
                 >
-                  <span className="font-display text-[19px] font-extrabold leading-snug sm:text-[23px]">{f.q}</span>
-                  <span className="mt-1 shrink-0" style={{ color: e.fil }}>
+                  <span className="font-display text-lg font-extrabold">{f.q}</span>
+                  <span className="shrink-0" style={{ color: e.fil }}>
                     {actif ? <Minus size={20} /> : <Plus size={20} />}
                   </span>
                 </button>
@@ -147,7 +153,7 @@ export default function Parcours({ id }: { id: string }) {
                   aria-hidden={!actif}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-3xl pb-6 text-[16px] leading-relaxed text-dim">{f.r}</p>
+                    <p className="pb-5 text-dim">{f.r}</p>
                   </div>
                 </div>
               </li>
@@ -156,8 +162,8 @@ export default function Parcours({ id }: { id: string }) {
         </ul>
       </Bloc>
 
-      <Bloc numero="05" titre="Changer d’étape" fil={e.fil}>
-        <div className="grid gap-4 sm:grid-cols-3">
+      <Bloc numero="05" titre="Changer d’étape" fil={e.fil} className="champ">
+        <div className="grid gap-6 sm:grid-cols-3">
           {etapes.filter((x) => x.id !== e.id).map((x) => (
             <Link key={x.id} to={`/parcours/${x.id}`} className="etape-tuile group">
               <PhotoCadre photo={etapePhotos[x.id]} ratio="4 / 5" ratioMobile="16 / 10" voile creditVisible={false} sizes="(min-width: 640px) 30vw, 100vw">

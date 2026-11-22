@@ -24,7 +24,7 @@ export function VisuelProduit({
         {[0, 1, 2].map((k) => (
           <div
             key={k}
-            className="absolute inset-0 rounded-[14px] transition-transform duration-500"
+            className="absolute rounded-[14px] transition-transform duration-500"
             style={{
               transform: `rotate(${(k - 1) * 8}deg) translateY(${k * -7}px)`,
               background: k === 2 ? "#FFF8EC" : k === 1 ? "#FFB000" : "#F3781E",
@@ -32,14 +32,14 @@ export function VisuelProduit({
             }}
           >
             {k === 2 && (
-              <div className="flex h-full flex-col justify-between p-[8%] text-[#321044]">
-                <span className="font-mono font-bold uppercase tracking-[0.12em]" style={{ fontSize: largeur * 0.052 }}>
+              <div className="flex flex-col justify-between text-[#321044]">
+                <span className="font-mono font-bold uppercase" style={{ fontSize: largeur * 0.052 }}>
                   Anti-doutes
                 </span>
-                <span className="font-display font-extrabold uppercase leading-[0.92] tracking-[-0.03em]" style={{ fontSize: largeur * 0.105 }}>
+                <span className="font-display font-extrabold uppercase" style={{ fontSize: largeur * 0.105 }}>
                   Je n’ai aucun talent particulier.
                 </span>
-                <span className="border-t border-[#321044]/15 pt-2 font-mono font-bold uppercase" style={{ fontSize: largeur * 0.052 }}>
+                <span className="border-t border-[#321044]/15 font-mono font-bold uppercase" style={{ fontSize: largeur * 0.052 }}>
                   30 cartes
                 </span>
               </div>
@@ -53,12 +53,12 @@ export function VisuelProduit({
   if (produit.type === "Poster") {
     return (
       <div
-        className="relative flex items-center justify-center rounded-[18px] bg-[#FFF8EC] p-[7%] ombre-sm"
+        className="relative flex items-center justify-center rounded-[18px] bg-[#FFF8EC] ombre-sm"
         style={{ width: largeur, height: largeur * 1.414 }}
         role="img"
         aria-label="Poster Ikigai A3 : quatre cercles qui se croisent"
       >
-        <svg viewBox="0 0 100 128" className="h-full w-full">
+        <svg viewBox="0 0 100 128" className="">
           <g style={{ mixBlendMode: "multiply" }}>
             {[
               [40, 50, "#FFB000"],

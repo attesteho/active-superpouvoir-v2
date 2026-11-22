@@ -131,41 +131,45 @@ function Etabli() {
     <div ref={zone} className="relative">
       <section
         id="poste-02"
-        className="champ inverse relative overflow-hidden bg-vert py-16 lg:flex lg:min-h-[100svh] lg:items-center lg:py-0 lg:pt-[70px]"
+        className="champ inverse relative overflow-hidden lg:flex lg:items-center"
       >
         <FondPhoto photo={fonds.etabli} parallaxe={false} />
-        <div className="trame-lignes pointer-events-none absolute inset-y-0 right-0 w-1/3 opacity-[0.14]" aria-hidden="true" />
-        <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 xl:px-14">
+        <div className="trame-lignes pointer-events-none absolute inset-0 opacity-[0.14]" aria-hidden="true" />
+        <div className="relative z-10 mx-auto w-full max-w-[1320px]">
           <Etiquette num="02" label="L’établi" fond="#FFF0D9" encre="#321044" />
 
-          <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
+          <div className="grid items-center gap-10 pt-8 lg:grid-cols-12 lg:gap-12">
             <div className="lg:col-span-4">
               <h2 className="display-l uppercase">
                 Le livre<br />n’est pas<br />
                 <span className="text-jaune">un objet.</span>
               </h2>
-              <p className="mt-6 max-w-md text-[17px] text-dim">
+              <p className="text-dim mt-2">
                 Huit chapitres transformateurs, du Radar Personnel à l’Ikigai, en passant par la méthode CAP et le Chemin
                 du Héros. On n’y lit pas son avenir : on y fabrique.
               </p>
-              <Link to="/le-livre" className="btn btn-craie mt-8">
+              <Link to="/le-livre" className="btn btn-craie mt-7">
                 Ouvrir le livre <MoveRight size={16} />
               </Link>
             </div>
 
-            <div className="flex justify-center lg:col-span-4">
+            <div className="flex justify-center py-8 lg:col-span-4 lg:py-0">
               <div data-livre-boite style={{ "--open": epingle ? 0 : 0.6 } as React.CSSProperties}>
                 <Livre largeur={epingle ? 290 : 240} inclinaison={-18} />
               </div>
             </div>
 
-            <ol className="lg:col-span-4">
+            <ol className="flex flex-col gap-5 lg:col-span-4">
               {methode.map((m) => (
-                <li key={m.num} data-outil className="group flex items-center gap-4 border-t-2 border-ink/25 py-3 last:border-b-2"><span className="relative shrink-0"><Vignette photo={methodePhotos[m.num]} largeur={300} decoratif className="h-[72px] w-[72px] object-cover" /><span className="absolute bottom-0 left-0 bg-jaune px-1.5 py-0.5 font-display text-[15px] font-extrabold leading-none text-paper">{m.num}</span></span>
+                <li key={m.num} data-outil className="group flex items-center gap-4 border-b border-ink/25 pb-5 last:border-b-0 last:pb-0">
+                  <span className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl sm:h-20 sm:w-20">
+                    <Vignette photo={methodePhotos[m.num]} largeur={300} decoratif className="h-full w-full object-cover" />
+                    <span className="absolute -bottom-2 -right-2 flex h-7 w-7 items-center justify-center rounded-full bg-jaune font-display text-[12px] font-extrabold text-paper shadow-[0_2px_6px_rgba(50,16,68,0.3)]">{m.num}</span>
+                  </span>
 
-                  <div>
-                    <p className="font-display text-[23px] font-extrabold uppercase leading-none">{m.nom}</p>
-                    <p className="mt-2 max-w-[28rem] text-[13.5px] leading-snug text-dim-2">{m.description}</p>
+                  <div className="flex-1">
+                    <p className="font-display text-[15px] font-extrabold uppercase sm:text-base">{m.nom}</p>
+                    <p className="text-dim-2 mt-1">{m.description}</p>
                   </div>
                 </li>
               ))}
@@ -218,45 +222,43 @@ function Etapes() {
   const accents = ["#F3781E", "#321044", "#2E7D8C", "#FF6F59"];
 
   return (
-    <div ref={zone} id="poste-03" className="relative isolate overflow-hidden bg-ink-2">
-      <div className="mx-auto w-full max-w-[1440px] px-5 pt-14 sm:px-8 lg:pt-[86px] xl:px-14">
+    <div ref={zone} id="poste-03" className="champ relative isolate overflow-hidden bg-ink-2">
+      <div className="relative z-10 mx-auto mb-10 w-full max-w-[1320px]">
         <Etiquette num="03" label="À chacun son chemin" fond="#321044" encre="#FFF0D9" />
-        <h2 className="display-l max-w-4xl uppercase text-paper">
+        <h2 className="display-l mt-3 uppercase text-paper">
           Choisis le parcours <span className="text-orange">qui te ressemble.</span>
         </h2>
       </div>
 
       <div
         ref={piste}
-        className={`mt-8 flex gap-6 px-5 pb-14 sm:px-8 xl:px-14 ${horizontal ? "w-max flex-row" : "flex-col lg:flex-row lg:flex-wrap"}`}
+        className={`relative z-10 flex gap-6 lg:gap-8 ${horizontal ? "flex-row items-stretch" : "flex-col lg:flex-row lg:flex-wrap lg:items-stretch"}`}
       >
         {etapes.map((e, i) => {
           const accent = accents[i % accents.length];
           return (
             <article
               key={e.id}
-              className={`group relative flex flex-col overflow-hidden rounded-[22px] bg-ink-2 shadow-[0_10px_30px_rgba(50,16,68,0.1)] transition-transform duration-300 hover:-translate-y-2 ${
-                horizontal ? "h-[clamp(470px,calc(100svh_-_330px),570px)] w-[380px]" : "min-h-[440px] lg:w-[calc(50%-0.75rem)]"
-              }`}
+              className="group relative flex w-full shrink-0 flex-col overflow-hidden rounded-[22px] bg-ink-2 shadow-[0_10px_30px_rgba(50,16,68,0.1)] transition-transform duration-300 hover:-translate-y-2 sm:w-[380px] lg:w-[320px] xl:w-[360px]"
             >
-              <div className="relative h-[clamp(140px,25vh,210px)] shrink-0 overflow-hidden">
+              <div className="relative aspect-[4/3] shrink-0 overflow-hidden">
                 <Vignette photo={etapePhotos[e.id]} largeur={900} decoratif className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                <span className="absolute left-3 top-3 rounded-full px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.1em] text-ink-2" style={{ background: accent }}>{e.age}</span>
+                <span className="absolute left-4 top-4 rounded-full px-3 py-1 font-display text-[12px] font-bold uppercase tracking-wide text-ink-2" style={{ background: accent }}>{e.age}</span>
               </div>
-              <div className="flex flex-1 flex-col justify-between p-6">
+              <div className="flex flex-1 flex-col justify-between gap-6 p-6">
                 <div>
-                  <h3 className="font-display text-[26px] font-extrabold uppercase leading-[0.95] text-paper">{e.nom}</h3>
-                  <p className="mt-3 text-[15px] font-medium leading-snug text-dim">{e.accroche}</p>
+                  <h3 className="font-display text-xl font-extrabold uppercase text-paper">{e.nom}</h3>
+                  <p className="mt-2 font-medium text-dim">{e.accroche}</p>
                 </div>
-                <div>
-                  <ul className="mb-4 mt-4 flex flex-wrap gap-2">
+                <div className="flex flex-col gap-3">
+                  <ul className="flex flex-wrap gap-2">
                     {e.tags.map((t) => (
-                      <li key={t} className="rounded-full px-2.5 py-1 font-mono text-[10.5px] font-bold uppercase tracking-[0.1em]" style={{ background: `${accent}1A`, color: accent }}>
+                      <li key={t} className="rounded-full px-3 py-1 font-body text-[11px] font-bold uppercase tracking-wide" style={{ background: `${accent}1A`, color: accent }}>
                         {t}
                       </li>
                     ))}
                   </ul>
-                  <Link to={`/parcours/${e.id}`} className="inline-flex items-center gap-2 font-display text-[15px] font-extrabold uppercase text-paper">
+                  <Link to={`/parcours/${e.id}`} className="inline-flex items-center gap-1.5 font-display text-sm font-extrabold uppercase text-paper">
                     Commencer <MoveRight size={16} className="transition-transform duration-300 group-hover:translate-x-2" />
                   </Link>
                 </div>
@@ -285,42 +287,42 @@ function PremiereQuestion() {
   };
 
   return (
-    <section id="poste-04" className="relative py-16 sm:py-24">
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 xl:px-14">
+    <section id="poste-04" className="champ relative">
+      <div className="relative mx-auto w-full max-w-[1320px]">
         <Etiquette num="04" label="La première question" />
-        <div className="grid gap-10 lg:grid-cols-12">
+        <div className="grid gap-12 pt-8 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Vu>
               <h2 className="display-l uppercase">
                 Le quiz<br />commence<br />
                 <span className="text-or">ici.</span>
               </h2>
-              <p className="mt-6 max-w-md text-[17px] text-dim">
+              <p className="text-dim mt-2">
                 Pas d’inscription, pas de bonne réponse. Réponds à cette première question : elle t’ouvre les neuf
                 suivantes et ton profil de héros.
               </p>
-              <ul className="mt-8 flex flex-wrap gap-3 font-mono text-[11px] font-bold uppercase tracking-[0.12em]">
+              <ul className="mt-5 flex flex-wrap gap-2 font-mono text-xs font-bold uppercase tracking-wide">
                 {["10 questions", "3 minutes", "8 profils"].map((x) => (
-                  <li key={x} className="border-2 border-paper px-3 py-1.5">
+                  <li key={x} className="rounded-full border border-paper/20 px-3 py-1.5">
                     {x}
                   </li>
                 ))}
               </ul>
-<PhotoLegendee photo={photos.questionQuiz} ratio="5 / 4" className="mt-10 max-w-md" />
+              <PhotoLegendee photo={photos.questionQuiz} ratio="5 / 4" className="mt-6" />
             </Vu>
           </div>
 
           <div className="lg:col-span-7">
             <Vu delay={100}>
-              <div className="border-2 border-paper bg-ink-2 ombre">
-                <div className="flex items-center justify-between border-b-2 border-paper bg-paper px-5 py-2.5 font-mono text-[11px] font-bold uppercase tracking-[0.12em] text-ink">
+              <div className="overflow-hidden rounded-[22px] border border-paper/10 bg-ink-2 ombre">
+                <div className="flex items-center justify-between bg-paper px-6 py-4 font-mono text-xs font-bold uppercase tracking-wide text-ink">
                   <span>Question 01 · {q.theme}</span>
                   <span className="text-ink">1 / 10</span>
                 </div>
-                <div className="px-5 py-7 sm:px-7">
-                  <p className="font-display text-[26px] font-extrabold leading-[0.95] sm:text-[32px]">{q.text}</p>
-                  <p className="mt-3 text-[14.5px] text-dim-2">{q.context}</p>
-                  <ul className="mt-7 space-y-2.5">
+                <div className="p-6 sm:p-8">
+                  <p className="font-display text-xl font-extrabold sm:text-2xl">{q.text}</p>
+                  <p className="text-dim-2 mt-2">{q.context}</p>
+                  <ul className="mt-6 space-y-2.5">
                     {q.options.map((o, i) => (
                       <li key={o.label}>
                         <button
@@ -330,16 +332,16 @@ function PremiereQuestion() {
                           onMouseLeave={() => setSurvol(null)}
                           onFocus={() => setSurvol(i)}
                           onBlur={() => setSurvol(null)}
-                          className="flex w-full items-center gap-4 border-2 border-paper px-4 py-3.5 text-left transition-all duration-200 hover:translate-x-1.5"
+                          className="flex w-full items-center gap-4 rounded-2xl border border-paper/15 px-4 py-3.5 text-left transition-all duration-200 hover:translate-x-1.5"
                           style={{ background: survol === i ? "#FFB000" : "transparent", color: survol === i ? "#FFF0D9" : "#321044" }}
                         >
                           <span
-                            className="flex h-8 w-8 shrink-0 items-center justify-center font-display text-[14px] font-extrabold transition-colors"
+                            className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-display text-sm font-extrabold transition-colors"
                             style={{ background: "#321044", color: "#FFF0D9" }}
                           >
                             {o.label}
                           </span>
-                          <span className="text-[15.5px] font-medium leading-snug">{o.text}</span>
+                          <span className="text-[15px] font-medium leading-snug">{o.text}</span>
                         </button>
                       </li>
                     ))}
@@ -358,31 +360,31 @@ function PremiereQuestion() {
 function Doutes() {
   const choisies = [cartes[0], cartes[6], cartes[24]];
   return (
-    <section id="poste-05" className="champ inverse relative overflow-hidden border-y-2 border-paper bg-vermillon-fond py-16 sm:py-20">
+    <section id="poste-05" className="champ inverse relative overflow-hidden">
       <FondPhoto photo={fonds.doutes} mode="multiply" />
       <div className="trame-points pointer-events-none absolute inset-0 opacity-[0.12]" aria-hidden="true" />
-      <div className="relative mx-auto w-full max-w-[1440px] px-5 sm:px-8 xl:px-14">
+      <div className="relative z-10 mx-auto w-full max-w-[1320px]">
         <Etiquette num="05" label="Les doutes se retournent" fond="#FFF0D9" encre="#321044" />
-        <div className="grid gap-10 lg:grid-cols-12">
+        <div className="grid gap-10 pt-8 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-4">
             <Vu>
               <h2 className="display-l uppercase text-ink">
                 Retourne<br />le doute.
               </h2>
-              <p className="mt-6 max-w-sm text-[17px] text-dim">
+              <p className="text-dim mt-2">
                 Trente cartes, une par blocage mental du chapitre V. Au recto, la phrase qui te freine. Au verso,
                 l’affirmation et une action à faire aujourd’hui.
               </p>
-              <p className="mt-5 flex items-center gap-2 font-mono text-[11.5px] font-bold uppercase tracking-[0.12em] text-ink">
+              <p className="mt-5 flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wide text-ink">
                 <RotateCcw size={14} /> Clique une carte
               </p>
-              <Link to="/cartes" className="btn btn-craie mt-7">
+              <Link to="/cartes" className="btn btn-craie mt-6">
                 Voir les 30 cartes <MoveRight size={16} />
               </Link>
-<PhotoLegendee photo={photos.doutesCartes} ratio="4 / 3" className="mt-10 max-w-sm" />
+              <PhotoLegendee photo={photos.doutesCartes} ratio="4 / 3" className="mt-8" />
             </Vu>
           </div>
-          <div className="grid gap-5 sm:grid-cols-3 lg:col-span-8">
+          <div className="grid gap-6 pt-2 sm:grid-cols-3 lg:col-span-8 lg:pt-0">
             {choisies.map((c, i) => (
               <Vu key={c.id} delay={i * 110}>
                 <CarteDoute carte={c} />

@@ -41,21 +41,21 @@ export function EntetePage({
 }) {
   const barre = fil === "#321044" ? "#F3781E" : fil;
   return (
-    <header className="hero-page relative isolate overflow-hidden pt-[70px]" style={{ ["--hero-accent" as string]: barre }}>
-      <div className="h-3 w-full" style={{ background: barre }} />
-      <div className="trame-points pointer-events-none absolute inset-0 opacity-[0.05]" aria-hidden="true" />
+    <header className="hero-page relative isolate overflow-hidden" style={{ ["--hero-accent" as string]: barre }}>
+      <div className="" style={{ background: barre }} />
+      <div className="trame-points pointer-events-none absolute opacity-[0.05]" aria-hidden="true" />
       {!photo && (
         <svg className="hero-etoile" viewBox="0 0 100 100" aria-hidden="true">
           <polygon points="50,7 60,36.3 90.9,36.7 66.2,55.3 75.3,84.8 50,67 24.7,84.8 33.8,55.3 9.1,36.7 40,36.3" fill="none" stroke={barre} strokeWidth="1" />
         </svg>
       )}
-      <div className="relative mx-auto grid w-full max-w-[1440px] gap-12 px-5 pb-16 pt-10 sm:px-8 sm:pb-20 sm:pt-14 lg:min-h-[600px] lg:grid-cols-12 lg:items-center lg:gap-8 xl:px-14">
+      <div className="relative grid lg:grid-cols-12 lg:items-center">
         <div className={photo ? "lg:col-span-7" : "lg:col-span-9"}>
           <p className="hero-surtitre">{surtitre}</p>
           <h1 className="uppercase">
             <LignesMasquees lignes={lignes} />
           </h1>
-          {intro && <p className="mt-8 max-w-xl text-[17.5px] leading-relaxed text-dim sm:text-[19px]">{intro}</p>}
+          {intro && <p className="text-dim">{intro}</p>}
           {enfants}
         </div>
         {photo && <HeroPhoto photo={photo} />}
@@ -79,7 +79,7 @@ export function Bloc({
   className?: string;
 }) {
   return (
-    <section className={`mx-auto w-full max-w-[1440px] px-5 py-14 sm:px-8 sm:py-20 xl:px-14 ${className}`}>
+    <section className={`${className}`}>
       {(titre || numero) && <Etiquette num={numero || "—"} label={titre || ""} fond={fil} />}
       {children}
     </section>

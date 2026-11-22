@@ -195,7 +195,7 @@ export function PanierPage() {
   return (
     <>
       <EntetePage surtitre="Le panier de l’atelier" lignes={[<>Les pièces qui</>, <span key="s" className="livre font-normal text-or">vont t’accompagner.</span>]} intro="Prends le temps de vérifier ton choix. La commande est une simulation de parcours : aucune transaction n’est déclenchée sur ce site." fil="#FFB000" />
-      <Bloc numero="01" titre="Ta sélection" fil="#FFB000">
+      <Bloc numero="01" titre="Ta sélection" fil="#FFB000" className="champ">
         {items.length === 0 ? <PanierVide /> : (
           <div className="cart-page-grid">
             <div className="cart-list">
@@ -211,7 +211,7 @@ export function PanierPage() {
                 ))}
               </ul>
             </div>
-            <div className="cart-page-aside"><Summary items={items} subtotal={total} editable /><Link to="/commande" className="btn btn-or w-full">Passer à la commande <ArrowRight size={16} /></Link><Link to="/bibliotheque" className="back-catalogue"><ArrowLeft size={15} /> Continuer dans la bibliothèque</Link></div>
+            <div className="cart-page-aside"><Summary items={items} subtotal={total} editable /><Link to="/commande" className="btn btn-or">Passer à la commande <ArrowRight size={16} /></Link><Link to="/bibliotheque" className="back-catalogue"><ArrowLeft size={15} /> Continuer dans la bibliothèque</Link></div>
           </div>
         )}
       </Bloc>
@@ -303,12 +303,12 @@ export function CommandePage() {
     aller("/confirmation");
   };
 
-  if (!items.length) return <><EntetePage surtitre="Commande" lignes={[<>Ton panier est</>, <span key="s" className="livre font-normal text-or">à compléter.</span>]} intro="Il n’y a encore aucune pièce à préparer." fil="#FFB000" /><Bloc><PanierVide message="Ajoute au moins un ouvrage avant de commencer la commande." /></Bloc></>;
+  if (!items.length) return <><EntetePage surtitre="Commande" lignes={[<>Ton panier est</>, <span key="s" className="livre font-normal text-or">à compléter.</span>]} intro="Il n’y a encore aucune pièce à préparer." fil="#FFB000" /><Bloc className="champ"><PanierVide message="Ajoute au moins un ouvrage avant de commencer la commande." /></Bloc></>;
 
   return (
     <>
       <EntetePage surtitre="Atelier de commande" lignes={[<>On prépare</>, <span key="s" className="livre font-normal text-or">ton chemin.</span>]} intro="Un parcours simple, comme une fiche d’atelier : tes coordonnées, la livraison, puis une intention de paiement. Rien n’est débité." fil="#FFB000" />
-      <Bloc numero="01" titre="Le parcours" fil="#FFB000">
+      <Bloc numero="01" titre="Le parcours" fil="#FFB000" className="champ">
         <div className="checkout-mobile-summary">
           <button type="button" onClick={() => setOpenSummary((value) => !value)} aria-expanded={openSummary}><span><ShoppingBag size={16} /> Récapitulatif · {fcfa(total + frais)}</span><ChevronDown size={17} className={openSummary ? "rotate-180" : ""} /></button>
           {openSummary && <Summary items={items} subtotal={total} livraison={form.livraison} editable />}
@@ -332,7 +332,7 @@ export function ConfirmationPage() {
     try { return JSON.parse(window.localStorage.getItem(LAST_ORDER_KEY) || "null") as OrderRecord | null; } catch { return null; }
   });
 
-  if (!order) return <><EntetePage surtitre="Confirmation" lignes={[<>Aucune commande</>, <span key="s" className="livre font-normal text-or">à afficher.</span>]} intro="Le dernier récapitulatif n’est plus disponible sur cet appareil." fil="#FFB000" /><Bloc><PanierVide message="Retourne dans la bibliothèque pour choisir une pièce." /></Bloc></>;
+  if (!order) return <><EntetePage surtitre="Confirmation" lignes={[<>Aucune commande</>, <span key="s" className="livre font-normal text-or">à afficher.</span>]} intro="Le dernier récapitulatif n’est plus disponible sur cet appareil." fil="#FFB000" /><Bloc className="champ"><PanierVide message="Retourne dans la bibliothèque pour choisir une pièce." /></Bloc></>;
 
   const messageWhatsapp = [
     `Bonjour Nadine, je viens de passer la commande ${order.reference}.`,
@@ -349,7 +349,7 @@ export function ConfirmationPage() {
   return (
     <>
       <EntetePage surtitre="Commande préparée" lignes={[<>Ton chemin</>, <span key="s" className="livre font-normal text-or">peut commencer.</span>]} intro="Ta commande a été transmise à l’atelier par e-mail. Pour accélérer le traitement, tu peux aussi la confirmer directement sur WhatsApp." fil="#FFB000" />
-      <Bloc numero="01" titre="Confirmation" fil="#FFB000">
+      <Bloc numero="01" titre="Confirmation" fil="#FFB000" className="champ">
         <div className="confirmation-shell">
           <div className="confirmation-seal"><CheckCircle2 size={34} strokeWidth={1.5} /></div>
           <p className="label">Demande enregistrée</p>

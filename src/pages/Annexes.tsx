@@ -21,17 +21,17 @@ export function APropos() {
       />
 
       <Bloc numero="01" titre="L’autrice" fil="#FFB000">
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           <Vu className="lg:col-span-5">
             <PhotoCadre photo={photos.auteure} ratio="4 / 5" creditVisible={false} sizes="(min-width: 1024px) 40vw, 100vw">
               <BandeKente hauteur={6} className="absolute inset-x-0 top-0 z-10" />
-              <div className="absolute inset-x-0 bottom-0 z-10 bg-paper p-7 text-[#FFF0D9] sm:p-9">
+              <div className="absolute inset-x-0 bottom-0 z-10 bg-paper/90 px-5 py-4 text-[#FFF0D9]">
                 <Etoile taille={40} fil="#FFB000" className="anim-tourne" />
-                <p className="mt-5 font-display text-[46px] font-extrabold leading-[0.9] sm:text-[62px]">
+                <p className="mt-2 font-display text-xl font-extrabold">
                   Nadine<br />Zoro
                 </p>
-                <p className="mt-4 font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-[#FFB000]">Autrice & coach de vie</p>
-                <p className="mt-3 max-w-sm text-[12.5px] leading-snug opacity-85">
+                <p className="mt-1 font-mono text-xs font-bold uppercase text-[#FFB000]">Autrice & coach de vie</p>
+                <p className="mt-2 text-xs leading-relaxed opacity-85">
                   Photographie d’illustration. Aucun portrait officiel n’est publié par le mouvement : nous n’en générons pas.
                 </p>
               </div>
@@ -40,16 +40,16 @@ export function APropos() {
 
           <div className="lg:col-span-7">
             <Vu>
-              <p className="text-[18px] leading-relaxed text-dim">{marque.fondation}</p>
-              <p className="mt-8 border-l-[6px] border-or pl-6 font-display text-[26px] font-extrabold uppercase leading-[0.95] tracking-[-0.035em] text-or sm:text-[34px]">
+              <p className="text-dim">{marque.fondation}</p>
+              <p className="mt-5 border-l-[6px] border-or py-1 pl-5 font-display text-lg font-extrabold uppercase text-or sm:text-xl">
                 « Tu n’es pas un hasard. Tu es une réponse. »
               </p>
-              <p className="mt-8 text-[16px] leading-relaxed text-dim">
+              <p className="text-dim mt-5">
                 C’est la phrase sur laquelle s’ouvre le mouvement, et celle qui tient toute la méthode : découvrir ses
                 talents uniques, activer sa mission de vie et bâtir son avenir — avec courage et authenticité.
               </p>
 
-              <ul className="mt-10 grid gap-4 sm:grid-cols-2">
+              <ul className="mt-7 grid gap-4 sm:grid-cols-2">
                 {[
                   ["Le livre", "Active ton Superpouvoir ! — 8 chapitres"],
                   ["La méthode", "Radar Personnel · Ikigai · CAP · Chemin du Héros"],
@@ -62,7 +62,7 @@ export function APropos() {
                 ))}
               </ul>
 
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-wrap gap-3">
                 <Link to="/le-livre" className="btn btn-or">
                   Découvrir le livre <MoveRight size={16} />
                 </Link>
@@ -77,14 +77,14 @@ export function APropos() {
 
       <Bloc numero="02" titre="Où vit le mouvement" fil="#FFB000">
         <Vu>
-          <h2 className="display-l max-w-3xl">
+          <h2 className="display-l">
             Abidjan, Dakar, Paris : <span className="livre font-normal text-or">un même fil.</span>
           </h2>
-          <p className="mt-5 max-w-2xl text-[16.5px] text-dim">
+          <p className="text-dim mt-2">
             {marque.communaute} — {marque.communauteDetail}. Le mouvement est né à Abidjan et se retrouve aujourd’hui dans les villes de la diaspora.
           </p>
         </Vu>
-        <div className="mt-10 grid gap-4 md:grid-cols-12">
+        <div className="mt-8 grid gap-4 md:grid-cols-12">
           <Vu className="md:col-span-7">
             <PhotoCadre photo={villePhotos.Abidjan} ratio="16 / 11" ratioMobile="4 / 3" voile>
               <span className="ville-etiquette">Abidjan</span>
@@ -106,14 +106,14 @@ export function APropos() {
       </Bloc>
 
       <Bloc numero="03" titre="Ce que le mouvement ne publie pas encore" fil="#FFB000">
-        <div className="flex items-start gap-4 border border-or/25 bg-or/[0.06] p-7">
-          <AlertTriangle size={20} className="mt-1 shrink-0 text-or" />
+        <div className="flex items-start gap-3 rounded-2xl border border-or/25 bg-or/[0.06] p-5">
+          <AlertTriangle size={20} className="mt-0.5 shrink-0 text-or" />
           <div>
-            <p className="text-[15.5px] leading-relaxed text-dim">
+            <p className="text-dim">
               La biographie détaillée et le portrait officiel seront ajoutés dès que les éléments validés seront disponibles.
               En attendant, cette page reste volontairement simple et centrée sur la mission du mouvement.
             </p>
-            <p className="mt-3 text-[14px] text-dim-2">
+            <p className="text-dim-2 mt-3">
               Éléments à fournir pour compléter cette page : biographie validée par l’autrice, portrait officiel,
               couverture du livre en haute définition, sommaire des huit chapitres.
             </p>
@@ -154,20 +154,20 @@ export function Contact() {
       />
 
       <Bloc numero="01" titre="Écrire" fil="#FFB000">
-        <div className="grid gap-12 lg:grid-cols-12">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
             <Vu>
-              <p className="label mb-3">Adresse officielle</p>
+              <p className="label">Adresse officielle</p>
               <a
                 href={`mailto:${marque.emailMailto}`}
-                className="inline-flex max-w-full flex-wrap items-center gap-2 font-display text-[clamp(1.05rem,4.4vw,1.875rem)] font-extrabold text-or underline-offset-8 hover:underline"
+                className="mt-2 inline-flex flex-wrap items-center gap-2 font-display text-[clamp(1.05rem,4.4vw,1.875rem)] font-extrabold text-or underline-offset-8 hover:underline"
                 style={{ overflowWrap: "anywhere" }}
               >
                 {marque.email} <ArrowUpRight size={20} className="shrink-0" />
               </a>
 
-              <p className="label mb-3 mt-10">Ton sujet</p>
-              <ul className="space-y-2">
+              <p className="label mt-7">Ton sujet</p>
+              <ul className="mt-3 space-y-2">
                 {INTENTIONS.map((i) => {
                   const actif = i.id === intention.id;
                   return (
@@ -176,7 +176,7 @@ export function Contact() {
                         type="button"
                         onClick={() => setIntention(i)}
                         aria-pressed={actif}
-                        className={`flex w-full items-center justify-between border px-4 py-3 text-left text-[15px] transition-colors ${
+                        className={`flex w-full items-center justify-between gap-3 rounded-2xl border px-4 py-3.5 text-left transition-colors ${
                           actif ? "border-or bg-or/12 text-paper" : "border-paper/16 text-dim hover:border-paper/40"
                         }`}
                       >
@@ -188,9 +188,9 @@ export function Contact() {
                 })}
               </ul>
 
-              <PhotoLegendee photo={photos.ecoles} ratio="4 / 3" className="mt-10" />
+              <PhotoLegendee photo={photos.ecoles} ratio="4 / 3" className="mt-7" />
 
-              <p className="mt-8 text-[13.5px] leading-snug text-dim-2">
+              <p className="text-dim-2 mt-4">
                 Les actualités, rencontres et collaborations seront annoncées ici au fil du développement du mouvement.
               </p>
             </Vu>
@@ -204,7 +204,7 @@ export function Contact() {
                   setEnvoye(true);
                   window.location.href = lien;
                 }}
-                className="border border-paper/14 bg-ink-2 p-7 sm:p-9"
+                className="flex flex-col gap-5 rounded-[22px] border border-paper/14 bg-ink-2 p-6 sm:p-8"
               >
                 <label className="block">
                   <span className="label mb-2 block">Ton nom</span>
@@ -212,31 +212,31 @@ export function Contact() {
                     required
                     value={nom}
                     onChange={(e) => setNom(e.target.value)}
-                    className="min-h-[48px] w-full border border-paper/22 bg-ink px-4 outline-none transition-colors focus:border-or"
+                    className="w-full rounded-xl border border-paper/22 bg-ink px-4 py-3 outline-none transition-colors focus:border-or"
                     placeholder="Prénom et nom"
                   />
                 </label>
 
-                <label className="mt-6 block">
+                <label className="block">
                   <span className="label mb-2 block">Ton message</span>
                   <textarea
                     required
                     rows={7}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
-                    className="w-full resize-y border border-paper/22 bg-ink p-4 outline-none transition-colors focus:border-or"
+                    className="w-full resize-y rounded-xl border border-paper/22 bg-ink px-4 py-3 outline-none transition-colors focus:border-or"
                     placeholder="Dis-nous tout : contexte, échéance, public concerné…"
                   />
                 </label>
 
-                <div className="mt-7 flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-3">
                   <button type="submit" className="btn btn-or">
                     <Mail size={16} /> Ouvrir dans ma messagerie
                   </button>
-                  <span className="text-[13px] text-dim-2">Objet : {intention.objet}</span>
+                  <span className="text-dim-2">Objet : {intention.objet}</span>
                 </div>
 
-                <p className="mt-4 text-[12.5px] leading-snug text-dim-2" role="status">
+                <p className="text-dim-2" role="status">
                   {envoye
                     ? "Ta messagerie s’ouvre avec ton message pré-rempli. Il ne reste qu’à l’envoyer."
                     : "Ce formulaire ne stocke rien : il compose un email réel dans ta messagerie, à l’adresse du mouvement."}
@@ -253,19 +253,19 @@ export function Contact() {
 /* ——————————————————— 404 ——————————————————— */
 export function Introuvable({ chemin }: { chemin: string }) {
   return (
-    <div className="mx-auto w-full max-w-[1000px] px-5 pb-24 pt-40 sm:px-8">
-      <p className="label mb-6 flex items-center gap-2">
+    <div className="champ relative mx-auto w-full max-w-[640px]">
+      <p className="label flex items-center gap-2">
         <Etoile taille={13} /> Poste introuvable
       </p>
-      <h1 className="display-l">
+      <h1 className="display-l mt-2">
         Cette pièce n’est pas<br />
         <span className="livre font-normal text-or">sur l’établi.</span>
       </h1>
-      <p className="mt-6 max-w-xl text-[16.5px] text-dim">
-        L’adresse <code className="text-or">{chemin}</code> ne correspond à aucune page de l’atelier. Voici les postes
+      <p className="text-dim">
+        L’adresse <code className="rounded-md bg-paper/8 px-1.5 py-0.5 font-mono text-[0.9em] text-or">{chemin}</code> ne correspond à aucune page de l’atelier. Voici les postes
         qui existent.
       </p>
-      <ul className="mt-10 flex flex-wrap gap-3">
+      <ul className="mt-7 flex flex-wrap gap-3">
         {[{ href: "#/", label: "Accueil" }, ...navigation, { href: "#/boutique", label: "Boutique" }].map((n) => (
           <li key={n.href}>
             <Link to={n.href.slice(1)} className="btn btn-craie">

@@ -109,30 +109,30 @@ export default function Quiz() {
           lignes={[<>Découvre ton</>, <span key="s" className="livre font-normal text-or">superpouvoir</span>]}
           intro="Réponds à 10 questions simples et découvre quel type de héros tu es vraiment. Pas de bonnes ou mauvaises réponses — juste toi."
         />
-        <div className="mx-auto w-full max-w-[1400px] px-5 pb-24 sm:px-8 xl:px-14">
-          <div className="grid gap-10 rounded-[26px] border border-paper/10 bg-ink-2 p-7 sm:p-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <ul className="flex flex-wrap gap-x-10 gap-y-4">
+        <div className="champ">
+          <div className="ombre grid overflow-hidden rounded-[28px] border border-paper/10 bg-ink-2 lg:grid-cols-12">
+            <div className="flex flex-col items-start gap-6 p-8 sm:p-10 lg:col-span-7 lg:p-14">
+              <ul className="flex flex-wrap gap-8">
                 {[["10", "questions"], ["3", "minutes"], ["8", "profils héros"]].map(([n, l]) => (
-                  <li key={l}>
-                    <span data-compte className="block font-display text-[46px] font-extrabold leading-none text-or">{n}</span>
+                  <li key={l} className="flex flex-col gap-1">
+                    <span data-compte className="block font-display text-3xl font-extrabold text-or">{n}</span>
                     <span className="label">{l}</span>
                   </li>
                 ))}
               </ul>
-              <p className="mt-8 max-w-xl text-[16px] text-dim">
+              <p className="text-dim">
                 Chaque réponse tisse huit fils à la fois. À la fin, le fil dominant révèle ton archétype — avec ses
                 forces, ses zones d’ombre, sa mission et les ressources faites pour toi.
               </p>
-              <button type="button" onClick={() => setPhase("questions")} className="btn btn-or mt-9">
+              <button type="button" onClick={() => setPhase("questions")} className="btn btn-or">
                 C’est parti <MoveRight size={17} strokeWidth={2.4} />
               </button>
             </div>
-            <div className="lg:col-span-5">
-              <p className="label mb-4">Les huit fils</p>
-              <ul className="grid grid-cols-2 gap-2">
+            <div className="flex flex-col gap-4 border-t border-paper/10 p-8 sm:p-10 lg:col-span-5 lg:border-l lg:border-t-0 lg:p-14">
+              <p className="label">Les huit fils</p>
+              <ul className="grid grid-cols-2 gap-3">
                 {ORDRE.map((c) => (
-                  <li key={c} className="flex items-center gap-2.5 rounded-full border border-paper/10 px-3 py-2.5 text-[13.5px]">
+                  <li key={c} className="flex items-center gap-2 rounded-full border border-paper/10 bg-ink px-3 py-2 text-sm font-semibold">
                     <span className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ background: profils[c].primaryColor }} />
                     {profils[c].type}
                   </li>
@@ -148,13 +148,13 @@ export default function Quiz() {
   /*————————————————— TISSAGE ————————————————— */
   if (phase === "tissage") {
     return (
-      <div className="flex min-h-[100svh] flex-col items-center justify-center gap-8 px-6 pt-[68px] text-center">
+      <div className="fond-tisse flex min-h-[70vh] flex-col items-center justify-center gap-6 px-6 text-center">
         <Etoile taille={54} className="anim-tourne" />
-        <p className="livre text-[30px] text-or sm:text-[40px]">Tissage de ton profil…</p>
-        <div className="w-full max-w-md">
+        <p className="livre text-4xl text-or">Tissage de ton profil…</p>
+        <div className="w-full max-w-xs">
           <BandeKente hauteur={10} />
         </div>
-        <p className="label" role="status">
+        <p className="font-body text-[11.5px] font-bold uppercase tracking-[0.08em] text-ink/60" role="status">
           Croisement de tes dix réponses
         </p>
       </div>
@@ -165,18 +165,18 @@ export default function Quiz() {
   if (phase === "resultat") {
     return (
       <div style={{ ["--fil" as string]: profil.primaryColor }}>
-        <header className="relative overflow-hidden pt-[68px]" style={{ background: `${profil.primaryColor}1a` }}>
+        <header className="relative overflow-hidden px-6 pb-14 pt-10 sm:px-10 sm:pt-14 lg:px-16" style={{ background: `${profil.primaryColor}1a` }}>
           <BandeKente hauteur={6} />
-          <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-5 pb-16 pt-14 sm:px-8 lg:grid-cols-12 xl:px-14">
-            <div className="lg:col-span-8">
-              <p className="label mb-5 flex items-center gap-2">
+          <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="flex flex-col items-start gap-4 lg:col-span-8">
+              <p className="label flex items-center gap-2">
                 <Etoile taille={13} fil={profil.primaryColor} /> Ton profil dominant
               </p>
-              <h1 className="display-xl uppercase">{profil.type}</h1>
-              <span className="mt-4 block h-3 w-40 rounded-full" style={{ background: profil.primaryColor }} aria-hidden="true" />
-              <p className="mt-3 font-display text-[20px] font-extrabold uppercase tracking-[0.12em] text-paper/80">{profil.archetype}</p>
-              <p className="livre mt-7 max-w-2xl text-[26px] leading-[1.2] sm:text-[32px]">{profil.tagline}</p>
-              <div className="mt-8 flex flex-wrap gap-3">
+              <h1 className="display-xl uppercase" style={{ color: "var(--fil)" }}>{profil.type}</h1>
+              <span className="block h-1.5 w-16 rounded-full" style={{ background: profil.primaryColor }} aria-hidden="true" />
+              <p className="font-display text-lg font-extrabold uppercase text-paper/80">{profil.archetype}</p>
+              <p className="livre text-2xl text-or">{profil.tagline}</p>
+              <div className="mt-2 flex flex-wrap gap-3">
                 <button type="button" onClick={copier} className="btn btn-or">
                   {copie ? <Check size={16} /> : <Copy size={16} />} {copie ? "Profil copié" : "Copier mon profil"}
                 </button>
@@ -187,16 +187,16 @@ export default function Quiz() {
             </div>
 
             <div className="lg:col-span-4">
-              <p className="label mb-4">Tes fils dominants</p>
-              <ul className="space-y-3">
+              <p className="label">Tes fils dominants</p>
+              <ul className="mt-4 space-y-4">
                 {classement.slice(0, 4).map((c) => (
                   <li key={c.cle}>
-                    <div className="flex items-baseline justify-between text-[13.5px]">
+                    <div className="flex items-baseline justify-between gap-2">
                       <span className="font-semibold">{profils[c.cle].type}</span>
                       <span className="text-dim-2">{c.part}%</span>
                     </div>
-                    <div className="mt-1.5 h-1.5 w-full rounded-full bg-paper/10">
-                      <div className="h-1.5 rounded-full transition-[width] duration-1000" style={{ width: `${c.part}%`, background: profils[c.cle].primaryColor }} />
+                    <div className="mt-1.5 h-2 overflow-hidden rounded-full bg-paper/10">
+                      <div className="h-full rounded-full transition-[width] duration-1000" style={{ width: `${c.part}%`, background: profils[c.cle].primaryColor }} />
                     </div>
                   </li>
                 ))}
@@ -205,37 +205,37 @@ export default function Quiz() {
           </div>
         </header>
 
-        <div className="mx-auto w-full max-w-[1400px] px-5 pb-24 sm:px-8 xl:px-14">
-          <div className="grid gap-12 lg:grid-cols-12">
-            <div className="lg:col-span-7">
-              <Vu>
+        <div className="champ">
+          <div className="grid gap-12 lg:grid-cols-12 lg:gap-16">
+            <div className="flex flex-col gap-10 lg:col-span-7">
+              <Vu className="flex flex-col gap-4">
                 {profil.description.split("\n\n").map((p, i) => (
-                  <p key={i} className="mb-5 text-[16.5px] leading-relaxed text-dim">
+                  <p key={i} className="text-dim">
                     {p}
                   </p>
                 ))}
               </Vu>
 
-              <Vu>
-                <h2 className="display-m mt-10">Ta mission</h2>
-                <p className="livre mt-4 border-l-2 pl-6 text-[24px] leading-snug sm:text-[28px]" style={{ borderColor: profil.primaryColor }}>
+              <Vu className="flex flex-col gap-3">
+                <h2 className="display-m">Ta mission</h2>
+                <p className="livre border-l-4 pl-5 text-2xl" style={{ borderColor: profil.primaryColor }}>
                   {profil.mission}
                 </p>
               </Vu>
 
-              <Vu>
-                <h2 className="display-m mt-12">Ton chemin</h2>
-                <p className="mt-4 text-[16.5px] leading-relaxed text-dim">{profil.idealPath}</p>
+              <Vu className="flex flex-col gap-3">
+                <h2 className="display-m">Ton chemin</h2>
+                <p className="text-dim">{profil.idealPath}</p>
               </Vu>
             </div>
 
             <aside className="space-y-8 lg:col-span-5">
               <Vu>
-                <div className="rounded-[20px] border border-paper/10 bg-ink-2 p-6">
-                  <h2 className="label mb-4">Tes superpouvoirs</h2>
-                  <ul className="space-y-3">
+                <div className="rounded-[20px] border border-paper/10 bg-ink-2 p-6 sm:p-8">
+                  <h2 className="label">Tes superpouvoirs</h2>
+                  <ul className="mt-4 space-y-3">
                     {profil.superpowers.map((s) => (
-                      <li key={s.label} className="flex items-start gap-3 text-[15px]">
+                      <li key={s.label} className="flex items-start gap-3 font-semibold">
                         <Etoile taille={14} fil={profil.primaryColor} className="mt-1 shrink-0" />
                         {s.label}
                       </li>
@@ -245,11 +245,11 @@ export default function Quiz() {
               </Vu>
 
               <Vu delay={90}>
-                <div className="rounded-[20px] border border-paper/10 bg-ink-2 p-6">
-                  <h2 className="label mb-4">Tes zones d’ombre</h2>
-                  <ul className="space-y-3">
+                <div className="rounded-[20px] border border-paper/10 bg-ink-2 p-6 sm:p-8">
+                  <h2 className="label">Tes zones d’ombre</h2>
+                  <ul className="mt-4 space-y-3">
                     {profil.shadows.map((s) => (
-                      <li key={s.text} className="border-l border-paper/25 pl-4 text-[14.5px] leading-snug text-dim">
+                      <li key={s.text} className="border-l-2 border-paper/25 pl-3 text-dim">
                         {s.text}
                       </li>
                     ))}
@@ -258,13 +258,13 @@ export default function Quiz() {
               </Vu>
 
               <Vu delay={140}>
-                <div className="rounded-[20px] border border-paper/10 bg-ink-2 p-6">
-                  <h2 className="label mb-4">Ils portent le même fil</h2>
-                  <ul className="space-y-3">
+                <div className="rounded-[20px] border border-paper/10 bg-ink-2 p-6 sm:p-8">
+                  <h2 className="label">Ils portent le même fil</h2>
+                  <ul className="mt-4 space-y-3">
                     {profil.famousHeroes.map((h) => (
-                      <li key={h.name} className="text-[15px]">
+                      <li key={h.name}>
                         <span className="font-display font-extrabold">{h.name}</span>
-                        <span className="block text-[13px] text-dim-2">{h.role}</span>
+                        <span className="block text-dim-2">{h.role}</span>
                       </li>
                     ))}
                   </ul>
@@ -273,27 +273,27 @@ export default function Quiz() {
             </aside>
           </div>
 
-          <Vu>
-            <h2 className="display-m mt-16">Tes affirmations</h2>
-            <ul className="mt-6 grid gap-4 sm:grid-cols-3">
+          <Vu className="mt-16">
+            <h2 className="display-m">Tes affirmations</h2>
+            <ul className="grid gap-5 sm:grid-cols-3">
               {profil.affirmations.map((a) => (
-                <li key={a.text} className="flex h-full flex-col justify-between rounded-[20px] bg-paper p-6 text-ink">
-                  <span className="label" style={{ color: "rgba(29,23,16,.55)" }}>
+                <li key={a.text} className="flex flex-col justify-between gap-4 rounded-[20px] bg-paper p-6 text-ink">
+                  <span className="label" style={{ color: "rgba(255,244,227,.55)" }}>
                     {a.domain}
                   </span>
-                  <p className="livre mt-4 text-[21px] leading-tight">{a.text}</p>
+                  <p className="livre text-xl">{a.text}</p>
                 </li>
               ))}
             </ul>
           </Vu>
 
-          <Vu>
-            <h2 className="display-m mt-16">Les ressources faites pour toi</h2>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2">
+          <Vu className="mt-16">
+            <h2 className="display-m">Les ressources faites pour toi</h2>
+            <ul className="grid gap-4 sm:grid-cols-2">
               {profil.resources.map((r) => (
-                <li key={r.label} className="rounded-[18px] border border-paper/10 bg-ink-2 p-6">
-                  <p className="font-display text-[19px] font-extrabold">{r.label}</p>
-                  <p className="mt-1.5 text-[14px] text-dim-2">{r.subtitle}</p>
+                <li key={r.label} className="rounded-[18px] border border-paper/10 bg-ink-2 p-5">
+                  <p className="font-display font-extrabold">{r.label}</p>
+                  <p className="text-dim-2">{r.subtitle}</p>
                 </li>
               ))}
             </ul>
@@ -316,34 +316,38 @@ export default function Quiz() {
 
   /* ————————————————— QUESTIONS ————————————————— */
   return (
-    <div ref={zone} className="min-h-[100svh] pt-[68px]">
-      <div className="mx-auto w-full max-w-[900px] px-5 pb-24 pt-10 sm:px-8">
-        <div className="flex items-center justify-between">
-          <Link to="/" className="inline-flex items-center gap-2 text-[13px] text-dim-2 transition-colors hover:text-or">
-            <ArrowLeft size={15} /> Quitter le quiz
-          </Link>
-          <p className="label" aria-live="polite">
-            Question {index + 1} / {questions.length}
-          </p>
+    <div ref={zone} className="champ">
+      <div className="mx-auto flex max-w-3xl flex-col gap-8">
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="inline-flex items-center gap-2 text-dim-2 transition-colors hover:text-or">
+              <ArrowLeft size={15} /> Quitter le quiz
+            </Link>
+            <p className="label" aria-live="polite">
+              Question {index + 1} / {questions.length}
+            </p>
+          </div>
+
+          <div className="flex gap-1.5" aria-hidden="true">
+            {questions.map((_, i) => (
+              <span
+                key={i}
+                className="h-1.5 flex-1 rounded-full transition-colors duration-500"
+                style={{ background: i < index ? "#F3781E" : i === index ? "#F3781E" : "rgba(50,16,68,.1)" }}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="mt-4 flex gap-1.5" aria-hidden="true">
-          {questions.map((_, i) => (
-            <span
-              key={i}
-              className="h-1 flex-1 rounded-full transition-colors duration-500"
-              style={{ background: i < index ? "#F3781E" : i === index ? "#F3781E" : "rgba(50,16,68,.1)" }}
-            />
-          ))}
-        </div>
-
-        <div key={index} className="mt-12">
-          <p className="label text-or">{q.theme}</p>
-          <h1 className="mt-4 font-display text-[28px] font-extrabold leading-[1.05] sm:text-[40px]">{q.text}</h1>
-          <p className="mt-4 text-[15px] text-dim-2">{q.context}</p>
+        <div key={index} className="flex flex-col gap-6">
+          <div className="flex flex-col gap-2">
+            <p className="label text-or">{q.theme}</p>
+            <h1 className="font-display text-2xl font-extrabold sm:text-3xl">{q.text}</h1>
+            <p className="text-dim-2">{q.context}</p>
+          </div>
 
           <ul
-            className="mt-9 space-y-3"
+            className="space-y-3"
             role="radiogroup"
             aria-label={q.text}
             onKeyDown={(e) => {
@@ -370,12 +374,12 @@ export default function Quiz() {
                     }`}
                   >
                     <span
-                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full font-display text-[13px] font-extrabold transition-colors"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-display text-sm font-extrabold transition-colors"
                       style={{ border: "1px solid #F3781E", background: actif ? "#F3781E" : "transparent", color: actif ? "#FFF8EC" : "#F3781E" }}
                     >
                       {o.label}
                     </span>
-                    <span className="pt-1 text-[15.5px] leading-snug sm:text-[16.5px]">{o.text}</span>
+                    <span className="pt-1 font-semibold text-paper/90">{o.text}</span>
                   </button>
                 </li>
               );
@@ -383,7 +387,7 @@ export default function Quiz() {
           </ul>
         </div>
 
-        <div className="mt-10 flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between">
           <button
             type="button"
             onClick={() => setIndex(Math.max(0, index - 1))}

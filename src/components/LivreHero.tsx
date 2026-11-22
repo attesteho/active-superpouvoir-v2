@@ -58,8 +58,8 @@ export function LivreHero() {
             <p className="book-world-instruction">Feuillette avec ton regard.<br />Le premier geste est à toi.</p>
           </div>
           <div className="book-world-actions">
-            <Link to="/quiz" className="book-world-cta">Lancer le voyage <ArrowUpRight size={16} /></Link>
-            <Link to="/le-livre" className="book-world-link">Explorer les chapitres</Link>
+            <Link to="/quiz" className="book-world-cta btn btn-or">Lancer le voyage <ArrowUpRight size={16} /></Link>
+            <Link to="/le-livre" className="book-world-link souligne font-display font-semibold">Explorer les chapitres</Link>
           </div>
         </div>
       </div>

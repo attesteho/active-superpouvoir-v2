@@ -86,10 +86,10 @@ export function LignesMasquees({ lignes, className = "" }: { lignes: ReactNode[]
 export function Etiquette({ num, label, fond = "#321044" }: { num: string; label: string; fond?: string; encre?: string }) {
   const accent = fond === "#321044" ? "#F3781E" : fond;
   return (
-    <div className="etiquette mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5" style={{ background: `${accent}14` }}>
-      <span className="font-mono text-[11px] font-bold" style={{ color: accent }}>{num}</span>
-      <span className="h-1 w-1 rounded-full" style={{ background: accent }} />
-      <span className="font-mono text-[11px] font-bold uppercase tracking-[0.12em]" style={{ color: accent }}>{label}</span>
+    <div className="etiquette inline-flex items-center rounded-full" style={{ background: `${accent}14` }}>
+      <span className="font-mono font-bold" style={{ color: accent }}>{num}</span>
+      <span className="rounded-full" style={{ background: accent }} />
+      <span className="font-mono font-bold uppercase" style={{ color: accent }}>{label}</span>
     </div>
   );
 }
@@ -114,7 +114,7 @@ export function Poste({
 }) {
   return (
     <section id={id} className={`champ relative ${className}`} data-poste={num}>
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 xl:px-14">
+      <div className="">
         <Etiquette num={num} label={label} fond={teinte} encre={encre} />
         {children}
       </div>
@@ -126,7 +126,7 @@ export function Poste({
 export function Defilement({ enfants, vitesse = 40 }: { enfants: ReactNode; vitesse?: number }) {
   return (
     <div className="relative flex overflow-hidden">
-      <div className="anim-defile flex shrink-0 items-center gap-10 pr-10" style={{ animationDuration: `${vitesse}s` }}>
+      <div className="anim-defile flex shrink-0 items-center" style={{ animationDuration: `${vitesse}s` }}>
         {enfants}
         {enfants}
       </div>
@@ -183,19 +183,19 @@ export function RailFils({ postes }: { postes: { num: string; label: string; id:
   }, [postes]);
 
   return (
-    <nav aria-label="Progression" className="pointer-events-none fixed left-0 top-0 z-30 hidden h-screen w-[58px] mix-blend-difference xl:block">
-      <div className="absolute left-[26px] top-0 h-full w-[2px] bg-[#FFF0D9]/30" />
-      <div className="absolute left-[26px] top-0 w-[2px] bg-[#FFB000]" style={{ height: `${p * 100}%` }} />
-      <ul className="pointer-events-auto absolute left-0 top-1/2 flex -translate-y-1/2 flex-col gap-4">
+    <nav aria-label="Progression" className="pointer-events-none fixed z-30 hidden mix-blend-difference xl:block">
+      <div className="absolute bg-[#FFF0D9]/30" />
+      <div className="absolute bg-[#FFB000]" style={{ height: `${p * 100}%` }} />
+      <ul className="pointer-events-auto absolute flex -translate-y-1/2 flex-col">
         {postes.map((s, i) => (
           <li key={s.id} className="group relative flex items-center">
-            <a href={`#${s.id}`} className="flex h-6 w-[58px] items-center pl-[16px]" aria-label={`Poste ${s.num} — ${s.label}`}>
+            <a href={`#${s.id}`} className="flex items-center" aria-label={`Poste ${s.num} — ${s.label}`}>
               <span
-                className="block h-[3px] transition-all duration-500"
+                className="block transition-all duration-500"
                 style={{ width: i === actif ? 24 : 10, background: i === actif ? "#FFB000" : "rgba(255, 240, 217,.55)" }}
               />
             </a>
-            <span className="pointer-events-none absolute left-[58px] whitespace-nowrap bg-[#321044] px-2 py-1 font-mono text-[10px] uppercase tracking-[0.14em] text-[#FFF0D9] opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
+            <span className="pointer-events-none absolute whitespace-nowrap bg-[#321044] font-mono uppercase text-[#FFF0D9] opacity-0 transition-opacity group-hover:opacity-100 group-focus-within:opacity-100">
               {s.num} · {s.label}
             </span>
           </li>
@@ -206,5 +206,5 @@ export function RailFils({ postes }: { postes: { num: string; label: string; id:
 }
 
 export function Fil({ fil = "#FFB000", className = "" }: { fil?: string; className?: string }) {
-  return <span className={`anim-fil block h-[3px] w-full ${className}`} style={{ background: fil }} />;
+  return <span className={`anim-fil block${className}`} style={{ background: fil }} />;
 }

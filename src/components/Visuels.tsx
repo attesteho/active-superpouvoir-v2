@@ -66,14 +66,14 @@ export function ProduitScene({
 export function KitVisuel({ className = "" }: { className?: string }) {
   const petit = usePetitEcran(640);
   return (
-    <div className={`relative flex h-[240px] items-center justify-center sm:h-[360px] ${className}`}>
+    <div className={`relative flex items-center justify-center${className}`}>
       <div className="translate-y-3 rotate-[-9deg]">
         <Livre largeur={petit ? 88 : 132} inclinaison={-14} ouverture={0} interactif={false} />
       </div>
-      <div className="-ml-7 rotate-[2deg] sm:-ml-14">
+      <div className="rotate-[2deg]">
         <Livre largeur={petit ? 112 : 165} inclinaison={-16} ouverture={0} interactif={false} priere="Mon Journal de Superpouvoir" />
       </div>
-      <div className="-ml-7 translate-y-5 rotate-[11deg] sm:-ml-14">
+      <div className="translate-y-5 rotate-[11deg]">
         <Livre largeur={petit ? 88 : 132} inclinaison={-12} ouverture={0} interactif={false} priere="Rituels — 60 jours" />
       </div>
     </div>

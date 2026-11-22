@@ -10,20 +10,20 @@ const promesses = [
 
 export function HeroAccueil() {
   return (
-    <section id="poste-00" className="relative overflow-hidden bg-ink-2 pt-[86px] sm:pt-[96px]">
-      <div className="mx-auto w-full max-w-[1440px] px-5 sm:px-8 xl:px-14">
-        <div className="grid items-center gap-10 pb-12 pt-6 lg:grid-cols-12 lg:gap-8 lg:pb-16 lg:pt-10">
+    <section id="poste-00" className="relative overflow-hidden bg-ink pt-[104px]">
+      <div className="mx-auto max-w-[1320px] px-5 pb-16 sm:px-8 xl:px-12">
+        <div className="grid items-center gap-12 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <p className="pastille">
               <Zap size={13} /> Active ton Superpouvoir
             </p>
-            <h1 className="display-xl mt-5 max-w-xl uppercase text-paper">
-              Et si ton <span className="livre whitespace-nowrap bg-jaune/70 px-1 text-paper">SuperPouvoir</span> était déjà en toi&nbsp;?
+            <h1 className="display-l mt-4 uppercase text-paper">
+              Et si ton <span className="livre inline-block whitespace-nowrap normal-case rounded-md bg-jaune/70 px-2 text-paper">SuperPouvoir</span> était déjà en toi&nbsp;?
             </h1>
-            <p className="mt-5 max-w-md text-[16px] leading-relaxed text-dim">
+            <p className="text-dim">
               Découvre tes talents, dépasse tes doutes et passe à l’action pour construire le futur que tu veux.
             </p>
-            <div className="mt-8 flex flex-wrap items-center gap-3">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
               <Link to="/quiz" className="btn btn-or">
                 <Zap size={16} /> Découvre ton SuperPouvoir <ArrowUpRight size={15} />
               </Link>
@@ -31,7 +31,7 @@ export function HeroAccueil() {
                 Explorer le livre
               </Link>
             </div>
-            <ul className="mt-7 flex flex-wrap gap-5 font-mono text-[11.5px] font-bold uppercase tracking-[0.1em] text-paper/70">
+            <ul className="mt-6 flex flex-wrap items-center gap-2.5 font-mono text-[12px] font-bold uppercase text-paper/60">
               <li>10 questions</li>
               <li>·</li>
               <li>3 minutes</li>
@@ -41,11 +41,11 @@ export function HeroAccueil() {
           </div>
 
           <div className="lg:col-span-5">
-            <div className="relative mx-auto max-w-[340px] rotate-2 overflow-hidden rounded-[28px] shadow-[18px_18px_0_rgba(50,16,68,0.14)] sm:max-w-[400px]">
+            <div className="relative mx-auto max-w-[360px] rotate-2 overflow-hidden rounded-[28px] shadow-[18px_18px_0_rgba(47,15,73,0.14)]">
               <img
                 src="/book/cover.jpg"
                 alt="Couverture du livre Active ton Superpouvoir, de Nadine Zoro"
-                className="block h-auto w-full"
+                className="block w-full"
                 width={1040}
                 height={1330}
               />
@@ -53,15 +53,15 @@ export function HeroAccueil() {
           </div>
         </div>
 
-        <ul className="grid gap-4 border-t-2 border-paper/10 py-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6">
+        <ul className="mt-16 grid gap-x-8 gap-y-8 border-t border-paper/10 pt-10 sm:grid-cols-2 lg:grid-cols-4">
           {promesses.map(({ icone: Icone, titre, detail }) => (
             <li key={titre} className="flex items-start gap-3">
-              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-orange/12 text-orange">
+              <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-orange/12 text-orange">
                 <Icone size={18} />
               </span>
               <div>
-                <p className="font-display text-[14.5px] font-extrabold leading-tight text-paper">{titre}</p>
-                <p className="text-[12.5px] text-dim-2">{detail}</p>
+                <p className="font-display text-[15px] font-extrabold leading-snug text-paper">{titre}</p>
+                <p className="text-dim-2 mt-0.5">{detail}</p>
               </div>
             </li>
           ))}

@@ -62,7 +62,7 @@ export function CarteAvis({ avis }: { avis: Avis }) {
     .join("")
     .toUpperCase();
   return (
-    <Tilt className="h-full">
+    <Tilt className="">
       <article className="avis-carte">
         <span className="avis-guillemet" aria-hidden="true">“</span>
         <p className="avis-etoiles" aria-label={`${avis.note} étoiles sur 5`}>
@@ -101,7 +101,7 @@ type Archetype = { type: string; archetype: string; tagline: string };
 /** Carte d'archétype : numéro en contour, étoile, inversion de couleurs et barre qui s'étire au survol. */
 export function CarteArchetype({ a, index }: { a: Archetype; index: number }) {
   return (
-    <Tilt className="h-full">
+    <Tilt className="">
       <article className="arch-carte">
         <span className="arch-num" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
         <Etoile taille={32} fil="#FFB000" className="arch-etoile" />
@@ -117,7 +117,7 @@ export function CarteArchetype({ a, index }: { a: Archetype; index: number }) {
 /** Carte produit : objet sur panneau ambre, nom, prix et flèche. */
 export function CarteLien({ produit }: { produit: Produit }) {
   return (
-    <Tilt className="h-full">
+    <Tilt className="">
       <Link to={`/boutique/${produit.slug}`} className="lien-carte">
         <span className="lien-carte-visuel">
           <VisuelProduit produit={produit} largeur={96} />

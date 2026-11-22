@@ -35,39 +35,41 @@ export default function Cartes() {
         fil="#FFB000"
       />
 
-      <Bloc numero="01" titre="Tirage" fil="#FFB000">
-        <div className="grid items-center gap-10 lg:grid-cols-12">
+      <Bloc numero="01" titre="Tirage" fil="#FFB000" className="champ">
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
-            <Vu>
+            <Vu className="flex flex-col items-start gap-5">
               <h2 className="display-m">Tire la carte dont tu as besoin aujourd’hui</h2>
-              <p className="mt-5 text-[16px] text-dim">
+              <p className="text-dim">
                 Le matin, ou dans le moment précis où la petite voix se met à parler. Lis le doute à voix haute,
                 retourne la carte, puis fais l’action. C’est le protocole complet.
               </p>
-              <button type="button" onClick={tirer} className="btn btn-or mt-7">
+              <button type="button" onClick={tirer} className="btn btn-or">
                 <Shuffle size={16} /> Tirer une autre carte
               </button>
-              <p className="mt-4 text-[13px] text-dim-2" aria-live="polite">
+              <p className="text-dim-2" aria-live="polite">
                 Carte #{String(carte.id).padStart(2, "0")} · {carte.category}
               </p>
             </Vu>
           </div>
           <div className="lg:col-span-7">
-            <div className="mx-auto max-w-md" key={tirage}>
-              <CarteDoute carte={carte} hauteur={380} />
+            <div className="fond-tisse flex items-center justify-center overflow-hidden rounded-[32px] p-8 sm:p-12" key={tirage}>
+              <div className="w-full max-w-sm">
+                <CarteDoute carte={carte} hauteur={380} />
+              </div>
             </div>
           </div>
         </div>
       </Bloc>
 
-      <Bloc numero="02" titre="Le deck complet" fil="#FFB000">
-        <div className="mb-8 flex flex-wrap items-center gap-2">
+      <Bloc numero="02" titre="Le deck complet" fil="#FFB000" className="champ">
+        <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
             onClick={() => setFiltre("Toutes")}
             aria-pressed={filtre === "Toutes"}
-            className={`min-h-[40px] border px-3.5 text-[13px] font-semibold transition-colors ${
-              filtre === "Toutes" ? "border-or bg-or text-ink" : "border-paper/20 text-dim hover:border-paper/50"
+            className={`rounded-full border px-4 py-2 text-sm font-semibold transition-colors ${
+              filtre === "Toutes" ? "border-or bg-or text-ink" : "border-paper/20 text-paper/70 hover:border-paper/50"
             }`}
           >
             Toutes ({toutes.length})
@@ -80,7 +82,7 @@ export default function Cartes() {
                 type="button"
                 onClick={() => setFiltre(c)}
                 aria-pressed={actif}
-                className="min-h-[40px] border px-3.5 text-[13px] font-semibold transition-colors"
+                className="rounded-full border px-4 py-2 text-sm font-semibold transition-colors"
                 style={{
                   borderColor: actif ? filCategorie[c] : "rgba(50,16,68,.24)",
                   background: actif ? filCategorie[c] : "transparent",
@@ -93,11 +95,11 @@ export default function Cartes() {
           })}
         </div>
 
-        <p className="mb-6 text-[13.5px] text-dim-2" aria-live="polite">
+        <p className="mt-6 text-dim-2" aria-live="polite">
           {visibles.length} carte{visibles.length > 1 ? "s" : ""} affichée{visibles.length > 1 ? "s" : ""} — clique pour retourner.
         </p>
 
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {visibles.map((c, i) => (
             <Vu key={c.id} delay={Math.min(i, 6) * 60}>
               <CarteDoute carte={c} />
@@ -106,17 +108,19 @@ export default function Cartes() {
         </div>
       </Bloc>
 
-      <Bloc numero="03" titre="Emporter le deck" fil="#FFB000">
-        <div className="grid items-center gap-8 border border-paper/14 bg-ink-2 p-7 sm:p-10 lg:grid-cols-12">
-          <div className="lg:col-span-4"><ProduitScene produit={deck} /></div>
-          <div className="lg:col-span-5">
-            <h2 className="display-m">{deck.nom}</h2>
-            <p className="mt-4 max-w-2xl text-[16px] text-dim">{deck.description}</p>
-            <p className="mt-4 text-[13.5px] text-dim-2">Format : {deck.format} — coffret physique ou PDF imprimable.</p>
+      <Bloc numero="03" titre="Emporter le deck" fil="#FFB000" className="champ">
+        <div className="ombre grid items-center gap-8 rounded-[26px] border border-paper/14 bg-ink-2 p-8 sm:p-10 lg:grid-cols-12 lg:gap-10 lg:p-12">
+          <div className="lg:col-span-4">
+            <ProduitScene produit={deck} />
           </div>
-          <div className="flex flex-col justify-center gap-4 lg:col-span-3">
-            <span className="font-display text-[40px] font-extrabold leading-none text-or">{fcfa(deck.fcfa)}</span>
-            <span className="text-[15px] text-dim-2">ou {deck.eur} €</span>
+          <div className="flex flex-col gap-2 lg:col-span-5">
+            <h2 className="display-m">{deck.nom}</h2>
+            <p className="text-dim">{deck.description}</p>
+            <p className="text-dim-2">Format : {deck.format} — coffret physique ou PDF imprimable.</p>
+          </div>
+          <div className="flex flex-col items-start gap-2 lg:col-span-3">
+            <span className="font-display text-3xl font-extrabold text-or">{fcfa(deck.fcfa)}</span>
+            <span className="text-dim-2">ou {deck.eur} €</span>
             <a href={lienCommande(deck.nom)} className="btn btn-or">
               Commander le deck <ArrowUpRight size={16} />
             </a>

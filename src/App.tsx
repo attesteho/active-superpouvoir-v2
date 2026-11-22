@@ -20,10 +20,10 @@ import { PanierPage, CommandePage, ConfirmationPage } from "./pages/Commande";
 /** Fond papier : trame de calage très légère + grain d'impression. Aucun halo, aucun dégradé décoratif. */
 function Fond() {
   return (
-    <div className="pointer-events-none fixed inset-0 -z-10" aria-hidden="true">
-      <div className="absolute inset-0 bg-ink" />
-      <div className="warp absolute inset-0" />
-      <div className="grain absolute inset-0" />
+    <div className="pointer-events-none fixed -z-10" aria-hidden="true">
+      <div className="absolute bg-ink" />
+      <div className="warp absolute" />
+      <div className="grain absolute" />
     </div>
   );
 }
