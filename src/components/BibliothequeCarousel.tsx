@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type CSSProperties, type PointerEvent as ReactPointerEvent, type FocusEvent, type KeyboardEvent } from "react";
-import { ChevronLeft, ChevronRight, MoveRight } from "lucide-react";
+import { Icone } from "./Icone";
 import { Link, useRoute } from "../lib/router";
 import { fcfa, type Produit } from "../data/site";
 import { photos, type Photo } from "../data/media";
@@ -108,9 +108,9 @@ export function BibliothequeCarousel({ produits }: { produits: Produit[] }) {
       <div className="catalogue-rail-head">
         <p className="catalogue-rail-hint"><span className="catalogue-rail-pulse" /> Sélectionne une pièce, puis ouvre sa fiche</p>
         <div className="catalogue-rail-controls">
-          <button type="button" className="catalogue-arrow" onClick={() => go(active - 1)} aria-label="Pièce précédente"><ChevronLeft size={18} /></button>
+          <button type="button" className="catalogue-arrow" onClick={() => go(active - 1)} aria-label="Pièce précédente"><Icone nom="fleche-gauche" taille={18} /></button>
           <span aria-live="polite" className="catalogue-count"><strong>{String(active + 1).padStart(2, "0")}</strong> / {String(total).padStart(2, "0")}</span>
-          <button type="button" className="catalogue-arrow" onClick={() => go(active + 1)} aria-label="Pièce suivante"><ChevronRight size={18} /></button>
+          <button type="button" className="catalogue-arrow" onClick={() => go(active + 1)} aria-label="Pièce suivante"><Icone nom="fleche-droite" taille={18} /></button>
         </div>
       </div>
 
@@ -160,7 +160,7 @@ export function BibliothequeCarousel({ produits }: { produits: Produit[] }) {
         </div>
         <div className="catalogue-selected-action">
           <p className="catalogue-selected-price">{fcfa(produitActif.fcfa)} <span>· {produitActif.eur} €</span></p>
-          <Link className="catalogue-selected-link" to={`/boutique/${produitActif.slug}`}>Voir la description complète & commander <MoveRight size={17} /></Link>
+          <Link className="catalogue-selected-link" to={`/boutique/${produitActif.slug}`}>Voir la description complète & commander <Icone nom="fleche-droite" taille={17} /></Link>
           <p className="catalogue-selected-note">La fiche détaille le contenu et les avis; tu pourras ajouter la pièce au panier puis poursuivre la commande.</p>
         </div>
       </div>

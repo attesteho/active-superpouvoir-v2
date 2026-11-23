@@ -1,0 +1,191 @@
+/**
+ * Découpes « papier déchiré / vague » — clin d'œil à stayveluwe.com.
+ *
+ * Au lieu d'un rectangle net, une image (ou une section pleine largeur) se
+ * termine par un bord irrégulier : vague douce ou déchirure de papier.
+ * Tout est fait en `clip-path: polygon(...)` en unités `%`, donc ça s'adapte
+ * à n'importe quel ratio / taille d'élément sans recalcul.
+ *
+ * Ce fichier n'est importé nulle part pour l'instant — à brancher plus tard
+ * (ex. dans src/index.css via `@import "./styles/decoupes.css";` ou
+ * directement dans le composant qui en a besoin).
+ */
+
+/* ------------------------------------------------------------------ */
+/* Base commune : à poser sur l'élément (figure/div/img) qui porte la   */
+/* découpe. Les classes `.decoupe-*` ci-dessous ne définissent QUE le   */
+/* `clip-path` ; `.decoupe` gère l'habillage (plein cadre, pas de débord).*/
+/* ------------------------------------------------------------------ */
+.decoupe {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ------------------------------------------------------------------ */
+/* Bord bas ondulé, haut/côtés droits — l'effet « page qui ondule ».    */
+/* 4 bosses arrondies d'amplitude inégale (sommes de demi-cosinus, donc */
+/* parfaitement lisses — pas de vague en dents de scie).                */
+/* ------------------------------------------------------------------ */
+.decoupe-vague-bas {
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 89.82%, 97.5% 90.25%, 95% 91.84%, 92.5% 93.44%, 90% 94.59%,
+    87.5% 95%, 85% 94.59%, 82.5% 93.44%, 80% 91.84%, 77.5% 90.26%,
+    75% 89.93%, 72.5% 91.15%, 70% 93.49%, 67.5% 95.78%, 65% 97.41%,
+    62.5% 98%, 60% 97.41%, 57.5% 95.78%, 55% 93.49%, 52.5% 91.14%,
+    50% 89.82%, 47.5% 89.95%, 45% 91.29%, 42.5% 92.67%, 40% 93.65%,
+    37.5% 94%, 35% 93.65%, 32.5% 92.67%, 30% 91.29%, 27.5% 89.94%,
+    25% 89.7%, 22.5% 90.84%, 20% 92.94%, 17.5% 95%, 15% 96.47%,
+    12.5% 97%, 10% 96.47%, 7.5% 95%, 5% 92.94%, 2.5% 90.85%, 0% 89.82%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Bord haut ondulé, bas/côtés droits — miroir vertical de la précédente.*/
+/* ------------------------------------------------------------------ */
+.decoupe-vague-haut {
+  clip-path: polygon(
+    0% 10.18%, 2.5% 9.15%, 5% 7.06%, 7.5% 5%, 10% 3.53%,
+    12.5% 3%, 15% 3.53%, 17.5% 5%, 20% 7.06%, 22.5% 9.16%,
+    25% 10.3%, 27.5% 10.06%, 30% 8.71%, 32.5% 7.33%, 35% 6.35%,
+    37.5% 6%, 40% 6.35%, 42.5% 7.33%, 45% 8.71%, 47.5% 10.05%,
+    50% 10.18%, 52.5% 8.86%, 55% 6.51%, 57.5% 4.22%, 60% 2.59%,
+    62.5% 2%, 65% 2.59%, 67.5% 4.22%, 70% 6.51%, 72.5% 8.85%,
+    75% 10.07%, 77.5% 9.74%, 80% 8.16%, 82.5% 6.56%, 85% 5.41%,
+    87.5% 5%, 90% 5.41%, 92.5% 6.56%, 95% 8.16%, 97.5% 9.75%, 100% 10.18%,
+    100% 100%, 0% 100%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Bords déchirés en haut ET en bas — plus irrégulier/aléatoire que la  */
+/* vague, façon page de papier réellement arrachée (pas de périodicité).*/
+/* ------------------------------------------------------------------ */
+.decoupe-dechiree {
+  clip-path: polygon(
+    0% 12.15%, 5% 7.44%, 10% 8.84%, 15% 6.36%, 20% 3.86%, 25% 8.72%,
+    30% 11.6%, 35% 7.72%, 40% 10.76%, 45% 4.28%, 50% 2.69%, 55% 8.68%,
+    60% 6.86%, 65% 9.32%, 70% 11.83%, 75% 4.92%, 80% 4.2%, 85% 8.27%,
+    90% 8.58%, 95% 10.23%, 100% 11.46%,
+    100% 93.98%, 95.45% 96%, 90.91% 90.08%, 86.36% 92.5%, 81.82% 90.87%,
+    77.27% 88.29%, 72.73% 92.27%, 68.18% 98.28%, 63.64% 93.79%, 59.09% 92.4%,
+    54.55% 94.4%, 50% 86.97%, 45.45% 89.74%, 40.91% 96.55%, 36.36% 94.56%,
+    31.82% 95.19%, 27.27% 92.94%, 22.73% 86.76%, 18.18% 86.12%, 13.64% 94.84%,
+    9.09% 92.15%, 4.55% 92.92%, 0% 97.22%
+  );
+}
+
+/* ------------------------------------------------------------------ */
+/* Variantes d'intensité de `.decoupe-vague-bas` : à cumuler avec la    */
+/* classe de base, ex. `class="decoupe decoupe-vague-bas                */
+/* decoupe-vague-bas--douce"` (le modificateur, chargé après, gagne).   */
+/* ------------------------------------------------------------------ */
+
+/* Douce : amplitude réduite, 3 bosses discrètes et peu marquées. */
+.decoupe-vague-bas--douce {
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 94.49%, 97.22% 94.85%, 94.44% 95.64%, 91.67% 96.51%, 88.89% 97.28%,
+    86.11% 97.81%, 83.33% 98%, 80.56% 97.82%, 77.78% 97.29%, 75% 96.53%,
+    72.22% 95.66%, 69.44% 94.87%, 66.67% 94.43%, 63.89% 94.5%, 61.11% 94.95%,
+    58.33% 95.45%, 55.56% 95.89%, 52.78% 96.19%, 50% 96.3%, 47.22% 96.19%,
+    44.44% 95.89%, 41.67% 95.45%, 38.89% 94.95%, 36.11% 94.5%, 33.33% 94.39%,
+    30.56% 94.76%, 27.78% 95.46%, 25% 96.21%, 22.22% 96.88%, 19.44% 97.34%,
+    16.67% 97.5%, 13.89% 97.33%, 11.11% 96.87%, 8.33% 96.19%, 5.56% 95.44%,
+    2.78% 94.75%, 0% 94.49%
+  );
+}
+
+/* Prononcée : amplitude forte, 5 bosses profondes d'inégale hauteur. */
+.decoupe-vague-bas--prononcee {
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 83.65%, 97.92% 84.83%, 95.83% 88.12%, 93.75% 91.32%, 91.67% 93.44%,
+    89.58% 93.96%, 87.5% 92.76%, 85.42% 90.13%, 83.33% 86.72%, 81.25% 83.86%,
+    79.17% 83.13%, 77.08% 84.73%, 75% 87.45%, 72.92% 89.69%, 70.83% 90.89%,
+    68.75% 90.75%, 66.67% 89.31%, 64.58% 86.92%, 62.5% 84.25%, 60.42% 83.37%,
+    58.33% 85.14%, 56.25% 89.01%, 54.17% 93.04%, 52.08% 95.95%, 50% 97%,
+    47.92% 95.95%, 45.83% 93.04%, 43.75% 89.01%, 41.67% 85.11%, 39.58% 83.21%,
+    37.5% 83.87%, 35.42% 86.29%, 33.33% 88.46%, 31.25% 89.77%, 29.17% 89.9%,
+    27.08% 88.81%, 25% 86.77%, 22.92% 84.3%, 20.83% 83%, 18.75% 84.06%,
+    16.67% 87.2%, 14.58% 90.85%, 12.5% 93.67%, 10.42% 94.96%, 8.33% 94.4%,
+    6.25% 92.13%, 4.17% 88.7%, 2.08% 85.15%, 0% 83.65%
+  );
+}
+
+/* ==================================================================== */
+/* Diviseurs de section : bande décorative ondulée/déchirée posée à la   */
+/* couture entre deux sections pleine largeur (ex. fond crème → fond     */
+/* violet « livre »). La section au-dessus doit avoir `position: relative`*/
+/* et un `overflow: hidden` (ou laisser le diviseur déborder légèrement).*/
+/*                                                                      */
+/* Usage :                                                              */
+/*   <section class="relative ..."> ... contenu ...                     */
+/*     <div class="diviseur-vague diviseur-vague--bas"                  */
+/*          style="color: var(--color-paper)" />                        */
+/*   </section>                                                         */
+/*                                                                      */
+/* La couleur du diviseur (currentColor) doit correspondre au fond de la */
+/* section SUIVANTE pour donner l'illusion que la section du dessus a un */
+/* bord déchiré/ondulé laissant voir la couleur d'après.                 */
+/* ==================================================================== */
+
+.diviseur-vague {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: clamp(28px, 6vw, 72px);
+  background: currentColor;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Posé en bas d'une section : son bord haut ondule, le reste est plein. */
+.diviseur-vague--bas {
+  bottom: 0;
+  transform: translateY(1px); /* évite une ligne de 1px visible à la jonction */
+  clip-path: polygon(
+    0% 10.18%, 2.5% 9.15%, 5% 7.06%, 7.5% 5%, 10% 3.53%,
+    12.5% 3%, 15% 3.53%, 17.5% 5%, 20% 7.06%, 22.5% 9.16%,
+    25% 10.3%, 27.5% 10.06%, 30% 8.71%, 32.5% 7.33%, 35% 6.35%,
+    37.5% 6%, 40% 6.35%, 42.5% 7.33%, 45% 8.71%, 47.5% 10.05%,
+    50% 10.18%, 52.5% 8.86%, 55% 6.51%, 57.5% 4.22%, 60% 2.59%,
+    62.5% 2%, 65% 2.59%, 67.5% 4.22%, 70% 6.51%, 72.5% 8.85%,
+    75% 10.07%, 77.5% 9.74%, 80% 8.16%, 82.5% 6.56%, 85% 5.41%,
+    87.5% 5%, 90% 5.41%, 92.5% 6.56%, 95% 8.16%, 97.5% 9.75%, 100% 10.18%,
+    100% 100%, 0% 100%
+  );
+}
+
+/* Posé en haut d'une section : son bord bas ondule, le reste est plein. */
+.diviseur-vague--haut {
+  top: 0;
+  transform: translateY(-1px);
+  clip-path: polygon(
+    0% 0%, 100% 0%,
+    100% 89.82%, 97.5% 90.25%, 95% 91.84%, 92.5% 93.44%, 90% 94.59%,
+    87.5% 95%, 85% 94.59%, 82.5% 93.44%, 80% 91.84%, 77.5% 90.26%,
+    75% 89.93%, 72.5% 91.15%, 70% 93.49%, 67.5% 95.78%, 65% 97.41%,
+    62.5% 98%, 60% 97.41%, 57.5% 95.78%, 55% 93.49%, 52.5% 91.14%,
+    50% 89.82%, 47.5% 89.95%, 45% 91.29%, 42.5% 92.67%, 40% 93.65%,
+    37.5% 94%, 35% 93.65%, 32.5% 92.67%, 30% 91.29%, 27.5% 89.94%,
+    25% 89.7%, 22.5% 90.84%, 20% 92.94%, 17.5% 95%, 15% 96.47%,
+    12.5% 97%, 10% 96.47%, 7.5% 95%, 5% 92.94%, 2.5% 90.85%, 0% 89.82%
+  );
+}
+
+/* Variante déchirée : à poser en bas d'une section (bord haut arraché). */
+.diviseur-vague--dechiree {
+  bottom: 0;
+  transform: translateY(1px);
+  height: clamp(20px, 4vw, 44px);
+  clip-path: polygon(
+    0% 12.15%, 5% 7.44%, 10% 8.84%, 15% 6.36%, 20% 3.86%, 25% 8.72%,
+    30% 11.6%, 35% 7.72%, 40% 10.76%, 45% 4.28%, 50% 2.69%, 55% 8.68%,
+    60% 6.86%, 65% 9.32%, 70% 11.83%, 75% 4.92%, 80% 4.2%, 85% 8.27%,
+    90% 8.58%, 95% 10.23%, 100% 11.46%,
+    100% 100%, 0% 100%
+  );
+}

@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { ArrowUpRight, MoveRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { EntetePage, Bloc } from "../components/Page";
 import { Vu } from "../components/Atelier";
 import { BibliothequeCarousel } from "../components/BibliothequeCarousel";
@@ -8,7 +8,9 @@ import { etapes, produits, ressourcesGratuites } from "../data/site";
 import extras from "../data/parcours-extras.json";
 import { PhotoCadre } from "../components/Photo";
 import { Tilt } from "../components/CartesUI";
-import { PhotoLegendee } from "../components/Visuels";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
 import { etapePhotos, photos } from "../data/media";
 
 const AGES = ["Tous les âges", "Mini-Héros (8-12 ans)", "Explorateur (13-16 ans)", "Bâtisseur (17-22 ans)", "Mentor (23+ ans)"];
@@ -58,6 +60,7 @@ export default function Bibliotheque() {
     <>
       <EntetePage
         photo={photos.bibliotheque}
+        arrierePlan="/images/08-bibliotheque.webp"
         surtitre="La bibliothèque"
         lignes={[<>Tes outils de</>, <span key="s" className="livre whitespace-nowrap font-normal text-or">transformation</span>]}
         intro="Livres, journaux, cartes et rituels pour activer ton superpouvoir. Choisis le parcours adapté à ton âge et découvre les ressources gratuites."
@@ -117,10 +120,15 @@ export default function Bibliotheque() {
               {courante.accroche}
             </p>
             <p className="text-dim mt-2">{courante.texte}</p>
-            <Link to={`/parcours/${courante.id}`} className="btn btn-craie mt-5">
-              Voir le parcours complet <MoveRight size={16} />
-            </Link>
-<PhotoLegendee photo={etapePhotos[courante.id]} ratio="4 / 3" className="mt-6" />
+            <BoutonPeint to={`/parcours/${courante.id}`} variante="craie" className="mt-5" icone={<Icone nom="fleche-droite" taille={16} />}>
+              Voir le parcours complet
+            </BoutonPeint>
+<div className="photo-legendee mt-6">
+  <CadreDecoupe variante="vague-bas-douce">
+    <PhotoCadre photo={etapePhotos[courante.id]} ratio="4 / 3" />
+  </CadreDecoupe>
+  <p className="photo-legende">{etapePhotos[courante.id].legende}</p>
+</div>
           </div>
 
           <ol className="reading-path self-start overflow-hidden border border-paper/12 bg-paper/12 lg:col-span-8" aria-label={`Étapes conseillées pour ${courante.nom}`}>
@@ -134,7 +142,7 @@ export default function Bibliotheque() {
                       <span className="reading-path-title">{p.nom}</span>
                       <span className="reading-path-note">{s.note}</span>
                     </span>
-                    <MoveRight size={16} className="reading-path-arrow" aria-hidden="true" />
+                    <Icone nom="fleche-droite" taille={16} className="reading-path-arrow" />
                   </Link>
                 </li>
               );
@@ -147,9 +155,9 @@ export default function Bibliotheque() {
         <Vu>
           <h2 className="display-l mt-6">Commencer gratuitement</h2>
           <p className="text-dim">Télécharge nos ressources gratuites pour découvrir la méthode avant d’aller plus loin.</p>
-          <Link to="/quiz" className="btn btn-or mt-5">
-            Passer le quiz <ArrowUpRight size={16} />
-          </Link>
+          <BoutonPeint to="/quiz" className="mt-5" icone={<ArrowUpRight size={16} />}>
+            Passer le quiz
+          </BoutonPeint>
         </Vu>
 
         <ul className="grid gap-5 mt-8 sm:grid-cols-2">

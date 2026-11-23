@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, MoveRight, RotateCcw, Copy, Check, Sparkles } from "lucide-react";
+import { RotateCcw, Copy, Sparkles } from "lucide-react";
 import { BandeKente, Etoile, Vu } from "../components/Atelier";
 import { EntetePage } from "../components/Page";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
 import { photos } from "../data/media";
 import { Link } from "../lib/router";
 import { mouvementReduit } from "../lib/motion";
-import { lienCommande } from "../data/site";
+import { kitProduit } from "../data/site";
 import questions from "../data/quiz.json";
 import profils from "../data/profiles.json";
 
@@ -105,6 +108,7 @@ export default function Quiz() {
       <>
         <EntetePage
           photo={photos.quizEntete}
+          arrierePlan="/images/02-quiz-introduction.webp"
           surtitre="Quiz superpouvoir · gratuit, sans inscription"
           lignes={[<>Découvre ton</>, <span key="s" className="livre font-normal text-or">superpouvoir</span>]}
           intro="Réponds à 10 questions simples et découvre quel type de héros tu es vraiment. Pas de bonnes ou mauvaises réponses — juste toi."
@@ -124,9 +128,9 @@ export default function Quiz() {
                 Chaque réponse tisse huit fils à la fois. À la fin, le fil dominant révèle ton archétype — avec ses
                 forces, ses zones d’ombre, sa mission et les ressources faites pour toi.
               </p>
-              <button type="button" onClick={() => setPhase("questions")} className="btn btn-or">
-                C’est parti <MoveRight size={17} strokeWidth={2.4} />
-              </button>
+              <BoutonPeint onClick={() => setPhase("questions")} icone={<Icone nom="fleche-droite" taille={17} />}>
+                C’est parti
+              </BoutonPeint>
             </div>
             <div className="flex flex-col gap-4 border-t border-paper/10 p-8 sm:p-10 lg:col-span-5 lg:border-l lg:border-t-0 lg:p-14">
               <p className="label">Les huit fils</p>
@@ -165,7 +169,14 @@ export default function Quiz() {
   if (phase === "resultat") {
     return (
       <div style={{ ["--fil" as string]: profil.primaryColor }}>
-        <header className="relative overflow-hidden px-6 pb-14 pt-10 sm:px-10 sm:pt-14 lg:px-16" style={{ background: `${profil.primaryColor}1a` }}>
+        <header className="relative isolate overflow-hidden px-6 pb-14 pt-10 sm:px-10 sm:pt-14 lg:px-16" style={{ background: `${profil.primaryColor}1a` }}>
+          <img
+            src="/images/04-resultat-profil.webp"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover"
+            style={{ objectPosition: "center" }}
+          />
           <BandeKente hauteur={6} />
           <div className="mt-10 grid gap-10 lg:grid-cols-12 lg:gap-14">
             <div className="flex flex-col items-start gap-4 lg:col-span-8">
@@ -177,16 +188,26 @@ export default function Quiz() {
               <p className="font-display text-lg font-extrabold uppercase text-paper/80">{profil.archetype}</p>
               <p className="livre text-2xl text-or">{profil.tagline}</p>
               <div className="mt-2 flex flex-wrap gap-3">
-                <button type="button" onClick={copier} className="btn btn-or">
-                  {copie ? <Check size={16} /> : <Copy size={16} />} {copie ? "Profil copié" : "Copier mon profil"}
-                </button>
-                <button type="button" onClick={recommencer} className="btn btn-craie">
-                  <RotateCcw size={16} /> Refaire le quiz
-                </button>
+                <BoutonPeint onClick={copier} icone={copie ? <Icone nom="validation" taille={16} /> : <Copy size={16} />}>
+                  {copie ? "Profil copié" : "Copier mon profil"}
+                </BoutonPeint>
+                <BoutonPeint variante="craie" onClick={recommencer} icone={<RotateCcw size={16} />}>
+                  Refaire le quiz
+                </BoutonPeint>
               </div>
             </div>
 
             <div className="lg:col-span-4">
+              <CadreDecoupe variante="vague-bas-douce" className="mb-6 max-w-[300px] shadow-[0_18px_40px_rgba(0,0,0,0.22)]">
+                <img
+                  src={photos.quizEntete.src}
+                  alt={photos.quizEntete.alt}
+                  className="h-56 w-full object-cover"
+                  style={{ objectPosition: photos.quizEntete.pos || "50% 50%" }}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </CadreDecoupe>
               <p className="label">Tes fils dominants</p>
               <ul className="mt-4 space-y-4">
                 {classement.slice(0, 4).map((c) => (
@@ -298,15 +319,15 @@ export default function Quiz() {
               ))}
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
-              <Link to="/boutique" className="btn btn-or">
-                Voir la bibliothèque <MoveRight size={16} />
-              </Link>
-              <a href={lienCommande(`Kit du Héros — profil ${profil.type}`)} className="btn btn-craie">
+              <BoutonPeint to="/boutique" variante="or" icone={<Icone nom="fleche-droite" taille={16} />}>
+                Voir la bibliothèque
+              </BoutonPeint>
+              <BoutonPeint to={`/boutique/${kitProduit.slug}`} variante="craie">
                 Commander le kit
-              </a>
-              <Link to="/cartes" className="btn btn-craie">
-                <Sparkles size={16} /> Tirer une carte
-              </Link>
+              </BoutonPeint>
+              <BoutonPeint to="/cartes" variante="craie" icone={<Sparkles size={16} />}>
+                Tirer une carte
+              </BoutonPeint>
             </div>
           </Vu>
         </div>
@@ -316,12 +337,19 @@ export default function Quiz() {
 
   /* ————————————————— QUESTIONS ————————————————— */
   return (
-    <div ref={zone} className="champ">
+    <div ref={zone} className="champ relative isolate overflow-hidden">
+      <img
+        src="/images/03-quiz-questions.webp"
+        alt=""
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover"
+        style={{ objectPosition: "center" }}
+      />
       <div className="mx-auto flex max-w-3xl flex-col gap-8">
         <div className="flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <Link to="/" className="inline-flex items-center gap-2 text-dim-2 transition-colors hover:text-or">
-              <ArrowLeft size={15} /> Quitter le quiz
+              <Icone nom="fleche-gauche" taille={15} /> Quitter le quiz
             </Link>
             <p className="label" aria-live="polite">
               Question {index + 1} / {questions.length}
@@ -388,17 +416,17 @@ export default function Quiz() {
         </div>
 
         <div className="flex items-center justify-between">
-          <button
-            type="button"
+          <BoutonPeint
             onClick={() => setIndex(Math.max(0, index - 1))}
             disabled={index === 0}
-            className="btn btn-craie disabled:cursor-not-allowed disabled:opacity-35"
+            variante="craie"
+            icone={<Icone nom="fleche-gauche" taille={16} />}
           >
-            <ArrowLeft size={16} /> Précédent
-          </button>
-          <button type="button" onClick={suivant} disabled={!repondu} className="btn btn-or disabled:cursor-not-allowed disabled:opacity-35">
-            {index === questions.length - 1 ? "Voir mon profil" : "Suivant"} <MoveRight size={16} />
-          </button>
+            Précédent
+          </BoutonPeint>
+          <BoutonPeint onClick={suivant} disabled={!repondu} variante="or" icone={<Icone nom="fleche-droite" taille={16} />}>
+            {index === questions.length - 1 ? "Voir mon profil" : "Suivant"}
+          </BoutonPeint>
         </div>
       </div>
     </div>

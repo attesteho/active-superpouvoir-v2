@@ -1,19 +1,22 @@
 import { useState } from "react";
-import { ArrowUpRight, MoveRight, Mail, AlertTriangle, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Mail, AlertTriangle } from "lucide-react";
 import { EntetePage, Bloc } from "../components/Page";
 import { Etoile, Vu, BandeKente } from "../components/Atelier";
 import { PhotoCadre } from "../components/Photo";
-import { PhotoLegendee } from "../components/Visuels";
-import { Link } from "../lib/router";
 import { marque, navigation } from "../data/site";
 import { photos, villePhotos } from "../data/media";
 import { CarteFait } from "../components/CartesUI";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
 
 /* ——————————————————— QUI SUIS-JE ——————————————————— */
 export function APropos() {
   return (
     <>
       <EntetePage
+        arrierePlan="/images/11-a-propos.webp"
+        arrierePlanPosition="center bottom"
         surtitre="Qui suis-je ?"
         lignes={[<>La mission derrière</>, <span key="s" className="livre font-normal text-or">le mouvement</span>]}
         intro={marque.mission}
@@ -31,9 +34,6 @@ export function APropos() {
                   Nadine<br />Zoro
                 </p>
                 <p className="mt-1 font-mono text-xs font-bold uppercase text-[#FFB000]">Autrice & coach de vie</p>
-                <p className="mt-2 text-xs leading-relaxed opacity-85">
-                  Photographie d’illustration. Aucun portrait officiel n’est publié par le mouvement : nous n’en générons pas.
-                </p>
               </div>
             </PhotoCadre>
           </Vu>
@@ -63,12 +63,12 @@ export function APropos() {
               </ul>
 
               <div className="mt-7 flex flex-wrap gap-3">
-                <Link to="/le-livre" className="btn btn-or">
-                  Découvrir le livre <MoveRight size={16} />
-                </Link>
-                <Link to="/contact" className="btn btn-craie">
+                <BoutonPeint to="/le-livre" icone={<Icone nom="fleche-droite" taille={16} />}>
+                  Découvrir le livre
+                </BoutonPeint>
+                <BoutonPeint to="/contact" variante="craie">
                   Presse & partenariats
-                </Link>
+                </BoutonPeint>
               </div>
             </Vu>
           </div>
@@ -181,14 +181,19 @@ export function Contact() {
                         }`}
                       >
                         {i.label}
-                        {actif && <CheckCircle2 size={17} className="text-or" />}
+                        {actif && <Icone nom="validation" taille={17} className="text-or" />}
                       </button>
                     </li>
                   );
                 })}
               </ul>
 
-              <PhotoLegendee photo={photos.ecoles} ratio="4 / 3" className="mt-7" />
+              <div className="photo-legendee mt-7">
+                <CadreDecoupe variante="vague-bas-douce">
+                  <PhotoCadre photo={photos.ecoles} ratio="4 / 3" />
+                </CadreDecoupe>
+                <p className="photo-legende">{photos.ecoles.legende}</p>
+              </div>
 
               <p className="text-dim-2 mt-4">
                 Les actualités, rencontres et collaborations seront annoncées ici au fil du développement du mouvement.
@@ -230,9 +235,9 @@ export function Contact() {
                 </label>
 
                 <div className="flex flex-wrap items-center gap-3">
-                  <button type="submit" className="btn btn-or">
-                    <Mail size={16} /> Ouvrir dans ma messagerie
-                  </button>
+                  <BoutonPeint type="submit" icone={<Mail size={16} />}>
+                    Ouvrir dans ma messagerie
+                  </BoutonPeint>
                   <span className="text-dim-2">Objet : {intention.objet}</span>
                 </div>
 
@@ -268,9 +273,9 @@ export function Introuvable({ chemin }: { chemin: string }) {
       <ul className="mt-7 flex flex-wrap gap-3">
         {[{ href: "#/", label: "Accueil" }, ...navigation, { href: "#/boutique", label: "Boutique" }].map((n) => (
           <li key={n.href}>
-            <Link to={n.href.slice(1)} className="btn btn-craie">
+            <BoutonPeint to={n.href.slice(1)} variante="craie">
               {n.label}
-            </Link>
+            </BoutonPeint>
           </li>
         ))}
       </ul>

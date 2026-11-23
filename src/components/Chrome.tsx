@@ -53,10 +53,10 @@ export function Entete() {
           </nav>
 
           <div className="ml-auto flex items-center gap-4">
-            <button type="button" className="hidden items-center text-paper/70 transition-colors hover:text-orange sm:inline-flex" aria-label="Rechercher">
+            <button type="button" className="inline-flex items-center text-paper/70 transition-colors hover:text-orange" aria-label="Rechercher">
               <Search size={19} />
             </button>
-            <Link to="/contact" className="hidden items-center text-paper/70 transition-colors hover:text-orange sm:inline-flex" aria-label="Mon compte">
+            <Link to="/contact" className="inline-flex items-center text-paper/70 transition-colors hover:text-orange" aria-label="Mon compte">
               <User size={19} />
             </Link>
             <Link to="/panier" className="relative inline-flex items-center text-paper/70 transition-colors hover:text-orange" aria-label={`Panier, ${count} pièce${count > 1 ? "s" : ""}`}>

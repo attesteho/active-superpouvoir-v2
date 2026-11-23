@@ -1,12 +1,16 @@
-import { ArrowUpRight, MoveRight, AlertTriangle } from "lucide-react";
+import { ArrowUpRight, AlertTriangle } from "lucide-react";
 import { CarteAvis, CarteFait } from "../components/CartesUI";
 import { EntetePage, Bloc } from "../components/Page";
-import { PhotoCadre, Vignette } from "../components/Photo";
+import { PagesEmpilees } from "../components/PagesEmpilees";
+import { Vignette } from "../components/Photo";
 import { ProduitScene } from "../components/Visuels";
 import { VisuelProduit } from "../components/VisuelProduit";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
 import { Vu } from "../components/Atelier";
 import { Link } from "../lib/router";
-import { fcfa, lienCommande, marque, methode, produits } from "../data/site";
+import { fcfa, marque, methode, produits } from "../data/site";
 import { methodePhotos, photos } from "../data/media";
 
 const livre = produits[0];
@@ -15,12 +19,15 @@ export default function LeLivre() {
   return (
     <>
       <EntetePage
+        arrierePlan="/images/10-le-livre.webp"
+        arrierePlanPosition="center bottom"
         surtitre="La pièce maîtresse"
         lignes={[<>Active ton</>, <>Superpouvoir&nbsp;!</>, <span key="s" className="livre font-normal text-or">Nadine Zoro</span>]}
         intro={livre.description}
         photo={photos.livreLecture}
       />
 
+      <PagesEmpilees>
       <Bloc numero="01" titre="L’objet" className="champ">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           <Vu className="lg:col-span-5">
@@ -47,12 +54,12 @@ export default function LeLivre() {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <a href={lienCommande(livre.nom)} className="btn btn-or">
-                  Commander le livre <ArrowUpRight size={16} />
-                </a>
-                <Link to="/quiz" className="btn btn-craie">
+                <BoutonPeint to={`/boutique/${livre.slug}`} variante="or" icone={<ArrowUpRight size={16} />}>
+                  Commander le livre
+                </BoutonPeint>
+                <BoutonPeint to="/quiz" variante="craie">
                   Trouver mon profil d’abord
-                </Link>
+                </BoutonPeint>
               </div>
             </Vu>
           </div>
@@ -100,17 +107,27 @@ export default function LeLivre() {
       <Bloc numero="03" titre="Ce qu’on y lit" fil="#FFB000" className="champ">
         <div className="grid gap-10 lg:grid-cols-12 lg:gap-16">
           <Vu className="flex flex-col gap-6 lg:col-span-7">
-            <PhotoCadre photo={photos.citation} ratio="16 / 10" ratioMobile="4 / 5" voile>
+            <div className="relative aspect-[16/10] max-sm:aspect-[4/5]">
+              <CadreDecoupe variante="vague-bas-prononcee" className="h-full w-full shadow-[0_18px_44px_rgba(50,16,68,0.22)]">
+                <img
+                  src={photos.citation.src}
+                  alt={photos.citation.alt}
+                  className="h-full w-full object-cover"
+                  style={{ objectPosition: photos.citation.pos || "50% 50%" }}
+                  loading="lazy"
+                />
+              </CadreDecoupe>
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-paper/50 via-transparent to-transparent" />
               <blockquote className="citation-photo">« Tu n’es pas un hasard. Tu es une réponse. »</blockquote>
-            </PhotoCadre>
+            </div>
             <p className="text-dim">
               C’est la phrase d’ouverture du mouvement. Tout le livre en découle : si tu es une réponse, alors il existe
               une question à laquelle toi seul·e réponds — et le travail consiste à la trouver, pas à t’inventer.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link to="/cartes" className="btn btn-craie">
-                Lire les 30 affirmations <MoveRight size={16} />
-              </Link>
+              <BoutonPeint to="/cartes" variante="craie" icone={<Icone nom="fleche-droite" taille={16} />}>
+                Lire les 30 affirmations
+              </BoutonPeint>
             </div>
           </Vu>
 
@@ -144,7 +161,7 @@ export default function LeLivre() {
                     <p className="text-dim">{p.description.slice(0, 120)}…</p>
                   </div>
                   <span className="inline-flex items-center gap-1.5 font-display font-extrabold uppercase text-sm" style={{ color: p.fil }}>
-                    {fcfa(p.fcfa)} <MoveRight size={15} className="transition-transform group-hover:translate-x-1.5" />
+                    {fcfa(p.fcfa)} <Icone nom="fleche-droite" taille={15} className="transition-transform group-hover:translate-x-1.5" />
                   </span>
                 </div>
               </Link>
@@ -155,6 +172,7 @@ export default function LeLivre() {
           {marque.titre} — {marque.autrice}. Une interprétation visuelle de l’objet-livre, pensée pour prolonger l’univers de la méthode.
         </p>
       </Bloc>
+      </PagesEmpilees>
     </>
   );
 }

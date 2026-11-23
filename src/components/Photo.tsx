@@ -1,11 +1,14 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import type { Photo } from "../data/media";
 
 /** Cadre pour une illustration éditoriale (carte, vignette d'en-tête, etc.). */
 export function PhotoCadre({
   photo,
+  ratio,
+  ratioMobile,
   className = "",
   voile = false,
+  prioritaire = false,
   children,
 }: {
   photo: Photo;
@@ -19,11 +22,20 @@ export function PhotoCadre({
   children?: ReactNode;
 }) {
   return (
-    <figure className={`photo-cadre relative overflow-hidden ${className}`}>
+    <figure
+      className={`photo-cadre relative overflow-hidden ${className}`}
+      style={
+        {
+          ...(ratio ? { "--ratio-defaut": ratio.replace("/", " / ") } : null),
+          ...(ratioMobile ? { "--ratio-mobile": ratioMobile.replace("/", " / ") } : null),
+        } as CSSProperties
+      }
+    >
       <img
         src={photo.src}
         alt={photo.alt}
-        loading="lazy"
+        loading={prioritaire ? "eager" : "lazy"}
+        fetchPriority={prioritaire ? "high" : undefined}
         className="h-full w-full object-cover"
         style={{ objectPosition: photo.pos || "50% 50%" }}
       />

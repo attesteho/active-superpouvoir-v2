@@ -1,0 +1,44 @@
+/**
+ * Keyframes et styles pour EtincellesCurseur.
+ * Isolé dans ce petit fichier compagnon pour ne pas alourdir le composant.
+ */
+
+.etincelles-curseur-couche {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.etincelles-curseur-particule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+  animation-name: etincelle-pop;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes etincelle-pop {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(0, 0) scale(0.2) rotate(0deg);
+  }
+  18% {
+    opacity: 1;
+    transform: translate(-50%, -50%) translate(0, 0) scale(1.15) rotate(8deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) translate(var(--etincelle-tx, 0px), var(--etincelle-ty, 0px)) scale(0.55) rotate(18deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .etincelles-curseur-couche {
+    display: none;
+  }
+}

@@ -1,8 +1,21 @@
 import { useEffect, useState } from "react";
-import { ArrowLeft, ArrowRight, ArrowUpRight, ChevronDown, MapPin, MessageCircle, MoveRight } from "lucide-react";
+import { ArrowUpRight, ChevronDown, MapPin } from "lucide-react";
 import { Monogramme } from "../components/Atelier";
 import { FondPhoto, PhotoCadre, Vignette } from "../components/Photo";
-import { Link } from "../lib/router";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Parallax } from "../components/Parallax";
+import { Icone } from "../components/Icone";
+import { NavigationSections } from "../components/NavigationSections";
+
+const SECTIONS_COMMUNAUTE = [
+  { id: "community-opening", label: "Communauté" },
+  { id: "community-cities", label: "Les villes" },
+  { id: "community-stories", label: "Les récits" },
+  { id: "community-portrait", label: "Héros du mois" },
+  { id: "community-spaces", label: "Les espaces" },
+  { id: "community-share", label: "Partager" },
+];
 import { communauteEspaces, herosDuMois, marque, temoignages, temoignagesCommunaute } from "../data/site";
 import { espacePhotos, fonds, photos, villePhotos } from "../data/media";
 
@@ -115,22 +128,22 @@ function Paroles({ histoires: liste }: { histoires: Histoire[] }) {
             <span>Récit {String(i + 1).padStart(2, "0")} sur {String(n).padStart(2, "0")}</span>
             <span className="paroles-profil">{profil}</span>
           </div>
-          <span className="paroles-icone" aria-hidden="true"><MessageCircle size={22} strokeWidth={1.8} /></span>
+          <span className="paroles-icone" aria-hidden="true"><Icone nom="discussion" taille={22} /></span>
           <blockquote className="paroles-texte" aria-live="polite">
             {t.texte}
           </blockquote>
-          <footer className="paroles-auteur">
+          <div className="paroles-auteur">
             <Monogramme initiales={t.initiales} fil="#FFB000" taille={56} />
             <span>
               <strong>{t.nom}</strong>
               <em>{t.detail}</em>
             </span>
             <span className="paroles-ville"><MapPin size={14} aria-hidden="true" /> {ville}</span>
-          </footer>
+          </div>
           <div className="paroles-controles">
-            <button type="button" onClick={() => aller(-1)} aria-label="Témoignage précédent" disabled={n < 2}><ArrowLeft size={17} /></button>
+            <button type="button" onClick={() => aller(-1)} aria-label="Témoignage précédent" disabled={n < 2}><Icone nom="fleche-gauche" taille={17} /></button>
             <span className="paroles-compteur">{String(i + 1).padStart(2, "0")} / {String(n).padStart(2, "0")}</span>
-            <button type="button" onClick={() => aller(1)} aria-label="Témoignage suivant" disabled={n < 2}><ArrowRight size={17} /></button>
+            <button type="button" onClick={() => aller(1)} aria-label="Témoignage suivant" disabled={n < 2}><Icone nom="fleche-droite" taille={17} /></button>
           </div>
         </div>
       </div>
@@ -146,7 +159,7 @@ function Paroles({ histoires: liste }: { histoires: Histoire[] }) {
                   <em>{h.ville}</em>
                 </span>
               </span>
-              <span className="paroles-extrait"><MessageCircle size={15} aria-hidden="true" /><span>{h.temoignage.texte.replace(/\s+/g, " ").slice(0, 92).trimEnd()}…</span></span>
+              <span className="paroles-extrait"><Icone nom="discussion" taille={15} /><span>{h.temoignage.texte.replace(/\s+/g, " ").slice(0, 92).trimEnd()}…</span></span>
             </button>
           </li>
         ))}
@@ -166,7 +179,16 @@ export default function Communaute() {
 
   return (
     <>
-      <section className="community-opening inverse fond-tisse champ relative text-ink" aria-labelledby="community-title">
+      <NavigationSections sections={SECTIONS_COMMUNAUTE} />
+
+      <section id="community-opening" className="community-opening inverse fond-tisse champ relative isolate overflow-hidden text-ink" aria-labelledby="community-title">
+        <img
+          src="/images/09-communaute.webp"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 h-full w-full object-cover opacity-25 mix-blend-luminosity"
+          style={{ objectPosition: "center right" }}
+        />
         <div className="community-opening-inner">
           <div className="community-opening-copy">
             <p className="label community-opening-kicker text-ink/70">La Fabrique des Héros <span aria-hidden="true">/</span> Communauté</p>
@@ -177,12 +199,12 @@ export default function Communaute() {
               Des jeunes qui osent essayer, des adultes qui transmettent et des idées qui passent d’une personne à l’autre. Découvre les voix et les espaces du mouvement.
             </p>
             <div className="community-opening-actions flex flex-wrap gap-3 mt-7">
-              <button type="button" onClick={() => defilerVers("community-stories")} className="btn btn-or">
-                Lire les histoires <MoveRight size={16} />
-              </button>
-              <button type="button" onClick={() => defilerVers("community-cities")} className="btn btn-craie">
-                Choisir une ville <MapPin size={16} />
-              </button>
+              <BoutonPeint onClick={() => defilerVers("community-stories")} icone={<Icone nom="fleche-droite" taille={16} />}>
+                Lire les histoires
+              </BoutonPeint>
+              <BoutonPeint onClick={() => defilerVers("community-cities")} variante="craie" inverse icone={<MapPin size={16} />}>
+                Choisir une ville
+              </BoutonPeint>
             </div>
             <p className="community-opening-counts" aria-label={`${histoires.length} récits publiés dans ${villes.length - 1} villes`}>
               <span><strong>{String(histoires.length).padStart(2, "0")}</strong> récits publiés</span>
@@ -190,7 +212,11 @@ export default function Communaute() {
             </p>
           </div>
           <div className="community-opening-figure">
-            <PhotoCadre photo={photos.communaute} ratio="4 / 3" ratioMobile="16 / 10" creditVisible={false} prioritaire sizes="(min-width: 1024px) 48vw, 100vw" />
+            <CadreDecoupe variante="vague-bas-douce">
+              <Parallax vitesse={0.85} ampleur={10}>
+                <PhotoCadre photo={photos.communaute} ratio="4 / 3" ratioMobile="16 / 10" creditVisible={false} prioritaire sizes="(min-width: 1024px) 48vw, 100vw" />
+              </Parallax>
+            </CadreDecoupe>
             <p className="community-opening-caption text-ink/60 mt-3 text-[12.5px]">Photo d’illustration — un groupe de jeunes adultes en discussion.</p>
           </div>
         </div>
@@ -245,9 +271,26 @@ export default function Communaute() {
           <div>
             <div className="relative">
 <PhotoCadre photo={photoTissage} ratio="4 / 3" className="border-ink/15" />
-<div className="duo-incrust absolute" style={{ ["--duo-bg" as string]: "#FFF0D9" }}><PhotoCadre photo={photos.etoffes} ratio="4 / 5" creditVisible={false} /></div>
+<div
+  className="duo-incrust absolute"
+  style={{
+    ["--duo-bg" as string]: "#FFF0D9",
+    // Deux règles `.duo-incrust` coexistent dans index.css (une plus ancienne en
+    // bas-gauche, une plus récente en bas-droite) : sans ces overrides explicites,
+    // elles se mélangent (left + right + aspect-ratio en conflit) et l’incrustation
+    // se retrouve mal positionnée, bordée en carré au lieu du portrait attendu.
+    right: "auto",
+    left: "-1.25rem",
+    bottom: "-1.5rem",
+    width: "42%",
+    maxWidth: "190px",
+    aspectRatio: "1 / 1",
+  }}
+>
+  <PhotoCadre photo={photos.etoffes} ratio="4 / 5" creditVisible={false} />
 </div>
-            <p className="text-ink/65 mt-4 text-sm">Photo d’illustration du tissage, prise à Fès au Maroc; elle ne montre ni Fatoumata Diallo ni Pont d’Or.</p>
+</div>
+            <p className="text-ink/65 mt-10 text-sm">Photo d’illustration du tissage, prise à Fès au Maroc; elle ne montre ni Fatoumata Diallo ni Pont d’Or.</p>
           </div>
           <div>
             <p className="label text-or">Portrait d’archive · {herosDuMois.periode}</p>
@@ -284,17 +327,25 @@ export default function Communaute() {
           </ul>
           <div className="community-quiz-callout">
             <div><p className="label text-ink/70">Besoin d’un point de départ ?</p><p className="font-display font-extrabold mt-1">Commence par découvrir ton profil, puis choisis l’espace qui te ressemble.</p><p className="text-ink/75 mt-1">Le quiz est gratuit et te donne une première direction. Tu peux ensuite revenir ici pour lire, échanger ou demander un accompagnement.</p></div>
-            <Link to="/quiz" className="btn btn-or shrink-0">Commencer par le quiz <ArrowRight size={16} /></Link>
+            <BoutonPeint to="/quiz" className="shrink-0" icone={<Icone nom="fleche-droite" taille={16} />}>Commencer par le quiz</BoutonPeint>
           </div>
-          <div className="flex flex-wrap gap-3 mt-8"><Link to="/defis" className="btn btn-or">Rejoindre un défi collectif <ArrowRight size={16} /></Link><Link to="/quiz" className="btn btn-craie">Découvrir mon profil</Link><Link to="/bibliotheque" className="btn btn-craie">Explorer la bibliothèque</Link></div>
+          <div className="flex flex-wrap gap-3 mt-8"><BoutonPeint to="/defis" icone={<Icone nom="fleche-droite" taille={16} />}>Rejoindre un défi collectif</BoutonPeint><BoutonPeint to="/quiz" variante="craie" inverse>Découvrir mon profil</BoutonPeint><BoutonPeint to="/bibliotheque" variante="craie" inverse>Explorer la bibliothèque</BoutonPeint></div>
         </div>
       </section>
 
       <section id="community-share" className="community-share inverse fond-tisse champ relative isolate overflow-hidden text-ink" aria-labelledby="community-share-title">
-<Vignette photo={photos.partage} largeur={1600} decoratif className="community-share-photo" />
+{/* La photo se fond dans le bas de la section (au lieu de s'arrêter net) pour éviter
+    que la jonction avec le pied de page — même texture `fond-tisse` sombre, sans
+    marge — ne donne l'impression que l'image/la section a été coupée. */}
+<Vignette
+  photo={photos.partage}
+  largeur={1600}
+  decoratif
+  className="community-share-photo [mask-image:linear-gradient(to_bottom,black,black_55%,transparent_94%)] [-webkit-mask-image:linear-gradient(to_bottom,black,black_55%,transparent_94%)]"
+/>
         <div className="relative flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl"><p className="label text-or">À toi de jouer</p><h2 id="community-share-title" className="display-l">Ton histoire peut ouvrir une porte.</h2><p className="text-ink/75">Le bouton prépare un email à l’atelier. Rien n’est envoyé ni publié automatiquement : tu peux relire ton message avant de l’envoyer.</p></div>
-          <a href={sujetTemoignage} className="btn btn-or shrink-0">Partager mon histoire <ArrowUpRight size={16} /></a>
+          <BoutonPeint href={sujetTemoignage} className="shrink-0" icone={<ArrowUpRight size={16} />}>Partager mon histoire</BoutonPeint>
         </div>
       </section>
     </>

@@ -1,7 +1,9 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { RouteProvider, useRoute } from "./lib/router";
 import { Entete, Pied } from "./components/Chrome";
-import { OuvertureLivre } from "./components/OuvertureLivre";
+import { Precharge } from "./components/Precharge";
+import { EtincellesCurseur } from "./components/EtincellesCurseur";
+import { demarrerLenis, arreterLenis } from "./lib/lenis";
 import Accueil from "./pages/Accueil";
 import LeLivre from "./pages/LeLivre";
 import Quiz from "./pages/Quiz";
@@ -12,6 +14,7 @@ import { Boutique, FicheProduit } from "./pages/Boutique";
 import Parcours from "./pages/Parcours";
 import Communaute from "./pages/Communaute";
 import { APropos, Contact, Introuvable } from "./pages/Annexes";
+import { AccueilV2 } from "./pages/AccueilV2";
 import { MotionDirector } from "./components/MotionDirector";
 import { MotionLayer } from "./components/MotionLayer";
 import { CartProvider } from "./lib/cart";
@@ -37,6 +40,7 @@ function Pages() {
     document.title =
       {
         "/": "Active ton Superpouvoir ! — Nadine Zoro · La Fabrique des Héros",
+        "/v2": "Active ton Superpouvoir ! — Nadine Zoro · La Fabrique des Héros",
         "/le-livre": "Le livre — Active ton Superpouvoir ! de Nadine Zoro",
         "/quiz": "Quiz — Découvre ton profil de héros",
         "/cartes": "30 Cartes Anti-Doutes — Active ton Superpouvoir",
@@ -52,7 +56,9 @@ function Pages() {
       }[propre] || "Active ton Superpouvoir ! — Nadine Zoro";
   }, [propre]);
 
-  if (propre === "/") return <Accueil />;
+  if (propre === "/") return <AccueilV2 />;
+  if (propre === "/v2") return <AccueilV2 />;
+  if (propre === "/accueil-v1") return <Accueil />;
   if (propre === "/le-livre") return <LeLivre />;
   if (propre === "/quiz") return <Quiz />;
   if (propre === "/cartes") return <Cartes />;
@@ -83,35 +89,17 @@ export default function App() {
 
 function Coquille() {
   const { chemin } = useRoute();
-  const [intro, setIntro] = useState(() => {
-    if (typeof window === "undefined") return false;
-    const cheminInitial = window.location.hash.replace(/^#/, "") || "/";
-    if (cheminInitial !== "/") return false;
-    if (new URLSearchParams(window.location.search).get("preview") === "hero") return false;
-    if (new URLSearchParams(window.location.search).get("ouverture") === "1") return true;
-    try {
-      return window.sessionStorage.getItem("fabrique-ouverture-v1") !== "terminee";
-    } catch {
-      return true;
-    }
-  });
 
   useEffect(() => {
-    if (chemin !== "/" && intro) setIntro(false);
-  }, [chemin, intro]);
-
-  const terminer = useCallback(() => {
-    try {
-      window.sessionStorage.setItem("fabrique-ouverture-v1", "terminee");
-    } catch {
-      // L’expérience reste utilisable si le stockage de session est bloqué.
-    }
-    setIntro(false);
+    demarrerLenis();
+    return () => arreterLenis();
   }, []);
 
   return (
     <>
-      <div className={`site-under-intro ${intro ? "site-under-intro--locked" : ""}`} aria-hidden={intro} inert={intro}>
+      <Precharge />
+      <EtincellesCurseur />
+      <div className="site-under-intro">
         <Fond />
         <Entete />
         <main id="contenu">
@@ -122,8 +110,7 @@ function Coquille() {
         <Pied />
       </div>
       <MotionDirector />
-      <MotionLayer pret={!intro} />
-      {intro && <OuvertureLivre onTerminer={terminer} />}
+      <MotionLayer pret />
     </>
   );
 }

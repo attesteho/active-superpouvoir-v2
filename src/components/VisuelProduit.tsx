@@ -66,7 +66,7 @@ export function VisuelProduit({
               [40, 70, "#FFB000"],
               [60, 70, "#FFB000"],
             ].map(([cx, cy, c]) => (
-              <circle key={String(c)} cx={cx as number} cy={cy as number} r="24" fill={c as string} opacity="0.78" />
+              <circle key={`${cx}-${cy}`} cx={cx as number} cy={cy as number} r="24" fill={c as string} opacity="0.78" />
             ))}
           </g>
           <text x="50" y="16" textAnchor="middle" fontSize="9" fill="#321044" fontFamily="Bricolage Grotesque, sans-serif" fontWeight="800">

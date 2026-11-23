@@ -1,9 +1,18 @@
 import { useMemo, useState } from "react";
-import { Shuffle, ArrowUpRight } from "lucide-react";
+import { Shuffle } from "lucide-react";
 import { EntetePage, Bloc } from "../components/Page";
+import { NavigationSections } from "../components/NavigationSections";
+
+const SECTIONS_CARTES = [
+  { id: "cartes-tirage", label: "Tirage" },
+  { id: "cartes-deck", label: "Le deck complet" },
+  { id: "cartes-emporter", label: "Emporter le deck" },
+];
 import { CarteDoute, filCategorie } from "../components/CarteDoute";
 import { Vu } from "../components/Atelier";
-import { fcfa, lienCommande, produits } from "../data/site";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
+import { fcfa, produits } from "../data/site";
 import toutes from "../data/cards.json";
 import { ProduitScene } from "../components/Visuels";
 import { photos } from "../data/media";
@@ -26,8 +35,11 @@ export default function Cartes() {
 
   return (
     <>
+      <NavigationSections sections={SECTIONS_CARTES} />
+
       <EntetePage
         photo={photos.cartesEntete}
+        arrierePlan="/images/05-cartes-antidoutes.webp"
         variante="decale"
         surtitre="Chapitre V · 30 cartes anti-doutes"
         lignes={[<>Le doute se</>, <span key="s" className="livre font-normal text-or">retourne.</span>]}
@@ -35,7 +47,7 @@ export default function Cartes() {
         fil="#FFB000"
       />
 
-      <Bloc numero="01" titre="Tirage" fil="#FFB000" className="champ">
+      <Bloc id="cartes-tirage" numero="01" titre="Tirage" fil="#FFB000" className="champ">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-16">
           <div className="lg:col-span-5">
             <Vu className="flex flex-col items-start gap-5">
@@ -44,9 +56,9 @@ export default function Cartes() {
                 Le matin, ou dans le moment précis où la petite voix se met à parler. Lis le doute à voix haute,
                 retourne la carte, puis fais l’action. C’est le protocole complet.
               </p>
-              <button type="button" onClick={tirer} className="btn btn-or">
-                <Shuffle size={16} /> Tirer une autre carte
-              </button>
+              <BoutonPeint onClick={tirer} icone={<Shuffle size={16} />}>
+                Tirer une autre carte
+              </BoutonPeint>
               <p className="text-dim-2" aria-live="polite">
                 Carte #{String(carte.id).padStart(2, "0")} · {carte.category}
               </p>
@@ -55,14 +67,14 @@ export default function Cartes() {
           <div className="lg:col-span-7">
             <div className="fond-tisse flex items-center justify-center overflow-hidden rounded-[32px] p-8 sm:p-12" key={tirage}>
               <div className="w-full max-w-sm">
-                <CarteDoute carte={carte} hauteur={380} />
+                <CarteDoute carte={carte} hauteur={520} />
               </div>
             </div>
           </div>
         </div>
       </Bloc>
 
-      <Bloc numero="02" titre="Le deck complet" fil="#FFB000" className="champ">
+      <Bloc id="cartes-deck" numero="02" titre="Le deck complet" fil="#FFB000" className="champ">
         <div className="flex flex-wrap items-center gap-3">
           <button
             type="button"
@@ -108,7 +120,7 @@ export default function Cartes() {
         </div>
       </Bloc>
 
-      <Bloc numero="03" titre="Emporter le deck" fil="#FFB000" className="champ">
+      <Bloc id="cartes-emporter" numero="03" titre="Emporter le deck" fil="#FFB000" className="champ">
         <div className="ombre grid items-center gap-8 rounded-[26px] border border-paper/14 bg-ink-2 p-8 sm:p-10 lg:grid-cols-12 lg:gap-10 lg:p-12">
           <div className="lg:col-span-4">
             <ProduitScene produit={deck} />
@@ -121,9 +133,9 @@ export default function Cartes() {
           <div className="flex flex-col items-start gap-2 lg:col-span-3">
             <span className="font-display text-3xl font-extrabold text-or">{fcfa(deck.fcfa)}</span>
             <span className="text-dim-2">ou {deck.eur} €</span>
-            <a href={lienCommande(deck.nom)} className="btn btn-or">
-              Commander le deck <ArrowUpRight size={16} />
-            </a>
+            <BoutonPeint to={`/boutique/${deck.slug}`} icone={<Icone nom="fleche-droite" taille={16} />}>
+              Commander le deck
+            </BoutonPeint>
           </div>
         </div>
       </Bloc>

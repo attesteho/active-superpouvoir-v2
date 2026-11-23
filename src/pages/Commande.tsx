@@ -1,15 +1,10 @@
 import { useState, type FormEvent, type ReactNode } from "react";
 import {
   AlertCircle,
-  ArrowLeft,
-  ArrowRight,
-  Check,
-  CheckCircle2,
   ChevronDown,
   CreditCard,
   LockKeyhole,
   MapPin,
-  MessageCircle,
   Minus,
   Package,
   Plus,
@@ -21,6 +16,8 @@ import {
 } from "lucide-react";
 import { Bloc, EntetePage } from "../components/Page";
 import { VisuelProduit } from "../components/VisuelProduit";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
 import { Link, useRoute } from "../lib/router";
 import { useCart, type CartItem } from "../lib/cart";
 import { fcfa, marque } from "../data/site";
@@ -88,7 +85,7 @@ function PanierVide({ message = "Ton panier est encore vide." }: { message?: str
       <p className="label">L’établi t’attend</p>
       <h2>Choisis une première pièce.</h2>
       <p>{message} Parcours la bibliothèque, ouvre un ouvrage et ajoute-le à ton chemin.</p>
-      <Link to="/bibliotheque" className="btn btn-or">Explorer la bibliothèque <ArrowRight size={16} /></Link>
+      <BoutonPeint to="/bibliotheque" variante="or" className="mt-2" icone={<Icone nom="fleche-droite" taille={16} />}>Explorer la bibliothèque</BoutonPeint>
     </div>
   );
 }
@@ -102,7 +99,7 @@ function Stepper({ current }: { current: StepId }) {
         const done = index < activeIndex;
         return (
           <li key={step.id} className={`checkout-step ${active ? "is-active" : ""} ${done ? "is-done" : ""}`}>
-            <span className="checkout-step-number">{done ? <Check size={15} strokeWidth={3} /> : step.index}</span>
+            <span className="checkout-step-number">{done ? <Icone nom="validation" taille={15} /> : step.index}</span>
             <span className="checkout-step-copy"><strong>{step.label}</strong><small>{step.note}</small></span>
           </li>
         );
@@ -133,7 +130,7 @@ function Summary({ items, subtotal, livraison = "standard", editable = false }: 
       <ul className="summary-items">
         {items.map((item) => (
           <li key={item.produit.slug} className="summary-item">
-            <div className="summary-item-art"><VisuelProduit produit={item.produit} largeur={54} /></div>
+            <div className="summary-item-art overflow-hidden rounded-md"><VisuelProduit produit={item.produit} largeur={54} /></div>
             <div className="summary-item-copy"><strong>{item.produit.nom}</strong><span>{item.quantite} × {fcfa(item.produit.fcfa)}</span></div>
             <span className="summary-item-total">{fcfa(item.produit.fcfa * item.quantite)}</span>
           </li>
@@ -176,7 +173,7 @@ function Choice({ name, value, selected, onChange, title, description, price, ic
       <span className="choice-card-icon" aria-hidden="true">{icon}</span>
       <span className="choice-card-copy"><strong>{title}</strong><small>{description}</small></span>
       <span className="choice-card-price">{price}</span>
-      <span className="choice-card-check" aria-hidden="true"><Check size={14} /></span>
+      <span className="choice-card-check" aria-hidden="true"><Icone nom="validation" taille={14} /></span>
     </label>
   );
 }
@@ -184,8 +181,8 @@ function Choice({ name, value, selected, onChange, title, description, price, ic
 function StepActions({ back, next, nextLabel = "Continuer" }: { back?: () => void; next: () => void; nextLabel?: string }) {
   return (
     <div className="checkout-actions">
-      {back ? <button type="button" className="btn btn-craie" onClick={back}><ArrowLeft size={16} /> Retour</button> : <Link to="/panier" className="btn btn-craie"><ArrowLeft size={16} /> Panier</Link>}
-      <button type="button" className="btn btn-or" onClick={next}>{nextLabel} <ArrowRight size={16} /></button>
+      {back ? <BoutonPeint variante="craie" onClick={back} icone={<Icone nom="fleche-gauche" taille={16} />}>Retour</BoutonPeint> : <BoutonPeint to="/panier" variante="craie" icone={<Icone nom="fleche-gauche" taille={16} />}>Panier</BoutonPeint>}
+      <BoutonPeint variante="or" onClick={next} icone={<Icone nom="fleche-droite" taille={16} />}>{nextLabel}</BoutonPeint>
     </div>
   );
 }
@@ -203,7 +200,7 @@ export function PanierPage() {
               <ul>
                 {items.map((item) => (
                   <li key={item.produit.slug} className="cart-row">
-                    <div className="cart-row-art"><VisuelProduit produit={item.produit} largeur={86} /></div>
+                    <div className="cart-row-art overflow-hidden rounded-md"><VisuelProduit produit={item.produit} largeur={86} /></div>
                     <div className="cart-row-copy"><span className="label" style={{ color: item.produit.fil }}>{item.produit.type}</span><h2>{item.produit.nom}</h2><p>{item.produit.format} · {fcfa(item.produit.fcfa)}</p><button type="button" className="text-action" onClick={() => remove(item.produit.slug)}><Trash2 size={14} /> Retirer</button></div>
                     <QuantityControl item={item} onChange={(quantity) => updateQuantity(item.produit.slug, quantity)} />
                     <strong className="cart-row-total">{fcfa(item.produit.fcfa * item.quantite)}</strong>
@@ -211,7 +208,7 @@ export function PanierPage() {
                 ))}
               </ul>
             </div>
-            <div className="cart-page-aside"><Summary items={items} subtotal={total} editable /><Link to="/commande" className="btn btn-or">Passer à la commande <ArrowRight size={16} /></Link><Link to="/bibliotheque" className="back-catalogue"><ArrowLeft size={15} /> Continuer dans la bibliothèque</Link></div>
+            <div className="cart-page-aside"><Summary items={items} subtotal={total} editable /><BoutonPeint to="/commande" variante="or" icone={<Icone nom="fleche-droite" taille={16} />}>Passer à la commande</BoutonPeint><Link to="/bibliotheque" className="back-catalogue"><Icone nom="fleche-gauche" taille={15} /> Continuer dans la bibliothèque</Link></div>
           </div>
         )}
       </Bloc>
@@ -351,16 +348,16 @@ export function ConfirmationPage() {
       <EntetePage surtitre="Commande préparée" lignes={[<>Ton chemin</>, <span key="s" className="livre font-normal text-or">peut commencer.</span>]} intro="Ta commande a été transmise à l’atelier par e-mail. Pour accélérer le traitement, tu peux aussi la confirmer directement sur WhatsApp." fil="#FFB000" />
       <Bloc numero="01" titre="Confirmation" fil="#FFB000" className="champ">
         <div className="confirmation-shell">
-          <div className="confirmation-seal"><CheckCircle2 size={34} strokeWidth={1.5} /></div>
+          <div className="confirmation-seal"><Icone nom="validation" taille={34} /></div>
           <p className="label">Demande enregistrée</p>
           <h2>Merci, {order.nom.split(" ")[0]}.</h2>
           <p className="confirmation-lead">Ta commande <strong>{order.reference}</strong> a bien été préparée dans ce prototype.</p>
           <div className="confirmation-meta"><div><span>Mail client</span><strong>{order.email}</strong></div><div><span>Livraison</span><strong>{order.ville} · {order.livraison === "express" ? "Express" : "Standard"}</strong></div><div><span>Total indicatif</span><strong>{fcfa(order.total)}</strong></div></div>
           <div className="confirmation-items"><p className="label">Pièces du chemin</p><ul>{order.items.map((item) => <li key={item.produit.slug}><span>{item.quantite} × {item.produit.nom}</span><strong>{fcfa(item.produit.fcfa * item.quantite)}</strong></li>)}</ul></div>
           <div className="confirmation-actions">
-            <a href={lienWhatsapp} target="_blank" rel="noreferrer" className="btn btn-or"><MessageCircle size={16} /> Confirmer sur WhatsApp</a>
-            <Link to="/bibliotheque" className="btn btn-craie">Retour à la bibliothèque <ArrowRight size={16} /></Link>
-            <Link to="/" className="btn btn-craie">Revenir à l’accueil</Link>
+            <BoutonPeint href={lienWhatsapp} target="_blank" rel="noreferrer" variante="or" icone={<Icone nom="discussion" taille={16} />}>Confirmer sur WhatsApp</BoutonPeint>
+            <BoutonPeint to="/bibliotheque" variante="craie" icone={<Icone nom="fleche-droite" taille={16} />}>Retour à la bibliothèque</BoutonPeint>
+            <BoutonPeint to="/" variante="craie">Revenir à l’accueil</BoutonPeint>
           </div>
         </div>
       </Bloc>

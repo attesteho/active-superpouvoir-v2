@@ -8,7 +8,7 @@ import { mouvementReduit, usePetitEcran } from "../lib/motion";
 import { FondPhoto, PhotoCadre, Vignette } from "./Photo";
 import { PhotoLegendee } from "./Visuels";
 import { defiPhotos, fonds, photos, voixPhotos } from "../data/media";
-import { defisMeta, fcfa, herosDuMois, kit, lienCommande, marque, temoignages } from "../data/site";
+import { defisMeta, fcfa, herosDuMois, kit, kitProduit, marque, temoignages } from "../data/site";
 import missions from "../data/defis.json";
 
 const ENCRE_DEFI = [
@@ -270,12 +270,12 @@ function Kit() {
               <span className="text-dim-2 text-lg line-through">{fcfa(kit.barre)}</span>
             </div>
             <p className="text-dim-2 mt-3">
-              Prix affiché par le mouvement. La commande se fait par email : l’atelier n’utilise pas de paiement en ligne.
+              Prix affiché par le mouvement. Ajoute-le au panier pour réserver ta pièce — l’atelier n’utilise pas de paiement en ligne.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              <a href={lienCommande(kit.nom)} className="btn btn-or !border-jaune">
+              <Link to={`/boutique/${kitProduit.slug}`} className="btn btn-or !border-jaune">
                 Commander le kit <ArrowUpRight size={16} />
-              </a>
+              </Link>
               <Link to="/boutique" className="btn btn-craie">
                 Le détail des pièces
               </Link>

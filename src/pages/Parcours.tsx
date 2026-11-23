@@ -1,13 +1,16 @@
 import { useState } from "react";
-import { ArrowLeft, MoveRight, Plus, Minus } from "lucide-react";
+import { Plus, Minus } from "lucide-react";
 import { EntetePage, Bloc } from "../components/Page";
 import { Vu } from "../components/Atelier";
 import { CarteArchetype } from "../components/CartesUI";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
 import { Link } from "../lib/router";
 import { defisMeta, etapes, produits } from "../data/site";
 import extras from "../data/parcours-extras.json";
 import { PhotoCadre } from "../components/Photo";
-import { etapePhotos } from "../data/media";
+import { defiPhotos, etapePhotos } from "../data/media";
 
 const extrasTypes = extras as Record<string, { steps: { titre: string; note: string }[]; arche: { type: string; archetype: string; tagline: string }[] }>;
 
@@ -22,9 +25,9 @@ export default function Parcours({ id }: { id: string }) {
         <p className="text-dim">Le mouvement compte quatre étapes de vie. Choisis la tienne.</p>
         <div className="flex flex-wrap gap-3">
           {etapes.map((x) => (
-            <Link key={x.id} to={`/parcours/${x.id}`} className="btn btn-craie">
+            <BoutonPeint key={x.id} to={`/parcours/${x.id}`} variante="craie">
               {x.nom}
-            </Link>
+            </BoutonPeint>
           ))}
         </div>
       </div>
@@ -38,6 +41,8 @@ export default function Parcours({ id }: { id: string }) {
   return (
     <>
       <EntetePage
+        arrierePlan="/images/07-parcours-age.webp"
+        arrierePlanPosition="center"
         surtitre={`Ton étape de vie · ${e.age}`}
         lignes={[
           <span key="n">{e.nom}</span>,
@@ -80,7 +85,7 @@ export default function Parcours({ id }: { id: string }) {
                     <span className="label block">{p.format}</span>
                   </span>
                   <span className="text-dim sm:col-span-5">{s.note}</span>
-                  <MoveRight size={18} className="hidden text-paper/40 transition-transform group-hover:translate-x-1.5 group-hover:text-or sm:col-span-1 sm:block" />
+                  <Icone nom="fleche-droite" taille={18} className="hidden text-paper/40 transition-transform group-hover:translate-x-1.5 group-hover:text-or sm:col-span-1 sm:block" />
                 </Link>
               </li>
             );
@@ -90,20 +95,25 @@ export default function Parcours({ id }: { id: string }) {
 
       <Bloc numero="02" titre="Le défi de ton étape" fil={e.fil} className="champ">
         <div className="ombre grid items-center gap-6 rounded-[22px] border border-paper/14 bg-ink-2 p-6 sm:p-8 lg:grid-cols-12 lg:gap-8 lg:p-10">
-          <div className="flex items-center gap-3 lg:col-span-3 lg:flex-col lg:items-start lg:gap-1">
+          <div className="lg:col-span-3">
+            <CadreDecoupe variante="vague-bas-douce" className="shadow-[0_14px_32px_rgba(0,0,0,0.22)]">
+              <PhotoCadre photo={defiPhotos[defi.id]} ratio="4 / 5" ratioMobile="16 / 10" />
+            </CadreDecoupe>
+          </div>
+          <div className="flex items-center gap-3 lg:col-span-2 lg:flex-col lg:items-start lg:gap-1">
             <span className="font-display text-4xl font-extrabold" style={{ color: e.fil }}>
               {defi.jours}
             </span>
             <span className="label block">jours · gratuit</span>
           </div>
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-4">
             <h2 className="font-display text-xl font-extrabold">{defi.titre}</h2>
             <p className="text-dim">{defi.texte}</p>
           </div>
           <div className="lg:col-span-3">
-            <Link to="/defis#defi-7" className="btn btn-or w-full justify-center">
-              Commencer le défi <MoveRight size={16} />
-            </Link>
+            <BoutonPeint to="/defis#defi-7" icone={<Icone nom="fleche-droite" taille={16} />} className="w-full justify-center">
+              Commencer le défi
+            </BoutonPeint>
           </div>
         </div>
       </Bloc>
@@ -124,9 +134,9 @@ export default function Parcours({ id }: { id: string }) {
             </Vu>
           ))}
         </ul>
-        <Link to="/quiz" className="btn btn-craie mt-8">
-          Découvrir lequel je suis <MoveRight size={16} />
-        </Link>
+        <BoutonPeint to="/quiz" variante="craie" className="mt-8" icone={<Icone nom="fleche-droite" taille={16} />}>
+          Découvrir lequel je suis
+        </BoutonPeint>
       </Bloc>
 
       <Bloc numero="04" titre="Questions fréquentes" fil={e.fil} className="champ">
@@ -167,7 +177,7 @@ export default function Parcours({ id }: { id: string }) {
           {etapes.filter((x) => x.id !== e.id).map((x) => (
             <Link key={x.id} to={`/parcours/${x.id}`} className="etape-tuile group">
               <PhotoCadre photo={etapePhotos[x.id]} ratio="4 / 5" ratioMobile="16 / 10" voile creditVisible={false} sizes="(min-width: 640px) 30vw, 100vw">
-                <span className="etape-tuile-texte"><span>{x.age}</span><strong>{x.nom}</strong><em><ArrowLeft size={14} /> Changer d’étape</em></span>
+                <span className="etape-tuile-texte"><span>{x.age}</span><strong>{x.nom}</strong><em><Icone nom="fleche-gauche" taille={14} /> Changer d’étape</em></span>
               </PhotoCadre>
             </Link>
           ))}

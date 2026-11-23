@@ -378,9 +378,3 @@ export const navigation = [
 ];
 
 export const fcfa = (n: number) => n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ") + " FCFA";
-
-/** Ouvre une demande de commande pré-remplie dans la messagerie. */
-export const lienCommande = (sujet: string) =>
-  `mailto:${marque.email}?subject=${encodeURIComponent("Commande — " + sujet)}&body=${encodeURIComponent(
-    "Bonjour Nadine,\n\nJe souhaite commander : " + sujet + "\n\nMon nom :\nMa ville :\nMon pays :\nFormat souhaité (physique / digital) :\n\nMerci !"
-  )}`;

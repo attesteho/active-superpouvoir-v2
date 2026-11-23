@@ -30,7 +30,7 @@ const imageCategorie: Record<string, string> = {
   Résilience: "/book/fond-sarcelle-doutes.jpg",
 };
 
-export function CarteDoute({ carte, hauteur = 340 }: { carte: Carte; hauteur?: number }) {
+export function CarteDoute({ carte, hauteur = 480 }: { carte: Carte; hauteur?: number }) {
   const [tournee, setTournee] = useState(false);
   const fil = filCategorie[carte.category] || "#FFB000";
   const image = imageCategorie[carte.category] || "/book/illus-pointe.jpg";
@@ -63,7 +63,14 @@ export function CarteDoute({ carte, hauteur = 340 }: { carte: Carte; hauteur?: n
         </span>
 
         {/* verso : l'affirmation, aplat d'encre */}
-        <span className="carte-doute-face carte-doute-face--verso" style={{ background: fil }}>
+        {/* rotateY(180deg) propre à la face : avec le wrapper en preserve-3d, c'est ce qui
+            la fait réellement disparaître (backface-visibility) tant que la carte n'est pas
+            retournée — sans ça, les deux faces se superposent et seule celle-ci (plus bas
+            dans le DOM) reste visible en permanence, recto comme verso. */}
+        <span
+          className="carte-doute-face carte-doute-face--verso"
+          style={{ background: fil, transform: "rotateY(180deg)" }}
+        >
           <span className="carte-doute-chip">Affirmation {String(carte.id).padStart(2, "0")}</span>
           <span className="carte-doute-photo">
             <img src={image} alt="" aria-hidden="true" loading="lazy" />

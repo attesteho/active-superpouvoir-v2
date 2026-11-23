@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
-import { Check, ChevronDown, MoveRight, Hash } from "lucide-react";
+import { ChevronDown, Hash } from "lucide-react";
 import { EntetePage, Bloc } from "../components/Page";
+import { NavigationSections } from "../components/NavigationSections";
 import { Vu } from "../components/Atelier";
-import { Link, useRoute } from "../lib/router";
-import { defisMeta, hashtags, lienCommande } from "../data/site";
+import { CadreDecoupe } from "../components/CadreDecoupe";
+import { BoutonPeint } from "../components/BoutonPeint";
+import { Icone } from "../components/Icone";
+import { useRoute } from "../lib/router";
+import { defisMeta, hashtags } from "../data/site";
 import missions from "../data/defis.json";
 import { PhotoCadre, Vignette } from "../components/Photo";
 import { defiPhotos, hashtagPhotos, photos } from "../data/media";
@@ -30,17 +34,27 @@ export default function Defis() {
     });
   };
 
+  const sections = [
+    { id: "defis-liste", label: "Tous les défis" },
+    ...defisMeta.map((d) => ({ id: `defi-${d.id}`, label: `${d.jours} jours` })),
+    { id: "defis-communautaires", label: "Communautaires" },
+  ];
+
   return (
     <>
+      <NavigationSections sections={sections} />
+
       <EntetePage
         photo={photos.defisEntete}
+        arrierePlan="/images/06-defis.webp"
+        arrierePlanPosition="bottom right"
         surtitre="Les défis"
         lignes={[<>Passe de lecteur à</>, <span key="s" className="livre font-normal text-or">héros en action.</span>]}
         intro="Choisis ton défi et transforme-toi jour après jour. Du défi gratuit de 7 jours au parcours complet de 60 jours."
         fil="#FFB000"
       />
 
-      <div className="champ">
+      <div id="defis-liste" className="champ">
         <ul className="defi-panneaux">
           {defisMeta.map((d) => (
             <li key={d.id} className="defi-panneau">
@@ -57,7 +71,7 @@ export default function Defis() {
                   <span className="defi-panneau-offre">{d.offre}</span>
                   <strong>{d.titre}</strong>
                   <em>{d.texte}</em>
-                  <span className="defi-panneau-lien">Voir le défi <MoveRight size={15} /></span>
+                  <span className="defi-panneau-lien">Voir le défi <Icone nom="fleche-droite" taille={15} /></span>
                 </span>
               </a>
             </li>
@@ -72,12 +86,14 @@ export default function Defis() {
           <div key={d.id} id={`defi-${d.id}`} className="scroll-mt-24">
             <Bloc numero={`0${k + 1}`} titre={`Défi ${d.jours} jours · ${d.offre}`} fil={d.fil} className="champ">
               <Vu className="mb-10 block">
-                <PhotoCadre photo={defiPhotos[d.id]} ratio="21 / 7" ratioMobile="4 / 3" voile>
-                  <div className={`defi-banniere-num ${k % 2 ? "defi-banniere-num--droite" : ""}`} aria-hidden="true">
-                    {d.jours}
-                    <span>jours</span>
-                  </div>
-                </PhotoCadre>
+                <CadreDecoupe variante="vague-haut" className="shadow-[0_20px_48px_rgba(0,0,0,0.22)]">
+                  <PhotoCadre photo={defiPhotos[d.id]} ratio="21 / 7" ratioMobile="4 / 3" voile>
+                    <div className={`defi-banniere-num ${k % 2 ? "defi-banniere-num--droite" : ""}`} aria-hidden="true">
+                      {d.jours}
+                      <span>jours</span>
+                    </div>
+                  </PhotoCadre>
+                </CadreDecoupe>
               </Vu>
               <div className="grid gap-10 lg:grid-cols-12 lg:gap-14">
                 <Vu className="flex flex-col items-start gap-5 lg:col-span-5">
@@ -130,13 +146,13 @@ export default function Defis() {
                   </div>
 
                   {d.offre === "Gratuit" ? (
-                    <Link to="/quiz" className="btn btn-or">
-                      Commencer gratuitement <MoveRight size={16} />
-                    </Link>
+                    <BoutonPeint to="/quiz" icone={<Icone nom="fleche-droite" taille={16} />}>
+                      Commencer gratuitement
+                    </BoutonPeint>
                   ) : (
-                    <a href={lienCommande(`Défi ${d.jours} jours — ${d.titre}`)} className="btn btn-or">
-                      Demander l’accès au défi {d.jours} jours
-                    </a>
+                    <BoutonPeint to="/boutique" icone={<Icone nom="fleche-droite" taille={16} />}>
+                      Trouver mon accompagnement au défi {d.jours} jours
+                    </BoutonPeint>
                   )}
                 </Vu>
 
@@ -159,7 +175,7 @@ export default function Defis() {
                               color: faits.includes(i) ? "#FFF0D9" : d.fil,
                             }}
                           >
-                            {faits.includes(i) ? <Check size={14} /> : i + 1}
+                            {faits.includes(i) ? <Icone nom="validation" taille={14} /> : i + 1}
                           </span>
                           <span className={`pt-0.5 ${faits.includes(i) ? "text-dim-2 line-through" : "text-paper/90"}`}>{m}</span>
                         </button>
@@ -174,7 +190,7 @@ export default function Defis() {
         );
       })}
 
-      <Bloc numero="04" titre="Défis communautaires" fil="#FFB000" className="champ">
+      <Bloc id="defis-communautaires" numero="04" titre="Défis communautaires" fil="#FFB000" className="champ">
         <Vu className="flex flex-col gap-4">
           <h2 className="display-l">
             Quatre hashtags, <span className="livre font-normal text-or">un même mouvement</span>
@@ -223,9 +239,9 @@ function SuiteTimeline({
   const reste = toutes[id].slice(12);
   if (!ouvert)
     return (
-      <button type="button" onClick={() => setOuvert(true)} className="btn btn-craie mt-4">
-        <ChevronDown size={16} /> Voir les {toutes[id].length} missions
-      </button>
+      <BoutonPeint onClick={() => setOuvert(true)} variante="craie" className="mt-4" icone={<ChevronDown size={16} />}>
+        Voir les {toutes[id].length} missions
+      </BoutonPeint>
     );
   return (
     <>
@@ -244,7 +260,7 @@ function SuiteTimeline({
                   className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full font-display text-xs font-extrabold"
                   style={{ border: `1px solid ${fil}`, background: suivi.includes(i) ? fil : "transparent", color: suivi.includes(i) ? "#FFF0D9" : fil }}
                 >
-                  {suivi.includes(i) ? <Check size={14} /> : i + 1}
+                  {suivi.includes(i) ? <Icone nom="validation" taille={14} /> : i + 1}
                 </span>
                 <span className={`pt-0.5 ${suivi.includes(i) ? "text-dim-2 line-through" : "text-paper/90"}`}>{m}</span>
               </button>
@@ -252,9 +268,9 @@ function SuiteTimeline({
           );
         })}
       </ol>
-      <button type="button" onClick={() => setOuvert(false)} className="btn btn-craie mt-4">
-        <ChevronDown size={16} className="rotate-180" /> Replier
-      </button>
+      <BoutonPeint onClick={() => setOuvert(false)} variante="craie" className="mt-4" icone={<ChevronDown size={16} className="rotate-180" />}>
+        Replier
+      </BoutonPeint>
     </>
   );
 }

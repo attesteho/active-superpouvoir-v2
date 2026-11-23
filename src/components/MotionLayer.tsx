@@ -7,6 +7,8 @@ import { Etoile } from "./Atelier";
 
 gsap.registerPlugin(ScrollTrigger);
 
+const ANGLES_ECLATS = Array.from({ length: 10 }, (_, i) => i * 36);
+
 const SEL_TITRES = ":is(h2, h3).display-xl, :is(h2, h3).display-l, :is(h2, h3).display-m";
 const SEL_CARTES = ".community-story-item, .community-space-list > li, .etape-tuile";
 const baseDe = (c: string) => c.split("#")[0].replace(/\/+$/, "") || "/";
@@ -57,23 +59,29 @@ export function MotionLayer({ pret }: { pret: boolean }) {
   const precedente = useRef<string | null>(null);
   const tlRideau = useRef<gsap.core.Timeline | null>(null);
 
-  /* ——— Rideau de transition : posé avant la peinture, puis levé ——— */
+  /* ——— Rideau de transition : iris qui s'ouvre au centre, étoile qui éclate avec des éclats,
+     puis se referme — plus proche d'un effet BD/jeu vidéo qu'un simple fondu. ——— */
   useLayoutEffect(() => {
     const el = rideau.current;
     if (!el) return;
     const avant = precedente.current;
     precedente.current = base;
     if (avant === null || avant === base || mouvementReduit()) return;
-    const etoile = el.querySelector("svg");
+    const etoile = el.querySelector<SVGElement>(".rideau-etoile");
+    const eclats = el.querySelector<SVGElement>(".rideau-eclats");
     tlRideau.current?.kill();
-    gsap.killTweensOf([el, etoile]);
-    gsap.set(el, { display: "flex", clipPath: "inset(0% 0% 0% 0%)" });
-    gsap.set(etoile, { scale: 0.5, rotate: -50, opacity: 1 });
+    gsap.killTweensOf([el, etoile, eclats]);
+    gsap.set(el, { display: "flex", clipPath: "circle(0% at 50% 50%)" });
+    gsap.set(etoile, { scale: 0.3, rotate: -70, opacity: 0 });
+    gsap.set(eclats, { opacity: 0, scale: 0.5 });
     tlRideau.current = gsap
       .timeline({ onComplete: () => gsap.set(el, { display: "none" }) })
-      .to(etoile, { scale: 1, rotate: 0, duration: 0.5, ease: "back.out(1.7)" }, 0)
-      .to(etoile, { scale: 0.2, opacity: 0, duration: 0.28, ease: "power2.in" }, 0.42)
-      .to(el, { clipPath: "inset(0% 0% 100% 0%)", duration: 0.8, ease: "power4.inOut" }, 0.4);
+      .to(el, { clipPath: "circle(75% at 50% 50%)", duration: 0.45, ease: "power3.out" }, 0)
+      .to(etoile, { scale: 1, rotate: 0, opacity: 1, duration: 0.42, ease: "back.out(2.6)" }, 0.06)
+      .to(eclats, { opacity: 1, scale: 1.5, duration: 0.32, ease: "power1.out" }, 0.08)
+      .to(eclats, { opacity: 0, duration: 0.22 }, 0.38)
+      .to(etoile, { scale: 0.25, rotate: 50, opacity: 0, duration: 0.3, ease: "power2.in" }, 0.56)
+      .to(el, { clipPath: "circle(0% at 50% 50%)", duration: 0.48, ease: "power3.inOut" }, 0.62);
   }, [base]);
 
   /* ——— Mouvement des sections ——— */
@@ -266,7 +274,21 @@ export function MotionLayer({ pret }: { pret: boolean }) {
 
   return (
     <div ref={rideau} className="rideau" aria-hidden="true" style={{ display: "none" }}>
-      <Etoile taille={104} fil="#321044" />
+      <svg className="rideau-eclats" viewBox="0 0 200 200" aria-hidden="true">
+        {ANGLES_ECLATS.map((angle) => {
+          const rad = (angle * Math.PI) / 180;
+          return (
+            <line
+              key={angle}
+              x1={100 + 38 * Math.cos(rad)}
+              y1={100 + 38 * Math.sin(rad)}
+              x2={100 + 92 * Math.cos(rad)}
+              y2={100 + 92 * Math.sin(rad)}
+            />
+          );
+        })}
+      </svg>
+      <Etoile taille={104} fil="#321044" className="rideau-etoile" />
     </div>
   );
 }
