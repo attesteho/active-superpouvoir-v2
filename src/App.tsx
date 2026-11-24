@@ -19,6 +19,7 @@ import { MotionDirector } from "./components/MotionDirector";
 import { MotionLayer } from "./components/MotionLayer";
 import { CartProvider } from "./lib/cart";
 import { PanierPage, CommandePage, ConfirmationPage } from "./pages/Commande";
+import Precommande from "./pages/Precommande";
 
 /** Fond papier : trame de calage très légère + grain d'impression. Aucun halo, aucun dégradé décoratif. */
 function Fond() {
@@ -47,6 +48,7 @@ function Pages() {
         "/defis": "Les défis 7, 30 et 60 jours — Active ton Superpouvoir",
         "/bibliotheque": "La bibliothèque — Active ton Superpouvoir",
         "/boutique": "Boutique — Active ton Superpouvoir",
+        "/precommande": "Précommande — Active ton Superpouvoir",
         "/panier": "Panier — Active ton Superpouvoir",
         "/commande": "Commande — Active ton Superpouvoir",
         "/confirmation": "Confirmation — Active ton Superpouvoir",
@@ -66,6 +68,7 @@ function Pages() {
   if (propre === "/bibliotheque") return <Bibliotheque />;
   if (propre === "/boutique") return <Boutique />;
   if (propre.startsWith("/boutique/")) return <FicheProduit slug={propre.replace("/boutique/", "")} />;
+  if (propre === "/precommande") return <Precommande />;
   if (propre === "/panier") return <PanierPage />;
   if (propre === "/commande") return <CommandePage />;
   if (propre === "/confirmation") return <ConfirmationPage />;

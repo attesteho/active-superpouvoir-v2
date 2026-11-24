@@ -33,7 +33,7 @@ function prefixerCheminsPublics(): Plugin {
       let html = fs.readFileSync(fichier, "utf-8");
       for (const dossier of ["images/", "book/", "press-logos/"]) {
         for (const guillemet of ['"', "`"]) {
-          html = html.replaceAll(`${guillemet}/${dossier}`, `${guillemet}${prefixe}${dossier}`);
+          html = html.split(`${guillemet}/${dossier}`).join(`${guillemet}${prefixe}${dossier}`);
         }
       }
       fs.writeFileSync(fichier, html);
